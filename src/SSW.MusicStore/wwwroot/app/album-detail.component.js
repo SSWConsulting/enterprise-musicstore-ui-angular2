@@ -13,35 +13,32 @@ var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var album_service_1 = require('./album.service');
 var route_config_1 = require('./route.config');
-var DashboardComponent = (function () {
-    function DashboardComponent(_albumService, _router) {
+var AlbumDetailComponent = (function () {
+    function AlbumDetailComponent(_albumService, _routeParams, _router) {
         this._albumService = _albumService;
+        this._routeParams = _routeParams;
         this._router = _router;
     }
-    DashboardComponent.prototype.onInit = function () {
-        return this.albums = this.getPopularAlbums();
-    };
-    DashboardComponent.prototype.gotoDetail = function (album) {
-        this._router.navigate([("/" + route_config_1.Routes.album.as), { id: album.id }]);
-    };
-    DashboardComponent.prototype.getPopularAlbums = function () {
+    AlbumDetailComponent.prototype.onInit = function () {
         var _this = this;
-        this._albumService.getPopularAlbums()
-            .then(function (albums) {
-            return _this.albums = albums;
-        });
-        return this.albums;
+        if (!this.album) {
+            var id = +this._routeParams.get('id');
+            this._albumService.getAlbum(id).then(function (album) { return _this.album = album; });
+        }
     };
-    DashboardComponent = __decorate([
+    AlbumDetailComponent.prototype.gotoAlbum = function () {
+        this._router.navigate([("/" + route_config_1.Routes.album.as)]);
+    };
+    AlbumDetailComponent = __decorate([
         angular2_1.Component({
-            selector: 'ms-dashboard',
-            templateUrl: 'app/dashboard.component.html',
-            styleUrls: ['app/dashboard.component.css'],
-            directives: [angular2_1.CORE_DIRECTIVES]
+            selector: 'album-detail',
+            templateUrl: 'app/album-detail.component.html',
+            directives: [angular2_1.CORE_DIRECTIVES, angular2_1.FORM_DIRECTIVES],
+            inputs: ['album']
         }), 
-        __metadata('design:paramtypes', [album_service_1.AlbumService, router_1.Router])
-    ], DashboardComponent);
-    return DashboardComponent;
+        __metadata('design:paramtypes', [album_service_1.AlbumService, router_1.RouteParams, router_1.Router])
+    ], AlbumDetailComponent);
+    return AlbumDetailComponent;
 })();
-exports.DashboardComponent = DashboardComponent;
-//# sourceMappingURL=dashboard.component.js.map
+exports.AlbumDetailComponent = AlbumDetailComponent;
+//# sourceMappingURL=album-detail.component.js.map

@@ -14,13 +14,13 @@ var router_1 = require('angular2/router');
 var route_config_1 = require('./route.config');
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Tour of Heroes';
+        this.title = 'SSW Angular 2 Music Store';
         this.routes = route_config_1.Routes;
     }
     AppComponent = __decorate([
         angular2_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <a [router-link]=\"['/' + routes.dashboard.as]\" class=\"router-link\">Dashboard</a>\n    <a [router-link]=\"['/' + routes.heroes.as]\" class=\"router-link\">Heroes</a>\n    <router-outlet></router-outlet>\n  ",
+            template: "\n    <h1>{{title}}</h1>\n    <a [router-link]=\"['/' + routes.dashboard.as]\" class=\"router-link\">Popular Albums</a>\n    <a [router-link]=\"['/' + routes.genres.as]\" class=\"router-link\">Genres</a>\n    <router-outlet></router-outlet>\n  ",
             styles: ["\n    .router-link {padding: 5px;text-decoration: none;}\n    .router-link:visited, .router-link:link {color: #444;}\n    .router-link:hover {color: white; background-color: #1171a3; text-decoration: none;}\n    .router-link.router-link-active {color: white; background-color: #52b9e9; text-decoration: none;}\n  "],
             directives: [router_1.ROUTER_DIRECTIVES]
         }),

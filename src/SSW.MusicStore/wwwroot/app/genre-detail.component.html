@@ -1,0 +1,10 @@
+<div *ng-if="genre">
+	<h2>{{genre.name}} details!</h2>
+	<div>
+		<label>id: </label>{{genre.id}}</div>
+	<div>
+		<label>name: </label>
+		<input [(ng-model)]="genre.name" placeholder="name"/>
+	</div>
+	<button (click)="gotoGenres()">Back</button>
+</div>

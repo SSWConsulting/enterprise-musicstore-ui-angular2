@@ -1,5 +1,6 @@
-var heroes_component_1 = require('./heroes.component');
-var hero_detail_component_1 = require('./hero-detail.component');
+var genres_component_1 = require('./genres.component');
+var album_detail_component_1 = require('./album-detail.component');
+var genre_detail_component_1 = require('./genre-detail.component');
 var dashboard_component_1 = require('./dashboard.component');
 exports.Routes = {
     dashboard: {
@@ -7,15 +8,20 @@ exports.Routes = {
         as: 'Dashboard',
         component: dashboard_component_1.DashboardComponent
     },
-    heroes: {
-        path: '/heroes',
-        as: 'Heroes',
-        component: heroes_component_1.HeroesComponent
+    genres: {
+        path: '/genres',
+        as: 'Genres',
+        component: genres_component_1.GenresComponent
     },
-    detail: {
-        path: '/detail/:id',
-        as: 'Detail',
-        component: hero_detail_component_1.HeroDetailComponent
+    album: {
+        path: '/album/:id',
+        as: 'Album',
+        component: album_detail_component_1.AlbumDetailComponent
+    },
+    genre: {
+        path: '/genre/:name',
+        as: 'Genre',
+        component: genre_detail_component_1.GenreDetailComponent
     }
 };
 exports.APP_ROUTES = Object.keys(exports.Routes).map(function (r) { return exports.Routes[r]; });

@@ -1,0 +1,14 @@
+<div>
+  <h2>Genres</h2>
+  <ul class="heroes">
+    <li *ng-for="#genre of genres"
+      [ng-class]="getSelectedClass(genre)"
+      (click)="onSelect(genre)">
+      <span class="badge">{{genre.id}}</span> {{genre.name}}</a>
+    </li>
+  </ul>
+  <div *ng-if="selectedHero">
+    <h2>{{selectedGenre.name | uppercase}}</h2>
+		<button (click)="gotoDetail()">View Details</button>
+  </div>
+</div>

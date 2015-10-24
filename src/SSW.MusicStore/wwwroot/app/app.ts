@@ -7,8 +7,8 @@ import {Routes, APP_ROUTES} from './route.config';
     selector: 'my-app',
     template: `
     <h1>{{title}}</h1>
-    <a [router-link]="['/' + routes.dashboard.as]" class="router-link">Dashboard</a>
-    <a [router-link]="['/' + routes.heroes.as]" class="router-link">Heroes</a>
+    <a [router-link]="['/' + routes.dashboard.as]" class="router-link">Popular Albums</a>
+    <a [router-link]="['/' + routes.genres.as]" class="router-link">Genres</a>
     <router-outlet></router-outlet>
   `,
     styles: [`
@@ -21,6 +21,6 @@ import {Routes, APP_ROUTES} from './route.config';
 })
 @RouteConfig(APP_ROUTES)
 export class AppComponent {
-    public title = 'Tour of Heroes';
+    public title = 'SSW Angular 2 Music Store';
     public routes = Routes;
 }
