@@ -1,0 +1,20 @@
+{
+  "name": "angular-quickstart",
+  "version": "1.0.0",
+  "description": "hello world",
+  "main": "wwwroot",
+  "dependencies": {
+    "angular2": "^2.0.0-alpha.44",
+    "typescript": "^1.6.2"
+  },
+  "devDependencies": {},
+    "systemjs": "^0.19.5",
+    "live-server": "^0.8.2",
+  "scripts": {
+		    "tsc": "tsc -p src -w",
+    "start": "live-server --open="
+
+  },
+  "author": "duncan hunter",
+  "license": "ISC"
+}
