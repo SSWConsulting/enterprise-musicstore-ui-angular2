@@ -3,11 +3,12 @@ import {RouteParams, Router} from 'angular2/router';
 import {Album} from './Models';
 import {AlbumService} from './album.service';
 import {Routes} from './route.config';
+import {AlbumDetailRenderer} from './albumDetailRenderer';
 
 @Component({
   selector: 'album-detail',
   templateUrl: 'app/album-detail.component.html',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
+  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AlbumDetailRenderer],
   inputs: ['album']
 })
 export class AlbumDetailComponent implements OnInit {

@@ -1,0 +1,16 @@
+<div class="card ms-album-detail">
+	<img class="card-img-top" src="lib/images/placeholder.png" alt="Card image cap">
+	<div class="card-block">
+		<h4 class="card-title">{{album.title}}</h4>
+		<div>
+			<label>Artist: </label>{{album.artist}}
+		</div>
+		<div>
+			<label>Price: </label>${{album.price}}
+		</div>
+		<div>
+			<label>Date: </label>{{album.created}}
+		</div>
+		<button class="btn btn-primary" (click)="notImplemented()">Add to cart</button>
+	</div>
+</div>

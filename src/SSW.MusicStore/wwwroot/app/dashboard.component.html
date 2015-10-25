@@ -1,8 +1,22 @@
-<h3>Popular Albums</h3>
-<div class="grid grid-pad">
-	<div *ng-for="#album of albums" class="col-1-4" (click)="goToAlbumDetail(album)">
-		<div class="module hero">
-			<h4>{{album.title}}</h4>
+<section class="jumbotron text-center">
+	<div class="container">
+		<div class="col-sm-4">
+			<img src="lib/images/ssw_logo.png" class="img-responsive center-block">
 		</div>
+		<div class="col-sm-4 col-sm-offset-4">
+			<img src="lib/images/angular_logo.jpeg" class="img-responsive" height="148" width="148">
+		</div>
+		<img src="lib/images/home-showcase.png" class="img-responsive">
+	</div>
+</section>
+
+<div class="album-section">
+	<div class="container">
+		<album-item-renderer (click)="goToAlbumDetail(album)"
+							 *ng-for="#album of albums"
+							 [album]="album">
+		</album-item-renderer>
 	</div>
 </div>
+
+

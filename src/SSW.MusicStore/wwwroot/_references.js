@@ -1,6 +1,16 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="../gulpfile.js" />
+/// <reference path="app/album.service.js" />
+/// <reference path="app/album-detail - copy.component.js" />
+/// <reference path="app/albumdetailrenderer.js" />
+/// <reference path="app/albumitemrenderer.js" />
+/// <reference path="app/app.component.js" />
 /// <reference path="app/app.js" />
 /// <reference path="app/bootstrap.js" />
 /// <reference path="app/dashboard.component.js" />
+/// <reference path="app/genre.service.js" />
+/// <reference path="app/genres.component.js" />
+/// <reference path="app/hero-detail.component.js" />
+/// <reference path="app/mock-heroes.js" />
+/// <reference path="app/models.js" />
 /// <reference path="app/route.config.js" />

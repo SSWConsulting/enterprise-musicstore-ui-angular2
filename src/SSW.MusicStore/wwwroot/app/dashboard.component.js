@@ -13,6 +13,7 @@ var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var album_service_1 = require('./album.service');
 var route_config_1 = require('./route.config');
+var albumItemRenderer_1 = require('./albumItemRenderer');
 var DashboardComponent = (function () {
     function DashboardComponent(_albumService, _router) {
         this._albumService = _albumService;
@@ -37,7 +38,7 @@ var DashboardComponent = (function () {
             selector: 'ms-dashboard',
             templateUrl: 'app/dashboard.component.html',
             styleUrls: ['app/dashboard.component.css'],
-            directives: [angular2_1.CORE_DIRECTIVES]
+            directives: [angular2_1.CORE_DIRECTIVES, albumItemRenderer_1.AlbumItemRenderer]
         }), 
         __metadata('design:paramtypes', [album_service_1.AlbumService, router_1.Router])
     ], DashboardComponent);

@@ -1,13 +1,14 @@
-import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
+import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {RouteParams, Router} from 'angular2/router';
 import {Album} from './models';
 import {GenreService} from './genre.service';
 import {Routes} from './route.config';
+import {AlbumItemRenderer} from './albumItemRenderer';
 
 @Component({
   selector: 'genre-detail',
   templateUrl: 'app/genre-detail.component.html',
-  directives: [CORE_DIRECTIVES, FORM_DIRECTIVES],
+  directives: [CORE_DIRECTIVES, AlbumItemRenderer],
   styleUrls: ['app/genre-detail.component.css'],
   inputs: ['genre']
 })

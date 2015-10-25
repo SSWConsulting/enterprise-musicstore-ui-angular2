@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
-
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<base href="/" />
 	<link rel="stylesheet" href="styles.css">
 	<script src="../node_modules/systemjs/dist/system.src.js"></script>
@@ -20,12 +22,14 @@
 </head>
 
 <body>
-	<my-app>Loading...</my-app>
+	<ms-app>
+		<div class="container">
+			<progress class="ssw-loading-spinner progress progress-animated progress-striped" value="100" max="100"></progress>
+		</div>
 
+	</ms-app>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
-
 </body>
-
 </html>

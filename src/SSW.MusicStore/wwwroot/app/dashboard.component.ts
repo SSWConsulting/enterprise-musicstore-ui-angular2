@@ -4,13 +4,14 @@ import {Album} from './models';
 import {AlbumService} from './album.service';
 import {Routes} from './route.config';
 import {Http} from 'angular2/http';
+import {AlbumItemRenderer} from './albumItemRenderer';
 
 
 @Component({
     selector: 'ms-dashboard',
     templateUrl: 'app/dashboard.component.html',
     styleUrls: ['app/dashboard.component.css'],
-    directives: [CORE_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, AlbumItemRenderer ]
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[];

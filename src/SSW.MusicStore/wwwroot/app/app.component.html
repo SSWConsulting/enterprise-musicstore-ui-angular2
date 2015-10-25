@@ -1,0 +1,60 @@
+<div class="navbar-collapse collapse inverse" id="navbar-header">
+	<div class="container-fluid">
+		<div class="about">
+			<h4>About</h4>
+			<p class="text-muted">
+				This is the Angular 2 version of the classic ASP.NET MVC Music store rewritten with ASP.NET5, Angular 2, BootStrap 4 and the SSW Enterprise way.
+			</p>
+		</div>
+		<div class="">
+			<h4>Contact</h4>
+			<ul class="list-unstyled">
+				<li><a href="https://github.com/SSWConsulting/angularmusicstore">SSW Angular2 Music Store &copy; </a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="navbar navbar-dark bg-inverse navbar-static-top">
+	<div class="container-fluid">
+		<button class="navbar-toggler pull-left" type="button" data-toggle="collapse" data-target="#navbar-header">
+			&#9776;
+		</button>
+		<a [router-link]="['/' + routes.dashboard.as]" class="navbar-brand">{{title}}</a>
+		<ul class="nav navbar-nav">
+			<li class="nav-item">
+				<div class="btn-group">
+					<button type="button" class="btn menu-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Genre
+					</button>
+					<div class="dropdown-menu">
+						<a class="dropdown-item"
+						   (click)="goToGenre(genre)"
+						   *ng-for="#genre of genres">
+							{{genre.name}}
+						</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" [router-link]="['/' + routes.genres.as]">Genre List</a>
+					</div>
+				</div>
+			</li>
+			<!--<li class="nav-item">
+			<a class="nav-link" [router-link]="['/' + routes.genres.as]">Cart</a>
+		</li>-->
+			<li class="nav-item pull-right">
+				<a class="nav-link" (click)="notImplemented()">Register</a>
+			</li>
+			<li class="nav-item pull-right">
+				<a class="nav-link" (click)="notImplemented()">Login</a>
+			</li>
+		</ul>
+	</div>
+</div>
+	<router-outlet></router-outlet>
+<footer class="text-muted">
+	<div class="container">
+		<p class="pull-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p><a href="https://github.com/SSWConsulting/angularmusicstore">SSW Angular2 Music Store &copy; </a></p>
+	</div>
+</footer>

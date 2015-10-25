@@ -13,6 +13,7 @@ var angular2_1 = require('angular2/angular2');
 var router_1 = require('angular2/router');
 var album_service_1 = require('./album.service');
 var route_config_1 = require('./route.config');
+var albumDetailRenderer_1 = require('./albumDetailRenderer');
 var AlbumDetailComponent = (function () {
     function AlbumDetailComponent(_albumService, _routeParams, _router) {
         this._albumService = _albumService;
@@ -43,7 +44,7 @@ var AlbumDetailComponent = (function () {
         angular2_1.Component({
             selector: 'album-detail',
             templateUrl: 'app/album-detail.component.html',
-            directives: [angular2_1.CORE_DIRECTIVES, angular2_1.FORM_DIRECTIVES],
+            directives: [angular2_1.CORE_DIRECTIVES, angular2_1.FORM_DIRECTIVES, albumDetailRenderer_1.AlbumDetailRenderer],
             inputs: ['album']
         }), 
         __metadata('design:paramtypes', [album_service_1.AlbumService, router_1.RouteParams, router_1.Router])
