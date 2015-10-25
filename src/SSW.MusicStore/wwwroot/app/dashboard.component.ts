@@ -21,8 +21,8 @@ export class DashboardComponent implements OnInit {
         return this.albums = this.getPopularAlbums();
     }
 
-    gotoDetail(album: Album) {
-        this._router.navigate([`/${Routes.album.as}`, { id: album.id }]);
+    goToAlbumDetail(album: Album) {
+        this._router.navigate([`/${Routes.album.as}`, { id: album.albumId }]);
     }
 
     getPopularAlbums() {
@@ -32,7 +32,5 @@ export class DashboardComponent implements OnInit {
             );
 
         return this.albums;
-
-
     }
 }

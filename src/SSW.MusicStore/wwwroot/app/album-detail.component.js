@@ -20,14 +20,24 @@ var AlbumDetailComponent = (function () {
         this._router = _router;
     }
     AlbumDetailComponent.prototype.onInit = function () {
-        var _this = this;
         if (!this.album) {
-            var id = +this._routeParams.get('id');
-            this._albumService.getAlbum(id).then(function (album) { return _this.album = album; });
+            this.id = parseInt(this._routeParams.get('id'));
+            return this.album = this.getAlbum(this.id);
         }
     };
-    AlbumDetailComponent.prototype.gotoAlbum = function () {
-        this._router.navigate([("/" + route_config_1.Routes.album.as)]);
+    AlbumDetailComponent.prototype.getAlbum = function (id) {
+        var _this = this;
+        return this._albumService.getAlbum(id)
+            .then(function (album) {
+            album.created = moment(album.created).format('MMMM, YYYY');
+            _this.album = album;
+        });
+        //TODO: why date pipe failing ?
+        return this.album;
+    };
+    //TODO: Wire up back to last genre not all genres
+    AlbumDetailComponent.prototype.goToGenre = function (album) {
+        this._router.navigate([("/" + route_config_1.Routes.genres.as)]);
     };
     AlbumDetailComponent = __decorate([
         angular2_1.Component({

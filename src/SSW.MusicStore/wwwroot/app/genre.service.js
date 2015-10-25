@@ -12,22 +12,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var http_1 = require('angular2/http');
 var angular2_1 = require('angular2/angular2');
 var GenreService = (function () {
-    function GenreService(http) {
-        this.http = http;
+    function GenreService(_http) {
+        this._http = _http;
+        this.genres = [];
+        this.albums = [];
     }
     GenreService.prototype.getGenres = function () {
         var _this = this;
-        return this.http.get('api/genres').map(function (res) { return res.json(); })
-            .subscribe(function (genres) {
-            return _this.genres = genres;
+        return this._http.get('api/genres').map(function (response) { return response.json(); }).toPromise()
+            .then(function (genres) {
+            (_a = _this.genres).push.apply(_a, genres);
+            return _this.genres;
+            var _a;
         });
     };
-    GenreService.prototype.getGenre = function (name) {
+    GenreService.prototype.getGenreAlbums = function (name) {
         var _this = this;
-        return this.http.get("api/genre/" + name).map(function (res) { return res.json(); })
-            .subscribe(function (genre) {
-            return _this.genre = genre;
+        var promise = this._http.get("api/genre/" + name)
+            .map(function (response) { return response.json(); }).toPromise()
+            .then(function (albums) {
+            (_a = _this.albums).push.apply(_a, albums);
+            return _this.albums;
+            var _a;
         });
+        return promise;
     };
     GenreService = __decorate([
         angular2_1.Injectable(), 

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.AspNet.Authorization;
 using Newtonsoft.Json;
+using SSW.MusicStore.ViewModels;
 
 namespace SSW.MusicStore.Controllers
 {
@@ -48,28 +49,21 @@ namespace SSW.MusicStore.Controllers
 
 
 
-		[HttpGet("genres/{genre}")]
+		[HttpGet("genre/{genre}")]
 		public JsonResult Get(string genre)
 		{
 			try
 			{
-			  var results =  DbContext.Genres
-			  .Include(g => g.Albums)
-			  .Where(g => g.Name == genre)
-			  .FirstOrDefaultAsync();
+				var results = DbContext.Albums
+				.Where(g => g.Genre.Name == genre).ToList();
 
 				if (results == null)
 				{
 					return Json(null);
 				}
 
-				//return new JsonResult(results);
+				return new JsonResult(results);
 
-				return  new JsonResult(JsonConvert.SerializeObject(results, Formatting.None,
-					new JsonSerializerSettings()
-					{
-						ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-					}));
 			}
 			catch (Exception ex)
 			{

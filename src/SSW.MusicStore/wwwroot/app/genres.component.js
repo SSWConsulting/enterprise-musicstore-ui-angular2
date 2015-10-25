@@ -19,24 +19,19 @@ var GenresComponent = (function () {
         this._genreService = _genreService;
         this._router = _router;
     }
+    GenresComponent.prototype.onInit = function () {
+        this.genres = this.getGenres();
+    };
     GenresComponent.prototype.getGenres = function () {
         var _this = this;
-        this.selectedGenre = undefined;
         this.genres = [];
         this._genreService.getGenres()
             .then(function (genres) { return _this.genres = genres; });
         return this.genres;
     };
-    GenresComponent.prototype.getSelectedClass = function (genre) {
-        return { 'selected': genre === this.selectedGenre };
+    GenresComponent.prototype.goToGenre = function (genre) {
+        this._router.navigate([("/" + route_config_1.Routes.genre.as), { name: genre.name }]);
     };
-    GenresComponent.prototype.gotoDetail = function () {
-        this._router.navigate([("/" + route_config_1.Routes.genre.as), { id: this.selectedGenre.id }]);
-    };
-    GenresComponent.prototype.onInit = function () {
-        this.genres = this.getGenres();
-    };
-    GenresComponent.prototype.onSelect = function (genre) { this.selectedGenre = genre; };
     GenresComponent = __decorate([
         angular2_1.Component({
             selector: 'my-genres',

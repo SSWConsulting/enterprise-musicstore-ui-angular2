@@ -1,10 +1,9 @@
-<div *ng-if="hero">
-	<h2>{{hero.name}} details!</h2>
+<div>
+	<h2>{{album.title}}</h2>
 	<div>
-		<label>id: </label>{{hero.id}}</div>
-	<div>
-		<label>name: </label>
-		<input [(ng-model)]="hero.name" placeholder="name"/>
+		<label>Artist: </label>{{album.artist}}
+		<label>Price: </label>${{album.price}}
+		<label>Date: </label>{{album.created}}
 	</div>
-	<button (click)="gotoHeroes()">Back</button>
+	<button (click)="goToGenre()">Back To Genres</button>
 </div>

@@ -21,8 +21,8 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.onInit = function () {
         return this.albums = this.getPopularAlbums();
     };
-    DashboardComponent.prototype.gotoDetail = function (album) {
-        this._router.navigate([("/" + route_config_1.Routes.album.as), { id: album.id }]);
+    DashboardComponent.prototype.goToAlbumDetail = function (album) {
+        this._router.navigate([("/" + route_config_1.Routes.album.as), { id: album.albumId }]);
     };
     DashboardComponent.prototype.getPopularAlbums = function () {
         var _this = this;

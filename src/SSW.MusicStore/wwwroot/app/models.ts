@@ -1,12 +1,14 @@
 export class Album {
 
-    id: number;
+    albumId: number;
     titile: string;
     price: number;
     albumArtUrl: string;
-    Genres: Genre[];
-    Artists: Artist[]
-    OrderDetails: OrderDetail[]
+    genres: Genre[];
+    artist: Artist[];
+    orderDetails: OrderDetail[];
+    created: Date;
+
 
 }
 

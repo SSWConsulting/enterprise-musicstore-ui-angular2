@@ -1,10 +1,8 @@
-<div *ng-if="genre">
-	<h2>{{genre.name}} details!</h2>
-	<div>
-		<label>id: </label>{{genre.id}}</div>
-	<div>
-		<label>name: </label>
-		<input [(ng-model)]="genre.name" placeholder="name"/>
+<h3>{{name}} Albums</h3>
+<div class="grid grid-pad">
+	<div *ng-for="#album of albums" class="col-1-4" (click)="goToAlbumDetail(album)">
+		<div class="module hero">
+			<h4>{{album.title}}</h4>
+		</div>
 	</div>
-	<button (click)="gotoGenres()">Back</button>
 </div>

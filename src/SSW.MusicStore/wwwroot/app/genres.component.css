@@ -1,10 +1,10 @@
-.heroes {list-style-type: none; margin-left: 1em; padding: 0; width: 10em;}
+.genres {list-style-type: none; margin-left: 1em; padding: 0; width: 10em;}
 
-.heroes li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }
+.genres li { cursor: pointer; position: relative; left: 0; transition: all 0.2s ease; }
 
-.heroes li:hover {color: #369; background-color: #EEE; left: .2em;}
+.genres li:hover {color: #369; background-color: #EEE; left: .2em;}
 
-.heroes .badge {
+.genres .badge {
 	font-size: small;
 	color: white;
 	padding: 0.1em 0.7em;

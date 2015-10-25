@@ -8,16 +8,24 @@
 	<script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
 	<script src="../node_modules/angular2/bundles/router.dev.js"></script>
 	<script src="../node_modules/angular2/bundles/http.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+
 	<script>
-    System.config({
-      packages: {'app': {defaultExtension: 'js'}}
-    });
-    System.import('app/bootstrap').catch(console.log.bind(console));
+		System.config({
+			packages: { 'app': { defaultExtension: 'js' } }
+		});
+		System.import('app/bootstrap').catch(console.log.bind(console));
 	</script>
 </head>
 
 <body>
 	<my-app>Loading...</my-app>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
 </body>
 
 </html>

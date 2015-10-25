@@ -11,7 +11,8 @@ import {Routes} from './route.config';
   inputs: ['album']
 })
 export class AlbumDetailComponent implements OnInit {
-  public album;
+    album: Album;
+    id: number;
 
   constructor(private _albumService: AlbumService,
     private _routeParams: RouteParams, private _router: Router) {
@@ -19,12 +20,31 @@ export class AlbumDetailComponent implements OnInit {
 
   onInit() {
     if (!this.album) {
-      let id = +this._routeParams.get('id');
-      this._albumService.getAlbum(id).then((album) => this.album = album);
+      this.id = parseInt(this._routeParams.get('id'));
+      return this.album = this.getAlbum(this.id);
     }
   }
 
-  gotoAlbum() {
-    this._router.navigate([`/${Routes.album.as}`]);
+  getAlbum(id: number) {
+      return this._albumService.getAlbum(id)
+          .then(album => {
+              album.created = moment(album.created).format('MMMM, YYYY');
+              this.album = album
+          }
+      );
+
+      //TODO: why date pipe failing ?
+      return this.album;
+
   }
+
+   //TODO: Wire up back to last genre not all genres
+  goToGenre(album:Album) {
+      this._router.navigate([`/${Routes.genres.as}`]);
+  }
+
+  // TODO: implement route to mvc shopping cart
+  //goToCart() {
+  //  this._router.navigate([`/${Routes.album.as}`]);
+  //}
 }

@@ -3,5 +3,4 @@
 /// <reference path="app/app.js" />
 /// <reference path="app/bootstrap.js" />
 /// <reference path="app/dashboard.component.js" />
-/// <reference path="app/mock-heroes.js" />
 /// <reference path="app/route.config.js" />
