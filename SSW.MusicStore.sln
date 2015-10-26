@@ -8,10 +8,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D086A669-6537-4AC5-B4F7-2A35345C6B37}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
-		src\SSW.MusicStore\wwwroot\app\hero-detail.component.html = src\SSW.MusicStore\wwwroot\app\hero-detail.component.html
-		src\SSW.MusicStore\wwwroot\app\hero-detail.component.js = src\SSW.MusicStore\wwwroot\app\hero-detail.component.js
-		src\SSW.MusicStore\wwwroot\app\hero-detail.component.js.map = src\SSW.MusicStore\wwwroot\app\hero-detail.component.js.map
-		src\SSW.MusicStore\wwwroot\app\hero-detail.component.ts = src\SSW.MusicStore\wwwroot\app\hero-detail.component.ts
 		NuGet.Config = NuGet.Config
 	EndProjectSection
 EndProject
