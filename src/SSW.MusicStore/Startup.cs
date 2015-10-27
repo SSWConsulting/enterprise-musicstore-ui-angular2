@@ -18,7 +18,7 @@ namespace SSW.MusicStore
     {
         public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
         {
-            // Setup configration sources.
+            // Setup conigration sources.
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(appEnv.ApplicationBasePath)

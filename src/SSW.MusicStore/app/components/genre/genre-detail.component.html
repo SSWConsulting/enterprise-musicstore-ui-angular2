@@ -1,9 +1,9 @@
 <div class="album-section">
 	<div class="container">
 		<h2 class="title">{{name}} Albums</h2>
-		<album-item-renderer (click)="goToAlbumDetail(album)"
+		<album-summary (click)="goToAlbumDetail(album)"
 							 *ng-for="#album of albums"
 							 [album]="album">
-		</album-item-renderer>
+		</album-summary>
 	</div>
 </div>

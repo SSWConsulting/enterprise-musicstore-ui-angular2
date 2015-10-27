@@ -3,12 +3,12 @@ import {RouteParams, Router} from 'angular2/router';
 import {Album} from '../../models';
 import {GenreService} from '../../services/genre.service';
 import {Routes} from '../../route.config';
-import {AlbumItemRenderer} from '../album/albumItemRenderer';
+import {AlbumSummary} from '../album/album-summary';
 
 @Component({
   selector: 'genre-detail',
   templateUrl: './components/genre/genre-detail.component.html',
-  directives: [CORE_DIRECTIVES, AlbumItemRenderer],
+  directives: [CORE_DIRECTIVES, AlbumSummary],
   styleUrls: ['./components/genre/genre-detail.component.css'],
   inputs: ['genre']
 })

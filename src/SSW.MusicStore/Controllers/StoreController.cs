@@ -43,7 +43,7 @@ namespace SSW.MusicStore.Controllers
 			catch (Exception ex)
 			{
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
-				return Json("Error occurred finding Genres");
+				return Json("Error occurred finding Genres" + ex.Message);
 			}
 		}
 
@@ -68,7 +68,7 @@ namespace SSW.MusicStore.Controllers
 			catch (Exception ex)
 			{
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
-				return Json("Error occurred finding Genres");
+				return Json("Error occurred finding Genres" + ex.Message);
 			}
 		}
 
@@ -94,7 +94,7 @@ namespace SSW.MusicStore.Controllers
 			catch (Exception ex)
 			{
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
-				return Json("Error occurred finding Album");
+				return Json("Error occurred finding Album" + ex.Message);
 			}
 		}
 

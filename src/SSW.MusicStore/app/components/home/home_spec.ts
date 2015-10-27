@@ -10,18 +10,34 @@ import {DOM} from 'angular2/src/core/dom/dom_adapter';
 import {HomeCmp} from './home';
 
 export function main() {
-  describe('Home component', () => {
-    it('should work',
-      injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        return tcb.overrideTemplate(TestComponent, '<div><home></home></div>')
-          .createAsync(TestComponent)
-          .then((rootTC) => {
-            let homeDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
+    describe('Home component', () => {
+        it('should work',
+            injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+                return tcb.overrideTemplate(TestComponent, '<div><home></home></div>')
+                    .createAsync(TestComponent)
+                    .then((rootTC) => {
+                        let homeDOMEl = rootTC.debugElement.componentViewChildren[0].nativeElement;
 
-            expect(DOM.querySelectorAll(homeDOMEl, 'h1')[0].textContent).toEqual('Howdy!');
-          });
-      }));
-  });
+                        expect(DOM.querySelectorAll(homeDOMEl, 'h1')[0].textContent).toEqual('Howdy!');
+                    });
+            }));
+    });
+
+    describe('Home component', () => {
+        it('should work',
+            injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+                return tcb.overrideTemplate(TestComponent, '<div><home></home></div>')
+                    .createAsync(TestComponent)
+                    .then((rootTC) => {
+                        let a = 1;
+                        let b = 2;
+                        let c = a + b;
+
+                        expect(c).toEqual(3);
+                    });
+            }));
+    });
+
 }
 
 @Component({selector: 'test-cmp'})

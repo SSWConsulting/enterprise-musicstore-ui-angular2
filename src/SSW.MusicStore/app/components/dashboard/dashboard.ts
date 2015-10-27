@@ -3,13 +3,13 @@ import {Router} from 'angular2/router';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album.service';
 import {Routes} from '../../route.config';
-import {AlbumItemRenderer} from '../album/albumItemRenderer';
+import {AlbumSummary} from '../album/album-summary';
 
 @Component({
     selector: 'dashboard',
     templateUrl: './components/dashboard/dashboard.html',
     styleUrls: ['./components/dashboard/dashboard.css'],
-    directives: [CORE_DIRECTIVES, AlbumItemRenderer ]
+    directives: [CORE_DIRECTIVES, AlbumSummary ]
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[];

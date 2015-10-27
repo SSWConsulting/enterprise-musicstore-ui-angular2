@@ -12,10 +12,10 @@
 
 <div class="album-section">
 	<div class="container">
-				<album-item-renderer (click)="goToAlbumDetail(album)"
+				<album-summary (click)="goToAlbumDetail(album)"
 									 *ng-for="#album of albums"
 									 [album]="album">
-				</album-item-renderer>
+				</album-summary>
 			</div>
 		</div>
 
