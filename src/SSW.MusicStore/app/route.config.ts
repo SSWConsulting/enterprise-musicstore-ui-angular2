@@ -2,6 +2,7 @@ import {GenresComponent} from './components/genre/genres.component';
 import {AlbumDetailComponent} from './components/album/album';
 import {GenreDetailComponent} from './components/genre/genre-detail.component';
 import {DashboardComponent} from './components/dashboard/dashboard';
+import {LoginComponent} from './components/login/login';
 
 export var Routes = {
     dashboard: {
@@ -23,6 +24,11 @@ export var Routes = {
         path: '/genre/:name',
         as: 'Genre',
         component: GenreDetailComponent
+    },
+    login: {
+        path: '/login',
+        as: 'Login',
+        component: LoginComponent
     }
 
 };

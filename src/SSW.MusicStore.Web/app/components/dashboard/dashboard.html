@@ -1,0 +1,22 @@
+<section class="jumbotron text-center">
+	<div class="container">
+		<div class="col-sm-4">
+			<img src="/images/ssw_logo.png" class="img-responsive center-block">
+		</div>
+		<div class="col-sm-4 col-sm-offset-4">
+			<img src="/images/angular_logo.jpeg" class="img-responsive" height="148" width="148">
+		</div>
+		<img src="/images/home-showcase.png" class="img-responsive">
+	</div>
+</section>
+
+<div class="album-section">
+	<div class="container">
+				<album-summary (click)="goToAlbumDetail(album)"
+									 *ng-for="#album of albums"
+									 [album]="album">
+				</album-summary>
+			</div>
+		</div>
+
+
