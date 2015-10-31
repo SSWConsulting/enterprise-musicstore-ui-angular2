@@ -1,4 +1,4 @@
-﻿{
+{
   "webroot": "wwwroot",
   "version": "1.0.0-*",
 
@@ -13,7 +13,13 @@
   },
 
   "frameworks": {
-    "dnx451": { },
+    "dnx451": {
+      "dependencies": {
+        "Serilog": "1.5.12",
+        "Serilog.Sinks.Seq": "1.5.17",
+        "SerilogWeb.Classic": "2.0.6"
+      }
+    },
     "dnxcore50": { }
   },
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Caching.Memory;
@@ -8,40 +9,48 @@ using Microsoft.Data.Entity;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNet.Authorization;
+using Microsoft.Framework.Logging;
 using Newtonsoft.Json;
+using Serilog;
+using SSW.MusicStore.Services.Query;
 using SSW.MusicStore.ViewModels;
+using ILogger = Microsoft.Framework.Logging.ILogger;
 
 namespace SSW.MusicStore.Controllers
 {
 	//[Authorize]
 	[Route("api/")]
 	public class StoreController : Controller
-    {
-        [FromServices]
-        public MusicStoreContext DbContext { get; set; }
+	{
+		private readonly IServiceProvider _serviceProvider;
+		private readonly IGenreQueryService _genreQueryService;
+		private readonly IAlbumQueryService _albumQueryService;
+		private readonly ILogger _logger;
 
-        [FromServices]
-        public IMemoryCache Cache { get; set; }
-
-
+		public StoreController(
+			ILoggerFactory loggerfactory, 
+			IServiceProvider serviceProvider,
+			IGenreQueryService genreQueryService,
+			IAlbumQueryService albumQueryService)
+		{
+			_serviceProvider = serviceProvider;
+			_genreQueryService = genreQueryService;
+			_albumQueryService = albumQueryService;
+			_logger = loggerfactory.CreateLogger(nameof(StoreController));
+		}
 
 		[HttpGet("genres")]
 		public async Task<JsonResult> Get()
 		{
+			_logger.LogInformation("Get all genres");
 			try
 			{
-				var results =  await DbContext.Genres.ToListAsync();
-
-
-				if (results == null)
-				{
-					return Json(null);
-				}
-
-				return Json(results);
+				var results = await _genreQueryService.GetAllGenres();
+				return Json(results ?? null);
 			}
-			catch (Exception ex)
+			catch (DbException ex)
 			{
+				Log.Logger.Error("Failed to get genres", ex);
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
 				return Json("Error occurred finding Genres" + ex.Message);
 			}
@@ -49,50 +58,40 @@ namespace SSW.MusicStore.Controllers
 
 
 
-		[HttpGet("genre/{genre}")]
-		public JsonResult Get(string genre)
+		[HttpGet("albums/{genre}")]
+		public async Task<JsonResult> Get(string genre)
 		{
+			_logger.LogInformation("Get {genre}", genre);
 			try
 			{
-				var results = DbContext.Albums
-				.Where(g => g.Genre.Name == genre).ToList();
-
-				if (results == null)
-				{
-					return Json(null);
-				}
-
+				var results = await _albumQueryService.GetByGenre(genre);
 				return new JsonResult(results);
 
 			}
-			catch (Exception ex)
+			catch (DbException ex)
 			{
+				Log.Logger.Error(ex, "Failed to get albums by genre {genre}", genre);
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
 				return Json("Error occurred finding Genres" + ex.Message);
 			}
 		}
 
 
-		[HttpGet("album/{id}")]
+		[HttpGet("albums/details/{id}")]
 		public async Task<JsonResult> Details(int id)
 		{
+			_logger.LogInformation("Get album with id {id}", id);
 			try
 			{
-				var album = await DbContext.Albums
-							   .Where(a => a.AlbumId == id)
-							   .Include(a => a.Artist)
-							   //.Include(a => a.Genre)
-							   .FirstOrDefaultAsync();
+				var album = await _albumQueryService.GetAlbumDetails(id);
+				if (album != null) return new JsonResult(album);
 
-				if (album == null)
-				{
-					return Json(null);
-				}
-
-				return new JsonResult(album);
+				Log.Logger.Warning("User tried to retrieve album with {id} which doesn't exist", id);
+				return Json(null);
 			}
-			catch (Exception ex)
+			catch (DbException ex)
 			{
+				Log.Logger.Error(ex, "Failed to get album with id {id}", id);
 				Response.StatusCode = (int)HttpStatusCode.BadRequest;
 				return Json("Error occurred finding Album" + ex.Message);
 			}
@@ -102,19 +101,14 @@ namespace SSW.MusicStore.Controllers
 		[HttpGet("popular")]
 		public async Task<JsonResult> Popular()
 		{
-			List<Album> albums;
-			albums = await GetTopSellingAlbumsAsync(6);
-
+			_logger.LogInformation("Get top 6 popular albums");
+			var albums = await GetTopSellingAlbumsAsync(6);
 			return Json(albums);
 		}
 
-		private async Task<List<Album>> GetTopSellingAlbumsAsync(int count)
+		private async Task<IEnumerable<Album>> GetTopSellingAlbumsAsync(int count)
 		{
-			// TODO [EF] We don't query related data as yet, so the OrderByDescending isn't doing anything
-			return await DbContext.Albums
-				.OrderByDescending(a => a.OrderDetails.Count())
-				.Take(count)
-				.ToListAsync();
+			return await _albumQueryService.GetTopSellingAlbums(count);
 		}
 	}
 }

@@ -9,8 +9,12 @@ using Microsoft.Framework.Configuration;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Newtonsoft.Json.Serialization;
+using Serilog;
+using Serilog.Core;
+using SerilogWeb.Classic.Enrichers;
 using SSW.MusicStore.Models;
 using SSW.MusicStore.Services;
+using SSW.MusicStore.Services.Query;
 
 namespace SSW.MusicStore
 {
@@ -23,7 +27,8 @@ namespace SSW.MusicStore
             var builder = new ConfigurationBuilder()
                 .SetBasePath(appEnv.ApplicationBasePath)
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+				.AddJsonFile("privatesettings.json")
+				.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
             {
@@ -37,8 +42,8 @@ namespace SSW.MusicStore
 
         public IConfigurationRoot Configuration { get; set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+		// This method gets called by the runtime. Use this method to add services to the container.
+		public void ConfigureServices(IServiceCollection services)
         {
             // Add Entity Framework services to the services container.
             services.AddEntityFramework()
@@ -64,14 +69,25 @@ namespace SSW.MusicStore
 
 			// Register application services.
 			services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
-        }
+	        services.AddTransient<IDbContextFactory<MusicStoreContext>, DbContextFactory>();
+			services.AddTransient<IGenreQueryService, GenreQueryService>();
+			services.AddTransient<IAlbumQueryService, AlbumQueryService>();
+		}
 
         // Configure is called after ConfigureServices is called.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+	        var config = 
+				new LoggerConfiguration()
+					.WriteTo.ColoredConsole()
+					.WriteTo.RollingFile("C:\\Temp\\log-{Date}.txt")
+					.WriteTo.Seq(serverUrl: Configuration["Seq:Url"], apiKey: Configuration["Seq:Key"])
+					.Enrich.WithProperty("ApplicationName", "Music Store")
+					.Enrich.With(new HttpRequestIdEnricher());
+	        Log.Logger = config.CreateLogger();
+
             loggerFactory.MinimumLevel = LogLevel.Information;
-            loggerFactory.AddConsole();
+	        loggerFactory.AddSerilog();
             loggerFactory.AddDebug();
 
             // Configure the HTTP request pipeline.

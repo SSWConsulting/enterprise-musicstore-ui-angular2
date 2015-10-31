@@ -18,7 +18,7 @@ export class GenreService {
     }
 
     getGenreAlbums(name: string): Promise<Album[]> {
-        let promise = this._http.get(`api/genre/${name}`)
+        let promise = this._http.get(`api/albums/${name}`)
             .map((response: any) => response.json()).toPromise()
             .then((albums: Album[]) => {
                 this.albums.push(...albums);

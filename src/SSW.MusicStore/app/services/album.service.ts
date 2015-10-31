@@ -22,13 +22,11 @@ export class AlbumService {
         return promise;
     }
 
-    //TODO: push artist Object in toolbar the Object flatten?
     getAlbum(id: number) {
-        let promise = this._http.get(`/api/album/${id}`)
+        let promise = this._http.get(`/api/albums/details/${id}`)
             .map((response: any) => response.json()).toPromise()
-            .then((albums: Album[]) => {
-                this.albums.push(...albums);
-                return this.albums[0];
+            .then((album: Album) => {
+                return album;
             });
         return promise;
     }

@@ -1,6 +1,5 @@
 import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {Router} from 'angular2/router';
-import {Routes} from '../../route.config';
 
 @Component({
     selector: 'login',
@@ -17,9 +16,10 @@ export class LoginComponent implements OnInit {
     }
 
     onInit() {
+        //TODO: implement initialisation of component
     }
 
     submit() {
-        alert(this.email + this.password + this.rememberMe)
+        alert(this.email + this.password + this.rememberMe);
     }
 }
