@@ -37,14 +37,23 @@
 					</div>
 				</div>
 			</li>
-			<!--<li class="nav-item">
-			<a class="nav-link" [router-link]="['/' + routes.genres.as]">Cart</a>
-		</li>-->
-			<li class="nav-item pull-right">
-				<a class="nav-link" (click)="notImplemented()">Register</a>
+			<li class="nav-item">
+			<a class="nav-link" [hidden]="!user" [router-link]="['/' + routes.genres.as]">Cart</a>
+			</li>
+			<li class="nav-item pull-right" [hidden]="user">
+				<a class="nav-link" (click)="register()">Register</a>
 			</li>
 			<li class="nav-item pull-right">
-				<a class="nav-link" [router-link]="['/' + routes.login.as]">Login</a>
+				<a class="nav-link"  [hidden]="user" (click)="login()">Login</a>
+			</li>
+			<li class="nav-item pull-right" [hidden]="!user">
+				<a class="nav-link"  (click)="logout()">Logout</a>
+			</li>
+			<li class="nav-item pull-right" [hidden]="!user">
+				<a class="nav-link" >{{user.nickname}}</a>
+			</li>
+			<li class="nav-item pull-right"  [hidden]="!user">
+				<img [src]="user.picture" class="img-responsive" height="35" width="35">
 			</li>
 		</ul>
 	</div>

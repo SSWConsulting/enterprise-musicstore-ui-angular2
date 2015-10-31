@@ -97,8 +97,8 @@ namespace SSW.MusicStore.Controllers
 			}
 		}
 
-
 		[HttpGet("popular")]
+		[Authorize(ActiveAuthenticationSchemes = "Bearer")]
 		public async Task<JsonResult> Popular()
 		{
 			_logger.LogInformation("Get top 6 popular albums");

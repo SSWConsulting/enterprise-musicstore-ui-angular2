@@ -1,10 +1,23 @@
 <div class="container">
-
-	<form class="form-signin">
+	<form role="form" (submit)="login($event, username.value, password.value)">
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input type="text" #username class="form-control" id="username" placeholder="Username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input type="password" #password class="form-control" id="password" placeholder="Password">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+		<a href="/signup">Click here to Signup</a>
+	</form>
+</div>
+<button class="btn btn-lg" (click)="login()" >Sign in</button>
+	<!--<form class="form-signin">
 		<h2 class="form-signin-heading">Please sign in</h2>
 		<label for="inputEmail" class="sr-only">Email address</label>
 		<input type="email" [(ng-model)]="email" class="form-control" placeholder="Email address" required autofocus>
-		<label for="inputPassword"  class="sr-only">Password</label>
+		<label for="inputPassword" class="sr-only">Password</label>
 		<input type="password" [(ng-model)]="password" id="inputPassword" class="form-control" placeholder="Password" required>
 		<div class="checkbox">
 			<label>
@@ -12,9 +25,5 @@
 			</label>
 		</div>
 		<button class="btn btn-lg btn-primary btn-block" (click)="submit()" type="submit">Sign in</button>
-	</form>
-
-</div>
-
-
+	</form>-->
 

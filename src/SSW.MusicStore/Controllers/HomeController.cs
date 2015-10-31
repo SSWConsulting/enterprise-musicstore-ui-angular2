@@ -6,6 +6,7 @@ using Microsoft.Framework.Caching.Memory;
 using SSW.MusicStore.Models;
 using System.Linq;
 using Microsoft.Data.Entity;
+using Microsoft.AspNet.Authorization;
 
 namespace SSW.MusicStore.Controllers
 {
@@ -17,7 +18,26 @@ namespace SSW.MusicStore.Controllers
         [FromServices]
         public IMemoryCache Cache { get; set; }
 
-        public  IActionResult Index()
+		[HttpGet]
+		[Route("api/ping")]
+		public string Ping()
+		{
+			return "Pong. You accessed an unprotected endpoint.";
+		}
+
+		[HttpGet]
+		[Authorize(ActiveAuthenticationSchemes = "Bearer")]
+		[Route("api/secured/ping")]
+		public object SecuredPing()
+		{
+			return new
+			{
+				message = "Pong. You accessed a protected endpoint.",
+				claims = User.Claims.Select(c => new { c.Type, c.Value })
+			};
+		}
+
+		public  IActionResult Index()
         {     
             return View();
         }

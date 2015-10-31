@@ -11,7 +11,7 @@
 		"TestStack.BDDfy": "4.2.0",
 		"AutoFixture": "3.36.9",
 		"FluentAssertions": "4.0.1",
-		"EntityFramework.InMemory": "7.0.0-beta8",
+		"EntityFramework.InMemory": "7.0.0-beta8"
 	},
 	"commands": {
 		"test": "xunit.runner.aspnet"

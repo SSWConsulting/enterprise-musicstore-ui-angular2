@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Authentication.JwtBearer;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Diagnostics.Entity;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -15,6 +16,7 @@ using SerilogWeb.Classic.Enrichers;
 using SSW.MusicStore.Models;
 using SSW.MusicStore.Services;
 using SSW.MusicStore.Services.Query;
+using System.Threading.Tasks;
 
 namespace SSW.MusicStore
 {
@@ -112,8 +114,31 @@ namespace SSW.MusicStore
             // Add static files to the request pipeline.
             app.UseStaticFiles();
 
-            // Add cookie-based authentication to the request pipeline.
-            app.UseIdentity();
+			// Add cookie-based authentication to the request pipeline.
+			// app.UseIdentity();
+
+			app.UseJwtBearerAuthentication(options =>
+			{
+				options.Audience = Configuration["Auth0:ClientId"];
+				options.Authority = $"https://{Configuration["Auth0:Domain"]}";
+				options.Events = new JwtBearerEvents
+				{
+					OnAuthenticationFailed = context =>
+					{
+						Log.Logger.Error("Authentication failed.", context.Exception);
+						return Task.FromResult(0);
+					},
+					// OPTIONAL: you can read/modify the claims that are populated based on the JWT
+					// Check issue status: https://github.com/aspnet/Security/issues/140
+					/*OnValidatedToken = context =>
+					{
+						var claimsIdentity = context.AuthenticationTicket.Principal.Identity as ClaimsIdentity;
+						// ensure name claim
+						claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, claimsIdentity.FindFirst("name").Value));
+						return Task.FromResult(0);
+					}*/
+				};
+			});
 
 			// Configure the HTTP request pipeline.
 			app.UseStaticFiles();
