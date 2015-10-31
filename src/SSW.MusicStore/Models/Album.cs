@@ -43,5 +43,10 @@ namespace SSW.MusicStore.Models
             OrderDetails = new List<OrderDetail>();
             Created = DateTime.UtcNow;
         }
-    }
+
+		//public override string ToString()
+		//{
+		//	return $"{this.Title} ({this.Genre?.Name})";
+  //      }
+	}
 }

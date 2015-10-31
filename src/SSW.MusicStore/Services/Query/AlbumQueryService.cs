@@ -24,9 +24,9 @@ namespace SSW.MusicStore.Services.Query
 			{
 				var albums =
 					await dbContext.Albums
-								 .Where(a => a.Genre.Name.ToUpper().Trim().Equals(genre.ToUpper().Trim()))
+								 .Where(a => a.Genre.Name == genre)
 								 .ToListAsync();
-				return albums;
+                return albums;
 			}
 		}
 
