@@ -1,6 +1,6 @@
 ﻿using Microsoft.Data.Entity;
 using Microsoft.Framework.DependencyInjection;
-using SSW.MusicStore.Models;
+using SSW.MusicStore.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

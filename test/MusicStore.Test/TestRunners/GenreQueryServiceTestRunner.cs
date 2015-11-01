@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using SSW.MusicStore.Models;
+using SSW.MusicStore.API.Models;
 using SSW.MusicStore.Test.Setup;
 using SSW.MusicStore.Test.Tests.GenreQueryService;
 using System;
@@ -22,7 +22,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var genreQueryService = new Services.Query.GenreQueryService(dbContextFactory);
+			var genreQueryService = new API.Services.Query.GenreQueryService(dbContextFactory);
 
 			using (var dbContext = dbContextFactory.Create())
 			{
@@ -46,7 +46,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var genreQueryService = new Services.Query.GenreQueryService(dbContextFactory);
+			var genreQueryService = new API.Services.Query.GenreQueryService(dbContextFactory);
 			var genres = genreQueryService.GetAllGenres().Result;
 
 			genres.Should().NotBeNull();
@@ -58,7 +58,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var genreQueryService = new Services.Query.GenreQueryService(null);
+			var genreQueryService = new API.Services.Query.GenreQueryService(null);
 			Assert.Throws<AggregateException>(() => genreQueryService.GetAllGenres().Result);
 		}
 	}

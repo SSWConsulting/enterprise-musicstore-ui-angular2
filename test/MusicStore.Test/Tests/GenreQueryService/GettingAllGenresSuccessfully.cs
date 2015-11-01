@@ -1,5 +1,5 @@
-﻿using SSW.MusicStore.Models;
-using SSW.MusicStore.Services.Query;
+﻿using SSW.MusicStore.API.Models;
+using SSW.MusicStore.API.Services.Query;
 using System.Collections.Generic;
 using System.Linq;
 using TestStack.BDDfy;
@@ -16,7 +16,7 @@ namespace SSW.MusicStore.Test.Tests.GenreQueryService
 		[Given]
 		public void GivenValidGenreService()
 		{
-			this.genreQueryService = new Services.Query.GenreQueryService(DbContextHelper.CreateDbContextFactory());
+			this.genreQueryService = new API.Services.Query.GenreQueryService(DbContextHelper.CreateDbContextFactory());
 		}
 
 		[AndGiven]

@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
-using SSW.MusicStore.Models;
-using SSW.MusicStore.Services;
+using SSW.MusicStore.API.Models;
+using SSW.MusicStore.API.Services.Query;
+using SSW.MusicStore.API.Services;
 using SSW.MusicStore.Test.Setup;
 using SSW.MusicStore.Test.Tests.GenreQueryService;
 using System;
@@ -22,7 +23,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var albumQueryService = new Services.Query.AlbumQueryService(dbContextFactory);
+			var albumQueryService = new API.Services.Query.AlbumQueryService(dbContextFactory);
 
 			this.PopulateAlbums(dbContextFactory);
 
@@ -37,7 +38,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var albumQueryService = new Services.Query.AlbumQueryService(dbContextFactory);
+			var albumQueryService = new API.Services.Query.AlbumQueryService(dbContextFactory);
 
 			this.PopulateAlbums(dbContextFactory);
 			var genres = albumQueryService.GetByGenre("Genre that doesn't exist").Result;
@@ -51,7 +52,7 @@ namespace SSW.MusicStore.Test.TestRunners
 		{
 			var dbContextFactory = DbContextHelper.CreateDbContextFactory();
 
-			var albumQueryService = new Services.Query.AlbumQueryService(null);
+			var albumQueryService = new API.Services.Query.AlbumQueryService(null);
 			Assert.Throws<AggregateException>(() => albumQueryService.GetByGenre("Pop").Result);
 		}
 
