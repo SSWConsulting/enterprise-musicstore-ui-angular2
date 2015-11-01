@@ -8,7 +8,7 @@ namespace SSW.MusicStore.API.Models
 	{
 	}
 
-	public class MusicStoreContext : IdentityDbContext<ApplicationUser>
+	public class MusicStoreContext : DbContext
     {
         public DbSet<Album> Albums { get; set; }
         public DbSet<Artist> Artists { get; set; }

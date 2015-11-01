@@ -18,7 +18,7 @@ bootstrap(AppComponent,
     [ROUTER_PROVIDERS,
         HTTP_PROVIDERS,
         GenreService,
-        AlbumService, 
+        AlbumService,
         ROUTER_BINDINGS,
         bind(ROUTER_PRIMARY_COMPONENT).toValue(AppComponent),
         provide(RequestOptions, { useClass: AuthHeaders })

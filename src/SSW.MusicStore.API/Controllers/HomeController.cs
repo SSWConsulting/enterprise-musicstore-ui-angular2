@@ -12,30 +12,6 @@ namespace SSW.MusicStore.API.Controllers
 {
     public class HomeController : Controller
     {
-        [FromServices]
-        public MusicStoreContext DbContext { get; set; }
-
-        [FromServices]
-        public IMemoryCache Cache { get; set; }
-
-		[HttpGet]
-		[Route("api/ping")]
-		public string Ping()
-		{
-			return "Pong. You accessed an unprotected endpoint.";
-		}
-
-		[HttpGet]
-		[Authorize(ActiveAuthenticationSchemes = "Bearer")]
-		[Route("api/secured/ping")]
-		public object SecuredPing()
-		{
-			return new
-			{
-				message = "Pong. You accessed a protected endpoint.",
-				claims = User.Claims.Select(c => new { c.Type, c.Value })
-			};
-		}
 
 		public  IActionResult Index()
         {     

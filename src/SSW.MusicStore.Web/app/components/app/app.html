@@ -24,7 +24,7 @@
 			<li class="nav-item">
 				<div class="btn-group">
 					<button type="button" class="btn menu-dropdown dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Genre
+						Store
 					</button>
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
@@ -38,7 +38,7 @@
 				</div>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" [hidden]="!user" [router-link]="['/' + routes.genres.as]">Cart</a>
+			<a class="nav-link" [hidden]="!user" [router-link]="['/' + routes.cart.as]">Cart</a>
 			</li>
 			<li class="nav-item pull-right" [hidden]="user">
 				<a class="nav-link" (click)="register()">Register</a>
@@ -50,7 +50,7 @@
 				<a class="nav-link"  (click)="logout()">Logout</a>
 			</li>
 			<li class="nav-item pull-right" [hidden]="!user">
-				<a class="nav-link" >{{user?.email}}s</a>
+				<a class="nav-link" >{{user?.email}}</a>
 			</li>
 			<li class="nav-item pull-right"  [hidden]="!user">
 				<img [src]="user?.picture" class="img-responsive" height="35" width="35">
@@ -58,12 +58,11 @@
 		</ul>
 	</div>
 </div>
+<div class="container-fluid">
 	<router-outlet></router-outlet>
+</div>
 <footer class="text-muted">
 	<div class="container">
-		<p class="pull-right">
-			<a href="#">Back to top</a>
-		</p>
 		<p><a href="https://github.com/SSWConsulting/angularmusicstore">SSW Angular2 Music Store &copy; </a></p>
 	</div>
 </footer>

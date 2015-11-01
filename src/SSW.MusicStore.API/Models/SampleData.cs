@@ -17,7 +17,7 @@ namespace SSW.MusicStore.API.Models
         const string defaultAdminUserName = "DefaultAdminUserName";
         const string defaultAdminPassword = "defaultAdminPassword";
 
-        public static async Task InitializeMusicStoreDatabaseAsync(IServiceProvider serviceProvider, bool createUsers = true)
+        public static async Task InitializeMusicStoreDatabaseAsync(IServiceProvider serviceProvider)
         {
             using (var serviceScope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
@@ -26,10 +26,7 @@ namespace SSW.MusicStore.API.Models
                 if (await db.Database.EnsureCreatedAsync())
                 {
                     await InsertTestData(serviceProvider);
-                    if (createUsers)
-                    {
-                        await CreateAdminUser(serviceProvider);
-                    }
+                    
                 }
             }
         }
@@ -71,56 +68,7 @@ namespace SSW.MusicStore.API.Models
             }
         }
 
-        /// <summary>
-        /// Creates a store manager user who can manage the inventory.
-        /// </summary>
-        /// <param name="serviceProvider"></param>
-        /// <returns></returns>
-        private static async Task CreateAdminUser(IServiceProvider serviceProvider)
-        {
-            var appEnv = serviceProvider.GetService<IApplicationEnvironment>();
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(appEnv.ApplicationBasePath)
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables();
-            var configuration = builder.Build();
-
-            //const string adminRole = "Administrator";
-
-            var userManager = serviceProvider.GetService<UserManager<SSW.MusicStore.API.Models.ApplicationUser>>();
-            // TODO: Identity SQL does not support roles yet
-            //var roleManager = serviceProvider.GetService<ApplicationRoleManager>();
-            //if (!await roleManager.RoleExistsAsync(adminRole))
-            //{
-            //    await roleManager.CreateAsync(new IdentityRole(adminRole));
-            //}
-
-            var user = await userManager.FindByNameAsync(configuration[defaultAdminUserName]);
-            if (user == null)
-            {
-                user = new SSW.MusicStore.API.Models.ApplicationUser { UserName = configuration[defaultAdminUserName] };
-                await userManager.CreateAsync(user, configuration[defaultAdminPassword]);
-                //await userManager.AddToRoleAsync(user, adminRole);
-                await userManager.AddClaimAsync(user, new Claim("ManageStore", "Allowed"));
-            }
-
-#if TESTING
-            var envPerfLab = configuration["PERF_LAB"];
-            if (envPerfLab == "true")
-            {
-                for (int i = 0; i < 100; ++i)
-                {
-                    var email = string.Format("User{0:D3}@example.com", i);
-                    var normalUser = await userManager.FindByEmailAsync(email);
-                    if (normalUser == null)
-                    {
-                        await userManager.CreateAsync(new ApplicationUser { UserName = email, Email = email }, "Password~!1");
-                    }
-                }
-            }
-#endif
-        }
+       
 
         private static Album[] GetAlbums(string imgUrl, Dictionary<string, Genre> genres, Dictionary<string, Artist> artists)
         {

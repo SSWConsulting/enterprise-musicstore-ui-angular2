@@ -1,7 +1,7 @@
 import {Album} from '../models';
 import {Http, Headers} from 'angular2/http';
 import {Injectable} from 'angular2/angular2';
-import {API_BASE, APP_BASE} from '../config';
+import {API_BASE} from '../config';
 
 
 @Injectable()
@@ -18,7 +18,6 @@ export class AlbumService {
     getPopularAlbums(): Promise<Album[]> {
 
         let authHeaders = new Headers({
-                'Access-Control-Allow-Origin': '*',
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer ' + this.jwt
