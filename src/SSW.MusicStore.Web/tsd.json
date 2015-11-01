@@ -15,7 +15,7 @@
       "commit": "05557455c49043ff0189182e27c9e04403a70802"
     },
     "q/Q.d.ts": {
-      "commit": "05557455c49043ff0189182e27c9e04403a70802"
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     },
     "orchestrator/orchestrator.d.ts": {
       "commit": "05557455c49043ff0189182e27c9e04403a70802"
@@ -24,12 +24,6 @@
       "commit": "05557455c49043ff0189182e27c9e04403a70802"
     },
     "mime/mime.d.ts": {
-      "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
-    },
-    "express/express.d.ts": {
-      "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
-    },
-    "serve-static/serve-static.d.ts": {
       "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
     },
     "del/del.d.ts": {
@@ -49,6 +43,18 @@
     },
     "moment/moment-node.d.ts": {
       "commit": "3191f6e0088eee07c4d8fd24e4d27a40a60d9eb9"
+    },
+    "auth0.lock/auth0.lock.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+    },
+    "express/express.d.ts": {
+      "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
+    },
+    "auth0/auth0.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     }
   }
 }

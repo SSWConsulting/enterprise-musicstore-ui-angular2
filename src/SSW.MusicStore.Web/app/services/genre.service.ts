@@ -1,6 +1,7 @@
 import {Genre, Album} from '../models';
 import {Http} from 'angular2/http';
 import {Injectable} from 'angular2/angular2';
+import {API_BASE} from '../config';
 
 @Injectable()
 export class GenreService {
@@ -10,7 +11,7 @@ export class GenreService {
     }
 
     getGenres() {
-        return this._http.get('api/genres').map((response) => response.json()).toPromise()
+        return this._http.get(API_BASE + `/genres`).map((response) => response.json()).toPromise()
             .then((genres: Genre[]) => {
                 this.genres.push(...genres);
                 return this.genres;
@@ -18,7 +19,7 @@ export class GenreService {
     }
 
     getGenreAlbums(name: string): Promise<Album[]> {
-        let promise = this._http.get(`api/genre/${name}`)
+        let promise = this._http.get(API_BASE + `/albums/${name}`)
             .map((response: any) => response.json()).toPromise()
             .then((albums: Album[]) => {
                 this.albums.push(...albums);

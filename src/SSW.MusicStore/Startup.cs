@@ -21,45 +21,47 @@ using System.Threading.Tasks;
 namespace SSW.MusicStore
 {
 	public class Startup
-    {
-        public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
-        {
-            // Setup conigration sources.
+	{
+		public Startup(IHostingEnvironment env, IApplicationEnvironment appEnv)
+		{
+			// Setup conigration sources.
 
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(appEnv.ApplicationBasePath)
-                .AddJsonFile("appsettings.json")
+			var builder = new ConfigurationBuilder()
+				.SetBasePath(appEnv.ApplicationBasePath)
+				.AddJsonFile("appsettings.json")
 				.AddJsonFile("privatesettings.json")
 				.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-            if (env.IsDevelopment())
-            {
-                // This reads the configuration keys from the secret store.
-                // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                builder.AddUserSecrets();
-            }
-            builder.AddEnvironmentVariables();
-            Configuration = builder.Build();
-        }
+			if (env.IsDevelopment())
+			{
+				// This reads the configuration keys from the secret store.
+				// For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
+				builder.AddUserSecrets();
+			}
+			builder.AddEnvironmentVariables();
+			Configuration = builder.Build();
+		}
 
-        public IConfigurationRoot Configuration { get; set; }
+		public IConfigurationRoot Configuration { get; set; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
-        {
-            // Add Entity Framework services to the services container.
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<MusicStoreContext>(options =>
-                    options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
+		{
+			// Add Entity Framework services to the services container.
+			services.AddEntityFramework()
+				.AddSqlServer()
+				.AddDbContext<MusicStoreContext>(options =>
+					options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"]));
 
-            // Add Identity services to the services container.
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<MusicStoreContext>()
-                .AddDefaultTokenProviders();
+			// Add Identity services to the services container.
+			services.AddIdentity<ApplicationUser, IdentityRole>()
+				.AddEntityFrameworkStores<MusicStoreContext>()
+				.AddDefaultTokenProviders();
 
-            // Add MVC services to the services container.
-            services.AddMvc()
+			services.AddCors();
+
+			// Add MVC services to the services container.
+			services.AddMvc()
 				.AddJsonOptions(opt =>
 			{
 				opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
@@ -71,48 +73,60 @@ namespace SSW.MusicStore
 
 			// Register application services.
 			services.AddTransient<IEmailSender, AuthMessageSender>();
-	        services.AddTransient<IDbContextFactory<MusicStoreContext>, DbContextFactory>();
+			services.AddTransient<IDbContextFactory<MusicStoreContext>, DbContextFactory>();
 			services.AddTransient<IGenreQueryService, GenreQueryService>();
 			services.AddTransient<IAlbumQueryService, AlbumQueryService>();
 		}
 
-        // Configure is called after ConfigureServices is called.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {
-	        var config = 
+		// Configure is called after ConfigureServices is called.
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+		{
+			var config =
 				new LoggerConfiguration()
 					.WriteTo.ColoredConsole()
 					.WriteTo.RollingFile("C:\\Temp\\log-{Date}.txt")
 					.WriteTo.Seq(serverUrl: Configuration["Seq:Url"], apiKey: Configuration["Seq:Key"])
 					.Enrich.WithProperty("ApplicationName", "Music Store")
 					.Enrich.With(new HttpRequestIdEnricher());
-	        Log.Logger = config.CreateLogger();
+			Log.Logger = config.CreateLogger();
 
-            loggerFactory.MinimumLevel = LogLevel.Information;
-	        loggerFactory.AddSerilog();
-            loggerFactory.AddDebug();
+			loggerFactory.MinimumLevel = LogLevel.Information;
+			loggerFactory.AddSerilog();
+			loggerFactory.AddDebug();
 
-            // Configure the HTTP request pipeline.
+			app.UseCors(policy => policy
+						.WithOrigins("*")
+						.AllowAnyMethod()
+						.AllowAnyHeader()
+						.AllowCredentials());
 
-            // Add the following to the request pipeline only in development environment.
-            if (env.IsDevelopment())
-            {
-                app.UseBrowserLink();
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
-            }
-            else
-            {
-                // Add Error handling middleware which catches all application specific errors and
-                // sends the request to the following path or controller action.
-                app.UseExceptionHandler("/Home/Error");
-            }
 
-            // Add the platform handler to the request pipeline.
-            app.UseIISPlatformHandler();
+						//.WithOrigins(Configuration["Cors:Url"], '*')
 
-            // Add static files to the request pipeline.
-            app.UseStaticFiles();
+
+			//app.UseCors(policy => policy
+			//			.AllowAnyOrigin()
+			//		);
+
+			// Add the following to the request pipeline only in development environment.
+			if (env.IsDevelopment())
+			{
+				app.UseBrowserLink();
+				app.UseDeveloperExceptionPage();
+				app.UseDatabaseErrorPage(DatabaseErrorPageOptions.ShowAll);
+			}
+			else
+			{
+				// Add Error handling middleware which catches all application specific errors and
+				// sends the request to the following path or controller action.
+				app.UseExceptionHandler("/Home/Error");
+			}
+
+			// Add the platform handler to the request pipeline.
+			app.UseIISPlatformHandler();
+
+			// Add static files to the request pipeline.
+			app.UseStaticFiles();
 
 			// Add cookie-based authentication to the request pipeline.
 			// app.UseIdentity();
@@ -150,14 +164,14 @@ namespace SSW.MusicStore
 
 			// Add MVC to the request pipeline.
 			app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+			{
+				routes.MapRoute(
+					name: "default",
+					template: "{controller=Home}/{action=Index}/{id?}");
 
-                // Uncomment the following line to add a route for porting Web API 2 controllers.
-                // routes.MapWebApiRoute("DefaultApi", "api/");
-            });
+				// Uncomment the following line to add a route for porting Web API 2 controllers.
+				// routes.MapWebApiRoute("DefaultApi", "api/");
+			});
 
 			SampleData.InitializeMusicStoreDatabaseAsync(app.ApplicationServices).Wait();
 
