@@ -2,3 +2,21 @@
 .btn-group > .menu-dropdown {
 	background-color: transparent;
 }
+
+.router-link {
+	padding: 5px;
+	text-decoration: none;
+}
+
+.router-link:visited, .router-link:link {
+	color: #444;
+}
+
+.router-link:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.router-link.router-link-active {
+	color: white;
+}

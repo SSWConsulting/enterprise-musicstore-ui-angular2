@@ -1,0 +1,34 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "SSW.MusicStore.Data Class Library",
+  "authors": [ "Duncan Hunter" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+	"dependencies": {
+		"EntityFramework.Commands": "7.0.0-beta8",
+		"EntityFramework.SqlServer": "7.0.0-beta8",
+		"Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta8"
+	},
+
+	"commands": {
+		"ef": "EntityFramework.Commands"
+	},
+
+  "frameworks": {
+		"dnx451": {
+			"dependencies": {
+				"Serilog": "1.5.12"
+			}
+		},
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23409",
+        "System.Collections": "4.0.11-beta-23409",
+        "System.Linq": "4.0.1-beta-23409",
+        "System.Runtime": "4.0.21-beta-23409",
+        "System.Threading": "4.0.11-beta-23409"
+      }
+    }
+  }
+}

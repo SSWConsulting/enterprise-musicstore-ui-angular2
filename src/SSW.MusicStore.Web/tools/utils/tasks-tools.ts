@@ -7,11 +7,11 @@ import {PATH} from '../config';
 const TASKS_PATH = join(PATH.tools, 'tasks');
 
 export function autoRegisterTasks(): void {
-  scanDir(TASKS_PATH, (taskname) => registerTask(taskname));
+    scanDir(TASKS_PATH, (taskname) => registerTask(taskname));
 }
 
 export function task(taskname: string, option?: string) {
-  return require(join('..', 'tasks', taskname))(gulp, plugins(), option);
+    return require(join('..', 'tasks', taskname))(gulp, plugins(), option);
 }
 
 
@@ -19,26 +19,26 @@ export function task(taskname: string, option?: string) {
 // Private.
 
 function registerTask(taskname: string, filename?: string, option: string = ''): void {
-  gulp.task(taskname, task(filename || taskname, option));
+    gulp.task(taskname, task(filename || taskname, option));
 }
 
 // TODO: add recursive lookup ? or enforce pattern file + folder (ie ./tools/utils & ./tools/utils.ts )
 function scanDir(root: string, cb: (taskname: string) => void) {
-  if (!existsSync(root)) return;
+    if (!existsSync(root)) return;
 
-  walk(root);
+    walk(root);
 
-  function walk(path) {
-    readdirSync(path).forEach(function(file) {
-      let curPath = join(path, file);
-      if (lstatSync(curPath).isDirectory()) { // recurse
-        path = file;
-        walk(curPath);
-      }
-      if (lstatSync(curPath).isFile()) {
-        let taskname = file.replace(/(\.ts)/, '');
-        cb(taskname);
-      }
-    });
-  }
+    function walk(path) {
+        readdirSync(path).forEach(function (file) {
+            let curPath = join(path, file);
+            if (lstatSync(curPath).isDirectory()) { // recurse
+                path = file;
+                walk(curPath);
+            }
+            if (lstatSync(curPath).isFile() && file.endsWith('.ts')) {
+                let taskname = file.replace(/(\.ts)/, '');
+                cb(taskname);
+            }
+        });
+    }
 }

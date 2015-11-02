@@ -1,0 +1,57 @@
+{
+  "webroot": "wwwroot",
+  "userSecretsId": "aspnet5-SSW.MusicStore.API-c0c9a70c-e26a-45d0-a456-0665948c00bd",
+  "version": "1.0.0-*",
+
+	"dependencies": {
+		"EntityFramework.Commands": "7.0.0-beta8",
+		"EntityFramework.SqlServer": "7.0.0-beta8",
+		"Microsoft.AspNet.Authentication.JwtBearer": "1.0.0-beta8",
+		"Microsoft.AspNet.Diagnostics": "1.0.0-beta8",
+		"Microsoft.AspNet.Diagnostics.Entity": "7.0.0-beta8",
+		"Microsoft.AspNet.Identity.EntityFramework": "3.0.0-beta8",
+		"Microsoft.AspNet.IISPlatformHandler": "1.0.0-beta8",
+		"Microsoft.AspNet.Mvc": "6.0.0-beta8",
+		"Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-beta8",
+		"Microsoft.AspNet.Mvc.WebApiCompatShim": "6.0.0-beta8",
+		"Microsoft.AspNet.Server.Kestrel": "1.0.0-beta8",
+		"Microsoft.AspNet.StaticFiles": "1.0.0-beta8",
+		"Microsoft.AspNet.Tooling.Razor": "1.0.0-beta8",
+		"Microsoft.Framework.Configuration.Abstractions": "1.0.0-beta8",
+		"Microsoft.Framework.Configuration.Json": "1.0.0-beta8",
+		"Microsoft.Framework.Configuration.UserSecrets": "1.0.0-beta8",
+		"Microsoft.Framework.Logging": "1.0.0-beta8",
+		"Microsoft.Framework.Logging.Console": "1.0.0-beta8",
+		"Microsoft.Framework.Logging.Debug": "1.0.0-beta8",
+		"Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-beta8",
+		"Serilog.Framework.Logging": "1.0.0-beta8-*",
+		"Serilog.Sinks.Seq": "1.5.17",
+		"Microsoft.AspNet.Cors": "6.0.0-beta8"
+	},
+
+  "commands": {
+    "web": "Microsoft.AspNet.Server.Kestrel",
+    "ef": "EntityFramework.Commands"
+  },
+
+  "frameworks": {
+		"dnx451": {
+      "dependencies": {
+        "Serilog": "1.5.12",
+        "SerilogWeb.Classic": "2.0.6"
+      }
+		}
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules"
+  ],
+  "publishExclude": [
+    "**.user",
+    "**.vspscc"
+  ],
+  "scripts": {
+    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
+  }
+}

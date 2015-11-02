@@ -1,0 +1,22 @@
+{
+	"compilationOptions": {
+		"warningsAsErrors": true
+	},
+	"dependencies": {
+		"Microsoft.AspNet.Mvc": "6.0.0-beta8",
+		"Microsoft.Framework.Logging.Testing": "1.0.0-beta8",
+		"xunit.runner.aspnet": "2.0.0-aspnet-beta8",
+		"Moq": "4.2.1510.2205",
+		"SSW.MusicStore.API": "",
+		"TestStack.BDDfy": "4.2.0",
+		"AutoFixture": "3.36.9",
+		"FluentAssertions": "4.0.1",
+		"EntityFramework.InMemory": "7.0.0-beta8"
+	},
+	"commands": {
+		"test": "xunit.runner.aspnet"
+	},
+	"frameworks": {
+		"dnx451": { }
+	}
+}
