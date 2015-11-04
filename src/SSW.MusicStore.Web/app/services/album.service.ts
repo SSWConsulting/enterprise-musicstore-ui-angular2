@@ -1,31 +1,20 @@
 import {Album} from '../models';
-import {Http, Headers} from 'angular2/http';
+import {Http} from 'angular2/http';
 import {Injectable} from 'angular2/angular2';
 import {API_BASE} from '../config';
-
 
 @Injectable()
 export class AlbumService {
     albums: Album[] = [];
     album: Album;
-    error: any;
-    jwt: string;
 
     constructor(public _http: Http) {
-        this.jwt = localStorage.getItem('jwt');
     }
 
     getPopularAlbums(): Promise<Album[]> {
 
-        let authHeaders = new Headers({
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer ' + this.jwt
-        });
 
-        let promise = this._http.get(API_BASE + `/popular`, {
-            headers: authHeaders
-        })
+        let promise = this._http.get(API_BASE + `/popular`)
             .map((response: any) => response.json()).toPromise()
             .then((albums: Album[]) => {
                 this.albums.push(...albums);

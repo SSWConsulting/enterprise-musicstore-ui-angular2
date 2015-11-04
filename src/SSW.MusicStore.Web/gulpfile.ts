@@ -1,6 +1,6 @@
 import * as gulp from 'gulp';
 import * as runSequence from 'run-sequence';
-import {ENV, PATH} from './tools/config';
+import {ENV, PATH, VERSION_NPM, VERSION_NODE} from './tools/config';
 import {
 autoRegisterTasks,
 registerInjectableAssetsRef,
@@ -26,22 +26,27 @@ gulp.task('clean.test', task('clean', 'test'));
 // Postinstall.
 gulp.task('postinstall', done =>
     runSequence('clean',
-        'tsd',
         'npm',
         done));
 
+gulp.task('check', task('check', { npm: VERSION_NPM, node: VERSION_NODE }));
+
+// --------------
+// Preinstall.
+gulp.task('preinstall', done =>
+    runSequence('check'));
 
 // --------------
 // Build dev.
 gulp.task('build.dev', done =>
     runSequence('clean.dist',
         'tslint',
+        'build.images',
         'build.jslib.dev',
         'build.sass.dev',
         'build.js.dev',
         'build.csslib.dev',
         'build.fonts',
-        'build.images',
         'build.index.dev',
         done));
 
@@ -69,12 +74,19 @@ gulp.task('test', done =>
 // Serve.
 gulp.task('serve', done =>
     runSequence(`build.${ENV}`,
-        'watch.dnx',
         'server.start',
         'watch.serve',
         done));
 
+// --------------
+// Docs
 
+gulp.task('docs', done =>
+    runSequence(
+        'build.docs',
+        'serve.docs',
+        done
+    ));
 
 // --------------
 // Build prod.

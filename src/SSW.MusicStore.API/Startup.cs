@@ -54,11 +54,11 @@ namespace SSW.MusicStore.API
 
 			services.AddCors();
 
-					services.AddMvc()
-				.AddJsonOptions(opt =>
-			{
-				opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-			});
+			services.AddMvc()
+		.AddJsonOptions(opt =>
+	{
+		opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+	});
 
 			services.AddTransient<IEmailSender, AuthMessageSender>();
 			services.AddTransient<IDbContextFactory<MusicStoreContext>, DbContextFactory>();
@@ -81,11 +81,21 @@ namespace SSW.MusicStore.API
 			loggerFactory.AddSerilog();
 			loggerFactory.AddDebug();
 
-			app.UseCors(policy => policy
-						.WithOrigins(Configuration["Cors:Url"])
-						.AllowAnyMethod()
-						.AllowAnyHeader()
-						.AllowCredentials());
+
+			if (env.IsDevelopment())
+			{
+				//TODO allow certain ports so test pass on a build server
+				app.UseCors(policy => policy
+					.AllowAnyOrigin());
+			}
+			else
+			{
+				app.UseCors(policy => policy
+							.WithOrigins(Configuration["Cors:Url"])
+							.AllowAnyMethod()
+							.AllowAnyHeader()
+							.AllowCredentials());
+			}
 
 			if (env.IsDevelopment())
 			{

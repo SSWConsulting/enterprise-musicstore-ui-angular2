@@ -8,18 +8,24 @@ let resolve = require.resolve;
 export const ENV = argv['env'] || 'dev';
 export const DEBUG = argv['debug'] || false;
 
-export const PORT = argv['port'] || 5000;
+export const PORT = argv['port'] || 33961;
 export const LIVE_RELOAD_PORT = argv['reload-port'] || 4002;
+export const DOCS_PORT = argv['docs-port'] || 4003;
 export const APP_BASE = argv['base'] || '/';
 
 export const APP_SRC = 'app';
 export const APP_DEST = 'wwwroot';
+export const APP_DOCS = 'docs';
 export const ANGULAR_BUNDLES = './node_modules/angular2/bundles';
 export const VERSION = version();
+
+export const VERSION_NPM = '3.0.0';
+export const VERSION_NODE = '4.0.0';
 
 export const PATH = {
     cwd: process.cwd(),
     tools: 'tools',
+    docs: `${APP_DEST}/${APP_DOCS}`,
     dest: {
         all: APP_DEST,
         dev: {
@@ -51,23 +57,12 @@ export const PATH = {
             resolve('systemjs/dist/system-polyfills.js.map')
         ],
         csslib: [
-        //resolve('bootstrap/dist/css/bootstrap.css'),
-        //resolve('bootstrap/dist/css/bootstrap.css.map')
-            `./Content/styles/styles.css`
-        ],
-        fonts: [
-            //resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.eot'),
-            //resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.svg'),
-            //resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.ttf'),
-            //resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.woff'),
-            //resolve('bootstrap/dist/fonts/glyphicons-halflings-regular.woff2')
+            `./content/styles/site.css`
         ],
         images: [
-            `Content/images/*`
+            `./content/images/*`
         ],
-        webconfig: [
-            `web.config`
-        ]
+        fonts: []
     }
 };
 

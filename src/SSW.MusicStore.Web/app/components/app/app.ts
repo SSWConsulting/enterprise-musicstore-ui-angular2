@@ -22,12 +22,13 @@ export class AppComponent implements OnInit {
     private lock: any;
 
     constructor(private genreService: GenreService, public router: Router) {
+        this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
         this.getGenres();
         this.setUser();
     }
 
     onInit() {
-        this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
+        // Initialise the component 
     }
 
     setUser() {
