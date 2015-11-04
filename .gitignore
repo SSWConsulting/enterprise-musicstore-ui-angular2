@@ -11,6 +11,9 @@
 *.userprefs
 privatesettings.json
 
+# Build results - vNext
+**/wwwroot/
+**/test/
 
 # Build results
 [Dd]ebug/
