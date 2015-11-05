@@ -15,4 +15,3 @@
 /// <reference path="q/Q.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="systemjs/systemjs.d.ts" />
-/// <reference path="../../../node_modules/reflect-metadata/reflect-metadata.d.ts" />
