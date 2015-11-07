@@ -24,10 +24,16 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
     activate(instruction: ComponentInstruction) {
         this.parentRouter.subscribe((value) => {
-            let url = value.substring(0, value.indexOf('/', 0));
+            if (value.indexOf('/', 0) >= 0) {
+                var url = value.substring(0, value.indexOf('/', 0));
+            } else {
+                url = value;
+            }
+
             if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
                 this.parentRouter.navigateByUrl('/login');
             }
+            scroll(0, 0);
         });
 
         return super.activate(instruction);

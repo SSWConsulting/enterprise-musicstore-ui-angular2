@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     }
 
     onInit() {
-        // Initialise the component 
+        // Initialise the component
     }
 
     setUser() {
@@ -39,9 +39,10 @@ export class AppComponent implements OnInit {
     }
 
     getGenres() {
-        this.genres = [];
         this.genreService.getGenres()
-            .then(genres => this.genres = genres);
+            .then((genres) => {
+                this.genres = genres;
+            });
         return this.genres;
     }
 

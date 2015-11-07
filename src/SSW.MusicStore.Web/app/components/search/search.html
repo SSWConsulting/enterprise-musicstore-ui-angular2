@@ -1,0 +1,17 @@
+<div class="input-group ms-search">
+	<input  type="text"
+		   class="form-control"
+		   placeholder="Search for genre..."
+		   #genre [ng-form-control]="searchText">
+</div>
+<table class="table table-bordered">
+	<tbody>
+		<tr  class="ms-search-result" *ng-for="#album of albums | rx">
+			<td>
+				<img [src]="album.albumArtUrl" class="img-responsive" height="45" width="45">
+				<span>{{album.title}}</span>
+				<button type="button" class="btn btn-danger pull-right" (click)="onSelect(album)">Go to album</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

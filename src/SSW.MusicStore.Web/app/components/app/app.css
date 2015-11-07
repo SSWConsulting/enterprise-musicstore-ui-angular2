@@ -20,3 +20,14 @@
 .router-link.router-link-active {
 	color: white;
 }
+
+
+.header-bg {
+  background-color: #373a3c;
+}
+
+.navbar-brand {
+	margin:0;
+	padding:0
+}
+

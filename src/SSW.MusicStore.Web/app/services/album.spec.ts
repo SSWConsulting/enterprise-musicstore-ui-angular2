@@ -1,10 +1,10 @@
-import {AlbumService} from './album.service';
-import {MockBackend, BaseRequestOptions, Http} from 'angular2/http';
-import {Injector, provide} from 'angular2/angular2';
+//import {AlbumService} from './album.service';
+//import {MockBackend, BaseRequestOptions, Http} from 'angular2/http';
+//import {Injector, provide} from 'angular2/angular2';
 
 export function main() {
     describe('Albums Service', () => {
-        let albumList;
+       // let albumList;
 
         //beforeEach(() => {
 

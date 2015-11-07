@@ -1,3 +1,4 @@
+
 import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {RouteParams, Router} from 'angular2/router';
 import {Album} from '../../models';
@@ -9,7 +10,6 @@ import {AlbumTemplate} from './album-template';
     selector: 'album-detail',
     templateUrl: './components/album/album.html',
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AlbumTemplate]
-    //inputs: ['album']
 })
 export class AlbumDetailComponent implements OnInit {
     album: Album;
@@ -17,7 +17,6 @@ export class AlbumDetailComponent implements OnInit {
 
     constructor(private _albumService: AlbumService,
         private _routeParams: RouteParams, private _router: Router) {
-
     }
 
     onInit() {
