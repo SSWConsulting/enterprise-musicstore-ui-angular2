@@ -29,7 +29,7 @@ export class GenreDetailComponent implements OnInit {
 
   getGenreAlbums(name: string) {
     this._genreService.getGenreAlbums(name)
-      .then(albums =>
+      .subscribe(albums =>
         this.albums = albums
       );
     return this.albums;

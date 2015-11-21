@@ -28,20 +28,15 @@ export class AlbumDetailComponent implements OnInit {
 
     getAlbum(id: number) {
         this._albumService.getAlbum(id)
-            .then(album => {
-                album.created = moment(album.created).format('MMMM, YYYY');
+            .subscribe(album => {
+                album.created = new Date(album.created.toString());
                 this.album = album;
                 }
             );
     }
 
-    //TODO: Wire up back to last genre not all genres
     goToGenre(album: Album) {
         this._router.navigate([`/${Routes.genres.as}`]);
     }
 
-    // TODO: implement route to mvc shopping cart
-    //goToCart() {
-    //  this._router.navigate([`/${Routes.album.as}`]);
-    //}
 }

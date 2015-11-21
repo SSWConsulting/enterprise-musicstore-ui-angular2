@@ -4,23 +4,23 @@ import {Album} from '../../models';
 import {AlbumService} from '../../services/album.service';
 import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary';
-import {TypeAhead} from '../search/search';
+import {Search} from '../search/search';
 
 @Component({
     selector: 'dashboard',
     templateUrl: './components/dashboard/dashboard.html',
     styleUrls: ['./components/dashboard/dashboard.css'],
-    directives: [CORE_DIRECTIVES, AlbumSummary, TypeAhead  ]
+    directives: [CORE_DIRECTIVES, AlbumSummary, Search  ]
 })
 export class DashboardComponent implements OnInit {
-    public albums: Album[];
+    public albums: Album[] = [];
     searching: boolean;
 
     constructor(private _albumService: AlbumService, private _router: Router) {
     }
 
     onInit() {
-        return this.albums = this.getPopularAlbums();
+       this.getPopularAlbums();
     }
 
     hide() {
@@ -34,10 +34,8 @@ export class DashboardComponent implements OnInit {
 
     getPopularAlbums() {
         this._albumService.getPopularAlbums()
-            .then(albums =>
+            .subscribe(albums =>
                 this.albums = albums
             );
-
-        return this.albums;
     }
 }

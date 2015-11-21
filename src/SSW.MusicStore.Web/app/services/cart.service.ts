@@ -1,7 +1,8 @@
 import {CartItem, CartItems} from '../models';
-import {Http, Headers} from 'angular2/http';
+import {Http, Headers,} from 'angular2/http';
 import {Injectable} from 'angular2/angular2';
-import {API_BASE} from '../config';
+//import {API_BASE} from '../config';
+//import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
 
 @Injectable()
 export class CartService {
@@ -20,27 +21,14 @@ export class CartService {
         });
     }
 
-    postCartItems(cartItems): Promise<CartItems> {
+    //postCartItems(cartItems): any {
+    //   return this._http.post(API_BASE + `/cart`, cartItems,
+    //       headers: this.authHeaders)
+    //       .map((response: Response) => response.json());
+    //}
 
-        let promise = this._http.post(API_BASE + `/cart`, cartItems, {
-            headers: this.authHeaders
-        })
-            .map((response: any) => response.json()).toPromise()
-            .map((response: any) => response.json()).toPromise()
-            .then((cartItems: CartItems) => {
-                return cartItems;
-            });
-        return promise;
-    }
-
-    getCartItems() {
-        let promise = this._http.get(API_BASE + `/cart`, {
-            headers: this.authHeaders
-        })
-            .map((response: any) => response.json()).toPromise()
-            .then((cartItems: CartItems) => {
-                return cartItems;
-            });
-        return promise;
-    }
+    //getCartItems() {
+    //    return this._http.get(API_BASE + `/cart`, headers: this.authHeaders)
+    //        .map((response: any) => response.json()
+    //}
 }

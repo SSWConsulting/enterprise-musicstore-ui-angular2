@@ -1,7 +1,8 @@
 import {Genre, Album} from '../models';
-import {Http} from 'angular2/http';
+import {Http, Response} from 'angular2/http';
 import {Injectable} from 'angular2/angular2';
 import {API_BASE} from '../config';
+import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
 
 @Injectable()
 export class GenreService {
@@ -10,21 +11,12 @@ export class GenreService {
     constructor(private _http: Http) {
     }
 
-    getGenres() {
-        return this._http.get(API_BASE + `/genres`).map((response) => response.json()).toPromise()
-            .then((genres: Genre[]) => {
-                this.genres.push(...genres);
-                return this.genres;
-            });
+    getGenres(): Observable<Genre[]> {
+        return this._http.get(API_BASE + `/genres`).map((response:Response) => response.json());
     }
 
-    getGenreAlbums(name: string): Promise<Album[]> {
-        let promise = this._http.get(API_BASE + `/albums/${name}`)
-            .map((response: any) => response.json()).toPromise()
-            .then((albums: Album[]) => {
-                this.albums.push(...albums);
-                return this.albums;
-            });
-        return promise;
+    getGenreAlbums(name: string): Observable<Album[]> {
+        return this._http.get(API_BASE + `/albums/${name}`)
+            .map((response: any) => response.json());
     }
 }

@@ -6,7 +6,7 @@ import {RxPipe} from '../../services/rx-pipe/rx-pipe';
 import {AlbumService} from '../../services/album.service';
 
 @Component({
-    selector: 'typeahead',
+    selector: 'search',
     templateUrl: './components/search/search.html',
     styleUrls: ['./components/search/search.css'],
     directives: [FORM_DIRECTIVES, NgFor, NgIf],
@@ -15,7 +15,7 @@ import {AlbumService} from '../../services/album.service';
     providers: [AlbumService]
 })
 
-export class TypeAhead {
+export class Search {
     @Output('selected') selected = new EventEmitter();
 
     clear = new EventEmitter();
@@ -25,19 +25,11 @@ export class TypeAhead {
     albums: Observable<any[]>;
 
     constructor(http: Http, albumService: AlbumService) {
-        // get a stream of changes from the tickers input
-        this.albums = Observable.from((<EventEmitter>this.searchText.valueChanges).toRx())
+        this.albums = Observable.from(this.searchText.valueChanges)
             .debounceTime(200)
             .distinctUntilChanged()
-            // map that to an observable HTTP request, using the Album
-            // service and switch to that
-            // observable. That means unsubscribing from any previous HTTP request
-            // (cancelling it), and subscribing to the newly returned on here.
             .switchMap((val: string) => albumService.search(val))
-            // send an empty array to albums whenever clear emits by
-            // merging in a the stream of clear events mapped to an
-            // empty array.
-            .merge(this.clear.toRx().mapTo([]));
+            .merge(this.clear.mapTo([]));
     }
 
 

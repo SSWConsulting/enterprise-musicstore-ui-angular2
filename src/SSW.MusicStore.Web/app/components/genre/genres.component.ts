@@ -18,14 +18,13 @@ export class GenresComponent implements OnInit {
     }
 
     onInit() {
-        this.genres = this.getGenres();
+        this.getGenres();
     }
 
     getGenres() {
         this.genres = [];
         this._genreService.getGenres()
-            .then(genres => this.genres = genres);
-        return this.genres;
+            .subscribe(genres => this.genres = genres);
     }
 
     goToGenre(genre: Genre) {

@@ -13,25 +13,14 @@ export class AlbumService {
     constructor(public _http: Http) {
     }
 
-    getPopularAlbums(): Promise<Album[]> {
-
-
-        let promise = this._http.get(API_BASE + `/popular`)
-            .map((response: any) => response.json()).toPromise()
-            .then((albums: Album[]) => {
-                this.albums.push(...albums);
-                return this.albums;
-            });
-        return promise;
+    getPopularAlbums(): Observable<Album[]> {
+       return this._http.get(API_BASE + `/popular`)
+            .map((response: any) => response.json());
     }
 
-    getAlbum(id: number) {
-        let promise = this._http.get(API_BASE + `/albums/details/${id}`)
-            .map((response: any) => response.json()).toPromise()
-            .then((album: Album) => {
-                return album;
-            });
-        return promise;
+    getAlbum(id: number): Observable<Album> {
+       return this._http.get(API_BASE + `/albums/details/${id}`)
+            .map((response: any) => response.json());
     }
 
     search(val: string): Observable<any[]> {

@@ -1,20 +1,18 @@
 {
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"sourceMap": true,
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"removeComments": false,
-		"noImplicitAny": false
-	},
-	"exclude": [
-		"node_modules",
-		"wwwroot/node_modules"
-	]
-
-
-
+    "version": "1.6.0",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "compileOnSave": false
 }
-
-

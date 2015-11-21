@@ -9,7 +9,6 @@ import {Album} from '../../models';
     templateUrl: './components/album/album-template.html',
     directives: [CORE_DIRECTIVES]
 })
-
 export class AlbumTemplate {
     @Input() album: Album;
 }

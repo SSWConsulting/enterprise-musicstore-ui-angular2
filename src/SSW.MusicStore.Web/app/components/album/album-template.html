@@ -1,5 +1,5 @@
 <div class="card ms-album-detail">
-	<img class="card-img-top" src="/images/placeholder.png" alt="Card image cap">
+	<img class="card-img-top" src="/assets/img/placeholder.png" alt="Card image cap">
 	<div class="card-block">
 		<h4 class="card-title">{{album?.title}}</h4>
 		<div>
@@ -9,7 +9,7 @@
 			<label>Price: </label>{{album?.price | currency}}
 		</div>
 		<div>
-			<label>Date: </label>{{album?.created}}
+			<label>Date: </label> {{album?.created | date}}
 		</div>
 		<button class="btn btn-danger" (click)="notImplemented()">Add to cart</button>
 	</div>

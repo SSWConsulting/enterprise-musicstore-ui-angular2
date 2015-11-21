@@ -6,7 +6,7 @@
  */
 
 import {
-  AsyncPipe,
+  //AsyncPipe,
   ChangeDetectorRef,
   Injectable,
   Pipe,
@@ -23,7 +23,7 @@ class ObservableStrategy {
 
   dispose(subscription: any): void { subscription.unsubscribe(); }
 
-  onDestroy(subscription: any): void { subscription; }
+  onDestroy(subscription: any): void { subscription(); }
 }
 
 var _observableStrategy = new ObservableStrategy();
@@ -67,9 +67,10 @@ export class RxPipe implements PipeTransform, PipeOnDestroy {
   _subscription: Object = null;
   /** @internal */
   _obj: Observable<any>;
+  public _ref: ChangeDetectorRef;
   private _strategy: any = null;
   /** @internal */
-  public _ref: ChangeDetectorRef;
+
   constructor(_ref: ChangeDetectorRef) { this._ref = _ref; }
 
   onDestroy(): void {

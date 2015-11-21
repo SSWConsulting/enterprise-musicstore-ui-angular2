@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
+import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import {Routes, APP_ROUTES} from '../../route.config';
 import {GenreService} from '../../services/genre.service';
@@ -14,10 +14,10 @@ import {LoggedInRouterOutlet} from './LoggedInOutlet';
 })
 
 @RouteConfig(APP_ROUTES)
-export class AppComponent implements OnInit {
+export class AppComponent {
     public title = 'SSW Angular 2 Music Store';
     public routes = Routes;
-    public genres: Genre[];
+    public genres: Genre[] = [];
     public user: User;
     private lock: any;
 
@@ -27,9 +27,6 @@ export class AppComponent implements OnInit {
         this.setUser();
     }
 
-    onInit() {
-        // Initialise the component
-    }
 
     setUser() {
         let savedUser = JSON.parse(localStorage.getItem('user'));
@@ -40,10 +37,9 @@ export class AppComponent implements OnInit {
 
     getGenres() {
         this.genreService.getGenres()
-            .then((genres) => {
+            .subscribe((genres) => {
                 this.genres = genres;
             });
-        return this.genres;
     }
 
     goToGenre(genre: Genre) {
@@ -65,8 +61,6 @@ export class AppComponent implements OnInit {
     }
 
     register() {
-        ///callback and error function
-        // TODO route or login on register
         this.lock.showSignup(null, function (err) {
             console.log(err);
         });
@@ -76,7 +70,6 @@ export class AppComponent implements OnInit {
         this.user = null;
         localStorage.removeItem('user');
         localStorage.removeItem('jwt');
-        //needed to hide img in menu as hidden is not working
         location.reload();
     }
 
