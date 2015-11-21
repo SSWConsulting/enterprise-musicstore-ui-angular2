@@ -19,8 +19,11 @@
 		<button class="navbar-toggler pull-left" type="button" data-toggle="collapse" data-target="#navbar-header">
 			&#9776;
 		</button>
-		<a [router-link]="['/' + routes.dashboard.as]" class="navbar-brand">
+		<a [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-down">
 			<img src="/assets/img/header-logo-with-text-gray.png"alt="ms-logo-menu" height="32">
+		</a>
+		<a  [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-up">
+			<img src="/assets/img/header-logo.png" alt="ms-logo-menu" height="32">
 		</a>
 		<ul class="nav navbar-nav">
 			<li class="nav-item">

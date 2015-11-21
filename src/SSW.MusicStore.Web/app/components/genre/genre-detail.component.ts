@@ -1,7 +1,7 @@
 import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {RouteParams, Router} from 'angular2/router';
 import {Album} from '../../models';
-import {GenreService} from '../../services/genre.service';
+import {GenreService} from '../../services/genre/genre.service';
 import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary';
 

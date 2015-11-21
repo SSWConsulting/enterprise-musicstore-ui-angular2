@@ -17,3 +17,5 @@
 /// <reference path="../../../node_modules/definition-header/dist/index.d.ts" />
 /// <reference path="../../../node_modules/reflect-metadata/reflect-metadata.d.ts" />
 /// <reference path="moment/moment-node.d.ts" />
+/// <reference path="jquery/jquery.d.ts" />
+/// <reference path="toastr/toastr.d.ts" />

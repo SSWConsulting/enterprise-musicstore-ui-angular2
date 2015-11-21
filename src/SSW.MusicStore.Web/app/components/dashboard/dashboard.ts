@@ -1,7 +1,7 @@
 import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {Router} from 'angular2/router';
 import {Album} from '../../models';
-import {AlbumService} from '../../services/album.service';
+import {AlbumService} from '../../services/album/album.service';
 import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary';
 import {Search} from '../search/search';
@@ -10,7 +10,7 @@ import {Search} from '../search/search';
     selector: 'dashboard',
     templateUrl: './components/dashboard/dashboard.html',
     styleUrls: ['./components/dashboard/dashboard.css'],
-    directives: [CORE_DIRECTIVES, AlbumSummary, Search  ]
+    directives: [CORE_DIRECTIVES, AlbumSummary, Search ]
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[] = [];

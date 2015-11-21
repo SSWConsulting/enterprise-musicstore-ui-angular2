@@ -1,4 +1,4 @@
-import {Component, CORE_DIRECTIVES, Input} from 'angular2/angular2';
+import {Component, CORE_DIRECTIVES, Input, Output, EventEmitter} from 'angular2/angular2';
 import {Album} from '../../models';
 
 @Component({
@@ -11,4 +11,9 @@ import {Album} from '../../models';
 })
 export class AlbumTemplate {
     @Input() album: Album;
+    @Output('selected') selected = new EventEmitter();
+
+    onSelect(album) {
+        this.selected.next(album);
+    }
 }

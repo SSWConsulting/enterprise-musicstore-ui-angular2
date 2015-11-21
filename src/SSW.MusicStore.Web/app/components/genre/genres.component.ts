@@ -1,6 +1,6 @@
 import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {Router} from 'angular2/router';
-import {GenreService} from '../../services/genre.service';
+import {GenreService} from '../../services/genre/genre.service';
 import {GenreDetailComponent} from './genre-detail.component';
 import {Genre} from '../../models';
 import {Routes} from '../../route.config';

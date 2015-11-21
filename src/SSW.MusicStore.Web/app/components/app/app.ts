@@ -1,7 +1,7 @@
 import {Component, CORE_DIRECTIVES} from 'angular2/angular2';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import {Routes, APP_ROUTES} from '../../route.config';
-import {GenreService} from '../../services/genre.service';
+import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
@@ -25,6 +25,7 @@ export class AppComponent {
         this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
         this.getGenres();
         this.setUser();
+        toastr.options.positionClass = 'toast-bottom-right';
     }
 
 

@@ -3,7 +3,7 @@ NgFor, NgIf, ChangeDetectionStrategy, Output} from 'angular2/angular2';
 import {Http} from 'angular2/http';
 import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
 import {RxPipe} from '../../services/rx-pipe/rx-pipe';
-import {AlbumService} from '../../services/album.service';
+import {AlbumService} from '../../services/album/album.service';
 
 @Component({
     selector: 'search',
@@ -31,7 +31,6 @@ export class Search {
             .switchMap((val: string) => albumService.search(val))
             .merge(this.clear.mapTo([]));
     }
-
 
     onSelect(album) {
         this.selected.next(album);

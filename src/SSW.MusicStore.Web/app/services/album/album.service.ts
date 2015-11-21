@@ -1,8 +1,8 @@
-import {Album} from '../models';
+import {Album} from '../../models';
 import {Http, Response} from 'angular2/http';
 import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
 import {Injectable} from 'angular2/angular2';
-import {API_BASE} from '../config';
+import {API_BASE} from '../../config';
 
 
 @Injectable()

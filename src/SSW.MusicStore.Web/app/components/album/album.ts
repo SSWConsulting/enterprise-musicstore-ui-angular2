@@ -1,9 +1,10 @@
 
 import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
 import {RouteParams, Router} from 'angular2/router';
-import {Album} from '../../models';
-import {AlbumService} from '../../services/album.service';
 import {Routes} from '../../route.config';
+import {Album} from '../../models';
+import {AlbumService} from '../../services/album/album.service';
+import {CartService} from '../../services/cart/cart.service';
 import {AlbumTemplate} from './album-template';
 
 @Component({
@@ -16,6 +17,7 @@ export class AlbumDetailComponent implements OnInit {
     id: number;
 
     constructor(private _albumService: AlbumService,
+        private _cartService: CartService,
         private _routeParams: RouteParams, private _router: Router) {
     }
 
@@ -31,6 +33,15 @@ export class AlbumDetailComponent implements OnInit {
             .subscribe(album => {
                 album.created = new Date(album.created.toString());
                 this.album = album;
+                }
+            );
+    }
+
+    addToCart(album:Album) {
+        this._cartService.addCartItem(album)
+            .subscribe((cart) => {
+                toastr.success(`${album.title} successfully added to cart`);
+                this._router.navigate([`/${Routes.cart.as}`]);
                 }
             );
     }

@@ -55,6 +55,12 @@
 		},
 		"moment/moment-node.d.ts": {
 			"commit": "16134c168d021351acb1673ee9659644fc58c424"
+		},
+		"toastr/toastr.d.ts": {
+			"commit": "16134c168d021351acb1673ee9659644fc58c424"
+		},
+		"jquery/jquery.d.ts": {
+			"commit": "16134c168d021351acb1673ee9659644fc58c424"
 		}
 	}
 }

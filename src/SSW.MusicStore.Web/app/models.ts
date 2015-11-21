@@ -42,7 +42,7 @@ export class CartItems {
 }
 
 export class Order {
-    orderId: string;
+    id: string;
     orderDate: Date;
     userName: string;
     firstName: string;
@@ -59,7 +59,7 @@ export class Order {
 }
 
 export class OrderDetails {
-    orderDetailId: number;
+    id: number;
     orderId: number;
     albumId: number;
     quantity: number;

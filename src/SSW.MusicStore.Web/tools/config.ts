@@ -39,7 +39,11 @@ export const DEV_DEPENDENCIES = [
 
   { src: 'angular2/bundles/angular2.dev.js',  dest: LIB_DEST, inject: true },
   { src: 'angular2/bundles/router.dev.js',    dest: LIB_DEST, inject: true },
-  { src: 'angular2/bundles/http.dev.js', dest: LIB_DEST, inject: true }
+  { src: 'angular2/bundles/http.dev.js', dest: LIB_DEST, inject: true },
+
+  { src: 'jquery/dist/jquery.min.js', dest: LIB_DEST, inject: true },
+  { src: 'toastr/build/toastr.min.js', dest: LIB_DEST, inject: true },
+  { src: 'toastr/build/toastr.min.css', dest: CSS_DEST, inject: true }
 ];
 
 export const SYSTEM_CONFIG = {
