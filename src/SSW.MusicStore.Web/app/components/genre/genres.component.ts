@@ -6,7 +6,7 @@ import {Genre} from '../../models';
 import {Routes} from '../../route.config';
 
 @Component({
-    selector: 'my-genres',
+    selector: 'genres',
     templateUrl: './components/genre/genres.component.html',
     styleUrls: ['./components/genre/genres.component.css'],
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, GenreDetailComponent]

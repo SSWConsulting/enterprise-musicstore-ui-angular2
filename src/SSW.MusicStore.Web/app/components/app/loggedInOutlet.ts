@@ -31,7 +31,11 @@ export class LoggedInRouterOutlet extends RouterOutlet {
             }
 
             if (!this.publicRoutes[url] && !localStorage.getItem('jwt')) {
-                this.parentRouter.navigateByUrl('/login');
+                if (url === 'login') {
+                    this.parentRouter.navigateByUrl('/');
+                } else {
+                    this.parentRouter.navigateByUrl('/login');
+                }
             }
             scroll(0, 0);
         });

@@ -22,7 +22,7 @@
 		<a [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-down">
 			<img src="/assets/img/header-logo-with-text-gray.png"alt="ms-logo-menu" height="32">
 		</a>
-		<a  [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-up">
+		<a  [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-lg-up">
 			<img src="/assets/img/header-logo.png" alt="ms-logo-menu" height="32">
 		</a>
 		<ul class="nav navbar-nav">
@@ -54,7 +54,7 @@
 			<li class="nav-item pull-right" [hidden]="!user">
 				<a class="nav-link"  (click)="logout()">Logout</a>
 			</li>
-			<li class="nav-item pull-right" [hidden]="!user">
+			<li class="nav-item pull-right hidden-md-down" [hidden]="!user">
 				<a class="nav-link" >{{user?.email}}</a>
 			</li>
 			<li class="nav-item pull-right"  [hidden]="!user">

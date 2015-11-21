@@ -57,6 +57,8 @@ export class AppComponent {
             if (profile) {
                 localStorage.setItem('user', JSON.stringify(profile));
                 this.user = profile;
+                this.router.navigate([`/${Routes.dashboard.as}`]);
+                location.reload();
             }
         });
     }
@@ -71,6 +73,7 @@ export class AppComponent {
         this.user = null;
         localStorage.removeItem('user');
         localStorage.removeItem('jwt');
+        this.router.navigate([`/${Routes.dashboard.as}`]);
         location.reload();
     }
 

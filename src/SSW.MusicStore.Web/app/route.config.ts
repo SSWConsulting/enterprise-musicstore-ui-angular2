@@ -5,6 +5,7 @@ import {DashboardComponent} from './components/dashboard/dashboard';
 import {LoginComponent} from './components/login/login';
 import {CartComponent} from './components/cart/cart';
 import {CheckoutComponent} from './components/checkout/checkout';
+import {OrderComponent} from './components/order/order.component';
 
 export var Routes = {
     dashboard: {
@@ -41,6 +42,11 @@ export var Routes = {
         path: '/checkout',
         as: 'Checkout',
         component: CheckoutComponent
+    },
+    orders: {
+        path: '/orders',
+        as: 'Orders',
+        component: OrderComponent
     }
 
 };

@@ -42,7 +42,7 @@ export class CartItems {
 }
 
 export class Order {
-    id: string;
+    orderId: string;
     orderDate: Date;
     userName: string;
     firstName: string;
