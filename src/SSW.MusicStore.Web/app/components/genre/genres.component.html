@@ -1,8 +1,14 @@
 <div class="album-section">
 	<div class="container ">
-		<h2 class="title">Genres</h2>
-		<div class="list-group">
-			<button *ng-for="#genre of genres" (click)="goToGenre(genre)" type="button" class="list-group-item">{{genre.name}}</button>
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="list-group">
+					<button *ng-for="#genre of genres" (click)="goToGenre(genre)" type="button" class="list-group-item">{{genre.name}}</button>
+				</div>
+			</div>
+			<div class="col-sm-9">
+				<router-outlet></router-outlet>
+			</div>
 		</div>
 	</div>
 </div>

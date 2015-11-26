@@ -26,6 +26,7 @@ export class AppComponent {
         this.getGenres();
         this.setUser();
         toastr.options.positionClass = 'toast-bottom-right';
+        console.log(APP_ROUTES);
     }
 
 
@@ -44,7 +45,7 @@ export class AppComponent {
     }
 
     goToGenre(genre: Genre) {
-        this.router.navigate([`/${Routes.genre.as}`, { name: genre.name }]);
+        this.router.navigate([`/Genres/Genre`, { name: genre.name }]);
     }
 
     login() {

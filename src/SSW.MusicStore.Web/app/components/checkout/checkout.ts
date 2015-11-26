@@ -24,11 +24,9 @@ export class CheckoutComponent {
         console.log(JSON.stringify(this.model));
         this._checkoutService.postOrder(this.model).
             subscribe((order) => {
-                toastr.success(`successfully added order`);             
+                toastr.success(`successfully added order`);
                 this._router.navigate([`/${Routes.orders.as}`]);
-
-            })
-
+            });
 
         this.submitted = true;
     }

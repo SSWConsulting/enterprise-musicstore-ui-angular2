@@ -35,3 +35,7 @@ h3 { text-align: center; margin-bottom: 0; }
 	.grid { margin: 0; }
 	.module { min-width: 60px; }
 }
+
+.card {
+	background-color :white;
+}

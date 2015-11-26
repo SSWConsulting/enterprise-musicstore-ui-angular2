@@ -20,18 +20,18 @@ export class OrderComponent implements OnInit {
     }
 
     getOrders() {
-       this._orderService.getOrders()
+        this._orderService.getOrders()
             .subscribe(order => order
                 .map((order: Order) => {
                     return {
                         orderId: order.orderId,
                         orderDate: new Date(order.orderDate.toString()),
                         total: order.total
-                    }
+                    };
                 }).forEach((order) => {
-                   this.orders.push(order)
+                    this.orders.push(order);
                 })
-        );
+            );
     }
 
 }

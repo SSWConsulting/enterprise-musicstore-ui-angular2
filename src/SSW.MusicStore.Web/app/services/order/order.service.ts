@@ -16,5 +16,4 @@ export class OrderService {
         return this._http.get(API_BASE + `/order`)
             .map((response: Response) => response.json());
     }
-
 }
