@@ -20,7 +20,7 @@ $npm_version = [version]"3.0.0"
 $typescript_version = [version]"1.7.3"
 $gulp_version = [version]"3.9.0"
 $bower_version = [version]"1.7.0"
-$aspnet_version = "1.0.0-rc1-final"
+$dnx_version = "1.0.0-rc1-final"
 
 ##### HELPER FUNCTIONS #####
 
@@ -79,8 +79,7 @@ function Check-And-Install($command, $npmName, $friendlyName, $requiredVersion) 
     }
 }
 
-
-##### FRONT-END BUILD SETUP #######
+##### FRONT-END BUILD #######
 
 function Setup-FrontEndBuild() {
     # Check to see if Node is on the system. 
@@ -131,17 +130,41 @@ function Setup-FrontEndBuild() {
 }
 
 
+function Install-NPMDependencies() {
+    Set-Location .\src\SSW.MusicStore.Web\
+    npm install
+}
+
 ##### ASP.NET 5 SETUP #####
 
 function Setup-ASPNET() {
+    if ((Get-Command dnvm -ErrorAction SilentlyContinue) -eq $null)
+    {
+         Write-Host "- Unable to find DNVM in your PATH." -foregroundColor "red"
+         Write-Host "= Attempting to install DNVM" -foregroundColor yellow
 
-Write-Host "TODO: Scripts for setting up DNX Environment" -ForegroundColor Cyan
+         iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))
+    }
+
+    try 
+    {
+        dnvm use $dnx_version
+    }
+    catch 
+    {
+        dnvm install $dnx_version
+        dnvm use $dnx_version
+    }
+    finally
+    {
+        dnu restore
+    }
 }
 
 ##### END FUNCTIONS #####
 
-
 Setup-FrontEndBuild
 Setup-ASPNET
+Install-NPMDependencies
 
 exit 0
