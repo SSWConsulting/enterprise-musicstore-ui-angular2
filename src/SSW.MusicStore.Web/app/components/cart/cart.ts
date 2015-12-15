@@ -39,5 +39,4 @@ export class CartComponent implements OnInit {
     gotToCheckout() {
         this._router.navigate([`/${Routes.checkout.as}`]);
     }
-
 }
