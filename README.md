@@ -7,25 +7,27 @@ The MVC Music Store - but built on angular 2
 This project is based upon the awesome [Angular 2 seed project by Minko Gechev](https://github.com/mgechev/angular2-seed).
 We have updated it to implement the functionality originally provided by the iconic [MVC Music Store] (http://www.asp.net/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1).
 
+# Quickstart
 
-# How to start
+Open PowerShell and navigate to a suitable directory (e.g. `~\src`) and execute the following.
 
-**Note** that this seed project requires node v4.x.x or higher and npm 3.x.x.
+    git clone https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet.git
+    cd musicstore-ui-angular2-dotnet
+    setup.ps1
 
-# Building and deploying AngularMusicStore
+# Detailed Building and deploying AngularMusicStore
 Instructions for the developer
 
 ## Setting up the tools
 Check that you have the required tools:
 
 1.  Visual Studio 2015 Update 1
-1.  ASP.Net 5
-2.  Node
-2.  NPM
-3.  Bower
-4.  Gulp
-5.  Typescript
-6.  WebEssentials - Visual Studio Extension
+2.  ASP.Net 5
+3.  Node
+4.  NPM
+5.  Gulp
+6.  TypeScript
+7.  WebEssentials - Visual Studio Extension
 
 ### Visual Studio 2015 Update 1
 Download from here: [Download](http://go.microsoft.com/fwlink/?LinkId=691129) 
@@ -39,10 +41,8 @@ Install [ASP.NET 5](https://go.microsoft.com/fwlink/?LinkId=627627)
 Enable command line tools
 
     dnvm upgrade
-    
-    
-See [more information](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html) 
 
+See [more information](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html) 
 
 ### Node
 You need to upgrade nodejs to the latest version.
@@ -60,7 +60,6 @@ You should at least have version 3.5.0, if not, in the command prompt, run the f
 
 The result should be something like this, but version should be at least 3.5.0:
 ![README](README_images\README.png)
-
 
 ### Bower
 The run the following command to check for bower:
