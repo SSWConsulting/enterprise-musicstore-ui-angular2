@@ -46,6 +46,11 @@ function Get-Version($command) {
 
 # Check and Install NPM Dependencies. 
 function Check-And-Install($command, $npmName, $friendlyName, $requiredVersion) {
+    
+    Write-Host
+    Write-Host "##### Checking for $friendlyName $requiredVersion #####" -foregroundColor yellow
+    Write-Host
+
     if ((Get-Command $command -ErrorAction SilentlyContinue) -eq $null)
     {
         Write-Host "- Unable to find $friendlyName in your PATH" -foregroundColor red 
@@ -88,19 +93,31 @@ function Check-And-Install($command, $npmName, $friendlyName, $requiredVersion) 
 function Setup-FrontEndBuild() {
     # Check to see if Node is on the system. 
     # Exit if Node could not be found. 
+
+    Write-Host
+    Write-Host "##### Checking for Node $node_version #####" -foregroundColor yellow
+    Write-Host
+
     if ((Get-Command node -ErrorAction SilentlyContinue) -eq $null -or (Get-Command node).Version -lt $node_version)
     {
         Write-Host "- Unable to find Node in your PATH or your Node version is out of date." -foregroundColor "red"
         Write-Host "- Please install Node from: https://nodejs.org/en/" --foregroundColor "red"
+        Write-Host
         exit 2
     } 
     else 
     {
         Write-Host "+ Found Node" -foregroundColor green
+        Write-Host
     }
 
     # Check to see if NPM is on the system. 
     # Exit if NPM could not be found. 
+
+    Write-Host
+    Write-Host "##### Checking for NPM $npm_version #####" -foregroundColor yellow
+    Write-Host
+
     if ((Get-Command npm -ErrorAction SilentlyContinue) -eq $null) 
     { 
         Write-Host "- Unable to find NPM in your PATH." -foregroundColor "red"
@@ -130,7 +147,9 @@ function Setup-FrontEndBuild() {
     # Check for Bower
     # Check-And-Install "bower" "bower" "Bower" $bower_version
  
-    Write-Host "All front-end build dependencies satisfied." -foregroundColor "green"
+    Write-Host
+    Write-Host "##### All front-end build dependencies satisfied. #####" -foregroundColor "green"
+    Write-Host
 }
 
 ##### Install NPM Dependencies & Run Front End Build #####
@@ -146,7 +165,9 @@ function Build-FrontEnd() {
 ##### ASP.NET 5 SETUP #####
 
 function Setup-ASPNET() {
-    Write-Host "Setup ASPNET / DNVM / DNX" -foregroundColor yellow
+    Write-Host
+    Write-Host "##### Checking for ASPNET 5 / DNVM / DNX $dnx_version #####" -foregroundColor yellow
+    Write-Host
     if ((Get-Command dnvm -ErrorAction SilentlyContinue) -eq $null)
     {
          Write-Host "- Unable to find DNVM in your PATH." -foregroundColor "red"
@@ -168,6 +189,8 @@ function Setup-ASPNET() {
     {
         dnu restore
     }
+
+    Write-Host
 }
 
 ##### END FUNCTIONS #####
@@ -175,11 +198,17 @@ function Setup-ASPNET() {
 
 ##### SCRIPT MAIN #####
 
-Write-Host "##### SSW Angular 2 Music Store #####" -foregroundColor green
-Write-Host 
-Write-Host "This script will check for the appropriate dependencies and install them if required."
-Write-Host "There may be some modifications to your file system."
+Write-Host "#########################################" -foregroundColor green
+Write-Host "#####                               #####" -foregroundColor green
+Write-Host "#####   SSW Angular 2 Music Store   #####" -foregroundColor green
+Write-Host "#####                               #####" -foregroundColor green
+Write-Host "#########################################" -foregroundColor green
 Write-Host
+Write-Host "This script will check for the appropriate dependencies and install them if required."
+Write-Host "By default NPM Global Packages like TypeScript and Gulp will be installed to %APPDATA%\npm"
+Write-Host "Please ensure that %APPDATA%\npm is listed before %PROGRAMFILES%\node in your PATH".
+Write-Host "Please see https://github.com/npm/npm/wiki/Troubleshooting for more details."
+Write-Host ""
 
 $prompt = "N"
 if ($yes)
@@ -196,6 +225,11 @@ if ($prompt -eq "Y" -or $prompt -eq "y")
     Setup-FrontEndBuild
     Setup-ASPNET
     # Build-FrontEnd
+
+    Write-Host
+    Write-Host
+    Write-Host "Setup Completed..." -foregroundColor green
+    Write-Host
 }
 
 exit 0

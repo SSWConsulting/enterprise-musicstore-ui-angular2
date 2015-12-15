@@ -59,7 +59,7 @@ You should at least have version 3.5.0, if not, in the command prompt, run the f
     npm install -g  npm
 
 The result should be something like this, but version should be at least 3.5.0:
-![README](README_images\README.png)
+![README](README_images/README.png)
 
 ### Bower
 The run the following command to check for bower:
@@ -68,7 +68,7 @@ The run the following command to check for bower:
    
 You should get a response like this
 
-![README1](README_images\README1.png)
+![README1](README_images/README1.png)
 
 
 If Bower is not present, install globally using npm:
