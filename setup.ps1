@@ -185,10 +185,6 @@ function Setup-ASPNET() {
         dnvm install $dnx_version
         dnvm use $dnx_version
     }
-    finally
-    {
-        dnu restore
-    }
 
     Write-Host
 }
@@ -229,6 +225,7 @@ if ($prompt -eq "Y" -or $prompt -eq "y")
     Write-Host
     Write-Host
     Write-Host "Setup Completed..." -foregroundColor green
+    Write-Host "Run 'dnu restore' to install application packages"
     Write-Host
 }
 
