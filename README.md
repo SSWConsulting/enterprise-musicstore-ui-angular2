@@ -13,7 +13,7 @@ Open PowerShell and navigate to a suitable directory (e.g. `~\src`) and execute 
 
     git clone https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet.git
     cd musicstore-ui-angular2-dotnet
-    setup.ps1
+    .\setup.ps1
 
 # Detailed Building and deploying AngularMusicStore
 Instructions for the developer
