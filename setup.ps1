@@ -7,7 +7,7 @@
 .NOTES  
     File Name       : setup.ps1  
     Author          : Jeremy Cade <me@jeremycade.com>
-    Version         : 0.0.2
+    Version         : 0.0.3
     Created         : 2015-12-14
     Last Modified   : 2015-12-15
     Return Codes    : As per the Standard Windows Error Codes. see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382%28v=vs.85%29.aspx 
@@ -193,18 +193,20 @@ function Setup-ASPNET() {
 
 
 ##### SCRIPT MAIN #####
-
-Write-Host "#########################################" -foregroundColor green
-Write-Host "#####                               #####" -foregroundColor green
-Write-Host "#####   SSW Angular 2 Music Store   #####" -foregroundColor green
-Write-Host "#####                               #####" -foregroundColor green
-Write-Host "#########################################" -foregroundColor green
+Write-Host
+Write-Host "#################################################################" -foregroundColor green
+Write-Host "#####                                                       #####" -foregroundColor green
+Write-Host "#####               SSW Angular 2 Music Store               #####" -foregroundColor green
+Write-Host "#####                                                       #####" -foregroundColor green
+Write-Host "#################################################################" -foregroundColor green
 Write-Host
 Write-Host "This script will check for the appropriate dependencies and install them if required."
-Write-Host "By default NPM Global Packages like TypeScript and Gulp will be installed to %APPDATA%\npm"
-Write-Host "Please ensure that %APPDATA%\npm is listed before %PROGRAMFILES%\node in your PATH".
-Write-Host "Please see https://github.com/npm/npm/wiki/Troubleshooting for more details."
-Write-Host ""
+Write-Host 
+Write-Host "By default NPM Global Packages like TypeScript and Gulp will be installed to '%APPDATA%\npm'"
+Write-Host "Please ensure that '%APPDATA%\npm' is listed before '%PROGRAMFILES%\node' in your PATH".
+Write-Host 
+Write-Host "Please see 'https://github.com/npm/npm/wiki/Troubleshooting' for more details."
+Write-Host 
 
 $prompt = "N"
 if ($yes)
