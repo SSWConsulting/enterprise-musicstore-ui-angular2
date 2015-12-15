@@ -13,6 +13,10 @@
     Return Codes    : As per the Standard Windows Error Codes. see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382%28v=vs.85%29.aspx 
 #>
 
+param(
+    [switch]$yes = $false
+)
+
 # Minimum versions of the toolsets. 
 # Update these as needed. 
 $node_version = [version]"4.0.0"
@@ -176,7 +180,16 @@ Write-Host
 Write-Host "This script will check for the appropriate dependencies and install them if required."
 Write-Host "There may be some modifications to your file system."
 Write-Host
-$prompt = Read-Host "Would you like to continue? (Y | N)"
+
+$prompt = "N"
+if ($yes)
+{
+    $prompt = "Y"
+} 
+else 
+{
+    $prompt = Read-Host "Would you like to continue? (Y | N)"
+}
 
 if ($prompt -eq "Y" -or $prompt -eq "y") 
 { 
