@@ -7,9 +7,9 @@
 .NOTES  
     File Name       : setup.ps1  
     Author          : Jeremy Cade <me@jeremycade.com>
-    Version         : 0.0.1
+    Version         : 0.0.2
     Created         : 2015-12-14
-    Last Modified   : 2015-12-14
+    Last Modified   : 2015-12-15
     Return Codes    : As per the Standard Windows Error Codes. see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382%28v=vs.85%29.aspx 
 #>
 
@@ -19,7 +19,7 @@ $node_version = [version]"4.0.0"
 $npm_version = [version]"3.0.0"
 $typescript_version = [version]"1.7.3"
 $gulp_version = [version]"3.9.0"
-$bower_version = [version]"1.7.0"
+#$bower_version = [version]"1.7.0"
 $dnx_version = "1.0.0-rc1-final"
 
 ##### HELPER FUNCTIONS #####
@@ -95,12 +95,12 @@ function Setup-FrontEndBuild() {
         Write-Host "+ Found Node" -foregroundColor green
     }
 
-
     # Check to see if NPM is on the system. 
     # Exit if NPM could not be found. 
     if ((Get-Command npm -ErrorAction SilentlyContinue) -eq $null) 
     { 
-        Write-Host "- Unable to find NPM in your PATH or your NPM version is out of date." -foregroundColor "red"
+        Write-Host "- Unable to find NPM in your PATH." -foregroundColor "red"
+        Write-Host "- Please see: https://github.com/npm/npm/wiki/Troubleshooting for details on how to setup NPM on Windows."  -foregroundColor "red"
         exit 2
     }
     elseif ((Get-Version("npm")) -le $npm_version) 
@@ -124,20 +124,25 @@ function Setup-FrontEndBuild() {
     Check-And-Install "gulp" "gulp" "Gulp" $gulp_version
 
     # Check for Bower
-    Check-And-Install "bower" "bower" "Bower" $bower_version
+    # Check-And-Install "bower" "bower" "Bower" $bower_version
  
     Write-Host "All front-end build dependencies satisfied." -foregroundColor "green"
 }
 
+##### Install NPM Dependencies & Run Front End Build #####
 
-function Install-NPMDependencies() {
-    Set-Location .\src\SSW.MusicStore.Web\
+function Build-FrontEnd() {
+    Write-Host "Install NPM Dependencies & Run Front End Build Tasks" -foregroundColor yellow
+    Set-Location .\src\SSW.MusicStore.Web\ # Navigate into src
     npm install
+    gulp
+    Set-Location ..\..\ # Back to repo root
 }
 
 ##### ASP.NET 5 SETUP #####
 
 function Setup-ASPNET() {
+    Write-Host "Setup ASPNET / DNVM / DNX" -foregroundColor yellow
     if ((Get-Command dnvm -ErrorAction SilentlyContinue) -eq $null)
     {
          Write-Host "- Unable to find DNVM in your PATH." -foregroundColor "red"
@@ -163,8 +168,21 @@ function Setup-ASPNET() {
 
 ##### END FUNCTIONS #####
 
-Setup-FrontEndBuild
-Setup-ASPNET
-Install-NPMDependencies
+
+##### SCRIPT MAIN #####
+
+Write-Host "##### SSW Angular 2 Music Store #####" -foregroundColor green
+Write-Host 
+Write-Host "This script will check for the appropriate dependencies and install them if required."
+Write-Host "There may be some modifications to your file system."
+Write-Host
+$prompt = Read-Host "Would you like to continue? (Y | N)"
+
+if ($prompt -eq "Y" -or $prompt -eq "y") 
+{ 
+    Setup-FrontEndBuild
+    Setup-ASPNET
+    # Build-FrontEnd
+}
 
 exit 0

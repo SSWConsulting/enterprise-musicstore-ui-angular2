@@ -1,8 +1,11 @@
 {
   "name": "ssw-musicstore",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "SSW Angular Music Store",
-  "repository": "https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet.git"
+  },
   "scripts": {
     "build.dev": "gulp build.dev",
     "build.dev.watch": "gulp build.dev.watch",

@@ -29,5 +29,9 @@
   "publishExclude": [
     "**.user",
     "**.vspscc"
-  ]
+  ],
+  "scripts": {
+    "postrestore": [ "npm install " ],
+    "prepare": [ "npm run build.dev" ]
+  }
 }
