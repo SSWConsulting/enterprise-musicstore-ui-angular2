@@ -26,7 +26,6 @@ export class AppComponent {
         this.getGenres();
         this.setUser();
         toastr.options.positionClass = 'toast-bottom-right';
-        console.log(APP_ROUTES);
     }
 
 

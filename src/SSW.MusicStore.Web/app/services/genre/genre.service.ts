@@ -12,7 +12,8 @@ export class GenreService {
     }
 
     getGenres(): Observable<Genre[]> {
-        return this._http.get(API_BASE + `/genres`).map((response:Response) => response.json());
+        return this._http.get(API_BASE + `/genres`)
+           .map((response: Response) => response.json());
     }
 
     getGenreAlbums(name: string): Observable<Album[]> {

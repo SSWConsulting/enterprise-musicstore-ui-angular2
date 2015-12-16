@@ -1,9 +1,7 @@
 import {Album} from '../../models';
 import {Http, Response} from 'angular2/http';
-import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
-import {Injectable} from 'angular2/angular2';
+import {Injectable, Observable} from 'angular2/angular2';
 import {API_BASE} from '../../config';
-
 
 @Injectable()
 export class AlbumService {
@@ -15,18 +13,18 @@ export class AlbumService {
 
     getPopularAlbums(): Observable<Album[]> {
        return this._http.get(API_BASE + `/popular`)
-            .map((response: any) => response.json());
+            .map((response: Response) => response.json());
     }
 
     getAlbum(id: number): Observable<Album> {
        return this._http.get(API_BASE + `/albums/details/${id}`)
-            .map((response: any) => response.json());
+           .map((response: Response) => response.json());
     }
 
-    search(val: string): Observable<any[]> {
+    search(val: string): Observable<Album[]> {
         return this._http
             .get(API_BASE + `/albums/${val}`)
             .retry(2)
-            .map((res: Response) => <any[]>res.json());
+            .map((response: Response) => response.json());
     }
 }

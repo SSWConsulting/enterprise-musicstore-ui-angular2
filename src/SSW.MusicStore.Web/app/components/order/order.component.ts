@@ -21,8 +21,8 @@ export class OrderComponent implements OnInit {
 
     getOrders() {
         this._orderService.getOrders()
-            .subscribe(order => order
-                .map((order: Order) => {
+            .subscribe(orders =>
+                orders.map((order: Order) => {
                     return {
                         orderId: order.orderId,
                         orderDate: new Date(order.orderDate.toString()),

@@ -33,7 +33,8 @@ export class AlbumDetailComponent implements OnInit {
             .subscribe(album => {
                 album.created = new Date(album.created.toString());
                 this.album = album;
-                }
+            },
+            e => toastr.error(`${e}`)
             );
     }
 

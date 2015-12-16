@@ -23,7 +23,7 @@ export class GenreDetailComponent implements OnInit {
   onInit() {
     if (!this.albums) {
       this.name = this._routeParams.get('name');
-      return this.albums = this.getGenreAlbums(this.name);
+      this.getGenreAlbums(this.name);
     }
   }
 
@@ -32,7 +32,6 @@ export class GenreDetailComponent implements OnInit {
       .subscribe(albums =>
         this.albums = albums
       );
-    return this.albums;
   }
 
   goToAlbumDetail(album: Album) {
