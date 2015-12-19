@@ -81,7 +81,7 @@
 									<select class="form-control" required
 											[(ng-model)]="model.state"
 											ng-control="states" #state="form">
-										<option *ng-for="#s of states" [value]="s">{{s}}</option>
+										<option *ngFor="#s of states" [value]="s">{{s}}</option>
 									</select>
 									<div [hidden]="(state.touched && state.valid) || state.untouched" class="alert alert-danger">
 										State is required

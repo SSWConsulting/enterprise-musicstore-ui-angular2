@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
+import {Component} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {Order} from '../../models';
 import {CheckoutService} from '../../services/checkout/checkout.service';
 import {RouteParams, Router} from 'angular2/router';
@@ -31,4 +32,3 @@ export class CheckoutComponent {
         this.submitted = true;
     }
 }
-

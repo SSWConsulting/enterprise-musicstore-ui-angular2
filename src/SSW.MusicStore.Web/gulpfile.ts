@@ -1,74 +1,70 @@
-import * as gulp from 'gulp';
-import * as runSequence from 'run-sequence';
-import {ENV} from './tools/config';
-import {loadTasks, task} from './tools/utils';
+/// <reference path="tools/typings/tsd/tsd.d.ts" />
+
+let gulp = require('gulp');
+let plugins = require('gulp-load-plugins');
+let typescript = require('gulp-typescript');
+let tslint = require("gulp-tslint");
+let del = require("del");
+let runSequence = require('run-sequence');
+
+let tsProject = typescript.createProject('tsconfig.json');
+
+gulp.task('scripts', () => {
+    let tsResult = tsProject.src()
+        .pipe(typescript(tsProject));
+    return tsResult.js.pipe(gulp.dest('./wwwroot'));
+});
+
+gulp.task('html', () => {
+    return gulp.src(['app/**/*.*',
+        '!app/index.html',
+        '!app/**/*.ts',
+        '!app/**/*.spec',
+    ])
+        .pipe(gulp.dest('./wwwroot/app'));
+});
+
+gulp.task('index', () => {
+    return gulp.src(['app/index.html'])
+        .pipe(gulp.dest('./wwwroot/app'));
+});
+
+gulp.task('lint', function () {
+    gulp.src(['app/*.ts', 'app/**/**/*.ts', 'app/**/*.ts'])
+        .pipe(tslint())
+        .pipe(tslint.report('verbose'))
+});
+
+gulp.task('node_modules', () => {
+    return gulp.src([
+        'node_modules/**/*.js'
+    ])
+        .pipe(gulp.dest('./wwwroot/node_modules/'));
+});
+
+gulp.task('app-folder-move', () => {
+    gulp.src('wwwroot/app/**/*.*')
+    .pipe(gulp.dest('wwwroot'));
+    
+       //TODO remove this task when fixed typescript compile errors when not using tsconfig settings with gulp-typescript
+ 
+});
+
+gulp.task('clean', () => {
+    del([
+        'wwwroot/app/',
+        'wwwroot/components',
+        'wwwroot/services',
+        'wwwroot/**/*.*',
+        'wwwroot/assets',
+        '!wwwroot/web.config',
+        '!wwwroot/app/node_modules'
+    ]);
+});
+
+gulp.task('default', () => {
+    runSequence('clean', 'lint', 'scripts', 'html', 'index', 'app-folder-move');
+});
 
 
-// --------------
-// Configuration.
-loadTasks();
 
-// --------------
-// Clean (override).
-gulp.task('clean',       task('clean', 'all'));
-gulp.task('clean.dist',  task('clean', 'dist'));
-gulp.task('clean.test',  task('clean', 'test'));
-
-// --------------
-// Postinstall.
-gulp.task('postinstall', done =>
-  runSequence('clean',
-              'npm',
-              done));
-
-// --------------
-// Build dev.
-gulp.task('build.dev', done =>
-  runSequence('clean.dist',
-              'tslint',
-              'build.deps',
-              'build.sass.dev',
-              'build.assets',
-              'build.images.dev',
-              'build.js.dev',
-              'build.index.dev',
-              done));
-
-gulp.task('build.dev.watch', done =>
-  runSequence('build.dev',
-              'watch.dev',
-              done));
-
-gulp.task('build.test.watch', done =>
-  runSequence('build.test',
-              'watch.test',
-              done));
-
-// --------------
-// Test.
-gulp.task('test', done =>
-  runSequence('clean.test',
-              'tslint',
-              'build.test',
-              'karma.start',
-              done));
-
-// --------------
-// Serve.
-gulp.task('serve', done =>
-  runSequence(`build.${ENV}`,
-              'server.start',
-              'watch.serve',
-              done));
-
-// --------------
-// Docs
-gulp.task('docs', done =>
-  runSequence('build.docs',
-              'serve.docs',
-              done));
-
-// --------------
-// Build prod.
-// To be implemented (https://github.com/mgechev/angular2-seed/issues/58)
-// Will start implementation when Angular 2 will get close to a stable release.

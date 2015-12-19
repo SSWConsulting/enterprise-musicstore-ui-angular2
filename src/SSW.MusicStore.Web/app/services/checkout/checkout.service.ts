@@ -1,8 +1,9 @@
 import {CartItem, CartItems, Order} from '../../models';
 import {Http, Response} from 'angular2/http';
-import {Injectable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {API_BASE} from '../../config';
-import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
+import 'rxjs/add/operator/map';
+//import {Observable} from 'rxjs';
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class CheckoutService {
             .map((response: Response) => response.json());
     }
 
-    getOrders():Observable<CartItems> {
+    getOrders() { //:Observable<CartItems> {
         return this._http.get(API_BASE + `/orders`)
             .map((response: any) => response.json());
     }

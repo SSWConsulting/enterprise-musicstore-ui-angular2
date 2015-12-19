@@ -1,4 +1,5 @@
-import {bind, bootstrap, provide} from 'angular2/angular2';
+import {bind, provide} from 'angular2/core';
+import {bootstrap}    from 'angular2/platform/browser';
 import {ROUTER_BINDINGS, ROUTER_PRIMARY_COMPONENT} from 'angular2/router';
 import {AppComponent} from './components/app/app';
 import {ROUTER_PROVIDERS} from 'angular2/router';

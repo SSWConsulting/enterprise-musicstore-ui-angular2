@@ -19,10 +19,10 @@
 		<button class="navbar-toggler pull-left" type="button" data-toggle="collapse" data-target="#navbar-header">
 			&#9776;
 		</button>
-		<a [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-down">
+		<a [routerLink]="['/' + routes.dashboard.as]" class="navbar-brand hidden-md-down">
 			<img src="/assets/img/header-logo-with-text-gray.png"alt="ms-logo-menu" height="32">
 		</a>
-		<a  [router-link]="['/' + routes.dashboard.as]" class="navbar-brand hidden-lg-up">
+		<a  [routerLink]="['/' + routes.dashboard.as]" class="navbar-brand hidden-lg-up">
 			<img src="/assets/img/header-logo.png" alt="ms-logo-menu" height="32">
 		</a>
 		<ul class="nav navbar-nav">
@@ -34,16 +34,16 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
 						   (click)="goToGenre(genre)"
-						   *ng-for="#genre of genres">
+						   *ngFor="#genre of genres">
 							{{genre.name}}
 						</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" [router-link]="['/Genres/Genre', {name:''}]">Genre List</a>
+						<a class="dropdown-item" [routerLink]="['/Genres/Genre', {name:''}]">Genre List</a>
 					</div>
 				</div>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" [hidden]="!user" [router-link]="['/' + routes.cart.as]">Cart</a>
+			<a class="nav-link" [hidden]="!user" [routerLink]="['/' + routes.cart.as]">Cart</a>
 			</li>
 			<li class="nav-item pull-right" [hidden]="user">
 				<a class="nav-link" (click)="register()">Register</a>

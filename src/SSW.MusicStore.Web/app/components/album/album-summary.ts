@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, Input} from 'angular2/angular2';
+import {Component, Input} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {Album} from '../../models';
 
 @Component({

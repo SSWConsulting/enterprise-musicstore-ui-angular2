@@ -1,4 +1,4 @@
-import {Component, OnInit} from 'angular2/angular2';
+import {Component, OnInit} from 'angular2/core';
 import {CartService} from '../../services/cart/cart.service';
 import {CartItems} from '../../models';
 import {Routes} from '../../route.config';
@@ -17,7 +17,7 @@ export class CartComponent implements OnInit {
         private _routeParams: RouteParams, private _router: Router) {
     }
 
-    onInit() {
+    ngOnInit() {
         this.getCart();
     }
 
@@ -39,5 +39,4 @@ export class CartComponent implements OnInit {
     gotToCheckout() {
         this._router.navigate([`/${Routes.checkout.as}`]);
     }
-
 }

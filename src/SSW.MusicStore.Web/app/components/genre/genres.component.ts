@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, FORM_DIRECTIVES, OnInit} from 'angular2/angular2';
+import {Component, OnInit} from 'angular2/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import {GenreService} from '../../services/genre/genre.service';
 import {GenreDetailComponent} from './genre-detail.component';
@@ -19,7 +20,7 @@ export class GenresComponent implements OnInit {
     constructor(private _genreService: GenreService, private _router: Router) {
     }
 
-    onInit() {
+    ngOnInit() {
         this.getGenres();
     }
 

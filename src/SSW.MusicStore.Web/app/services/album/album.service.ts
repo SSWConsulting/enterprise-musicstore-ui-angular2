@@ -1,7 +1,8 @@
 import {Album} from '../../models';
 import {Http, Response} from 'angular2/http';
-import {Injectable, Observable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {API_BASE} from '../../config';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AlbumService {
@@ -11,17 +12,17 @@ export class AlbumService {
     constructor(public _http: Http) {
     }
 
-    getPopularAlbums(): Observable<Album[]> {
+    getPopularAlbums(): any {
        return this._http.get(API_BASE + `/popular`)
             .map((response: Response) => response.json());
     }
 
-    getAlbum(id: number): Observable<Album> {
+    getAlbum(id: number): any {
        return this._http.get(API_BASE + `/albums/details/${id}`)
            .map((response: Response) => response.json());
     }
 
-    search(val: string): Observable<Album[]> {
+    search(val: string): any {
         return this._http
             .get(API_BASE + `/albums/${val}`)
             .retry(2)

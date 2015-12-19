@@ -2,7 +2,7 @@
 	<input  type="text"
 		   class="form-control"
 		   placeholder="Search for genre..."
-		   #genre [ng-form-control]="searchText">
+		   #genre [ngFormControl]="searchText">
 </div>
 <table class="table table-bordered">
 	<tbody>
@@ -12,7 +12,7 @@
 			When a new value is emitted,
 			the async pipe marks the component to be checked for changes.
 		-->
-		<tr class="ms-search-result" *ng-for="#album of albums | async">
+		<tr class="ms-search-result" *ngFor="#album of albums | async">
 			<td>
 				<img [src]="album.albumArtUrl" class="img-responsive" height="45" width="45">
 				<span>{{album.title}}</span>

@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="list-group">
-					<button *ng-for="#genre of genres" (click)="goToGenre(genre)"
+					<button *ngFor="#genre of genres" (click)="goToGenre(genre)"
 							type="button" class="list-group-item">
 						{{genre.name}}
 					</button>

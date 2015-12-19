@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
+import {Component, OnInit} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {Router} from 'angular2/router';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album/album.service';
@@ -19,7 +20,7 @@ export class DashboardComponent implements OnInit {
     constructor(private _albumService: AlbumService, private _router: Router) {
     }
 
-    onInit() {
+    ngOnInit() {
        this.getPopularAlbums();
     }
 

@@ -3,44 +3,61 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><%= APP_TITLE %></title>
-	<base href="<%= APP_BASE %>">
+	<title>Angular2 Music Store</title>
+	<base href="">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-	<script src="http://cdn.auth0.com/js/lock-7.min.js"> </script>
-	<link href="/assets/styles/site.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+	<script src="http://cdn.auth0.com/js/lock-7.min.js"> </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    
+	<link href="assets/styles/site.css" rel="stylesheet" />
 
-	<!-- inject:css -->
-	<!-- endinject -->
+
 </head>
 
 <body>
-	<app>
-		<div class="container">
-			<progress class="ssw-loading-spinner progress progress-animated progress-striped" value="100" max="100"></progress>
-		</div>
-	</app>
-	<!-- shims:js -->
-	<!-- endinject -->
-	<script>
-		System.config(<%= JSON.stringify(SYSTEM_CONFIG) %>)
+	<app>Loading...</app>
 
+	<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+	<script src="node_modules/reflect-metadata/Reflect.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+	<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+
+	<script>
+		System.config({
+			map: {
+				rxjs: 'node_modules/rxjs' //or wherever you have it installed
+			},
+			packages: {
+				rxjs: {
+					defaultExtension: 'js'
+				}
+			},
+			"defaultJSExtensions": true,
+			"paths": {
+				"bootstrap": "bootstrap", "*": "/node_modules/*"
+			}
+		});
+	</script>
+	<script src="node_modules/rxjs/bundles/Rx.min.js"></script>
+	<script src="node_modules/angular2/bundles/angular2.min.js"></script>
+	<script src="node_modules/angular2/bundles/router.js"></script>
+	<script src="node_modules/angular2/bundles/http.min.js"></script>
+
+	<script>
 		System.import('bootstrap')
 		  .catch(function (e) {
-		  	console.error(e,
-			  'Report this error at https://github.com/mgechev/angular2-seed/issues');
+		  	console.error(e);
 		  });
 	</script>
 
-	<!-- inject:js -->
-	<!-- endinject -->
-
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.0.6/rx.all.js"> </script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="node_modules/toastr/toastr.js"></script>
 	<script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
 </body>
+
 </html>

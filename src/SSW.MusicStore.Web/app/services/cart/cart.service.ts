@@ -1,8 +1,9 @@
 import {CartItem, CartItems, Album} from '../../models';
 import {Http, Response} from 'angular2/http';
-import {Injectable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {API_BASE} from '../../config';
-import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
+import 'rxjs/add/operator/map';
+//import {Observable} from 'rxjs';
 
 
 @Injectable()
@@ -18,7 +19,7 @@ export class CartService {
             .map((response: Response) => response.json());
     }
 
-    getCartItems():Observable<CartItems> {
+    getCartItems() { //:Observable<CartItems> {
         return this._http.get(API_BASE + `/cart`)
             .map((response: any) => response.json());
     }
@@ -28,7 +29,7 @@ export class CartService {
             .map((response: any) => response.json());
     }
 
-    addCartItem(album:Album): Observable<CartItems> {
+    addCartItem(album: Album) { //: Observable<CartItems> {
         return this._http.post(API_BASE + `/cart/${album.albumId}`, JSON.stringify(album.albumId))
             .map((response: any) => response.json());
     }

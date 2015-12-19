@@ -1,8 +1,9 @@
 import {Order} from '../../models';
 import {Http, Response} from 'angular2/http';
-import {Injectable} from 'angular2/angular2';
+import {Injectable} from 'angular2/core';
 import {API_BASE} from '../../config';
-import {Observable} from '@reactivex/rxjs/dist/cjs/Rx';
+import 'rxjs/add/operator/map';
+//import {Observable} from 'rxjs';
 
 
 @Injectable()
@@ -12,7 +13,7 @@ export class OrderService {
     constructor(public _http: Http) {
     }
 
-    getOrders(): Observable<Order[]> {
+    getOrders() { //: Observable<Order[]> {
         return this._http.get(API_BASE + `/order`)
             .map((response: Response) => response.json());
     }

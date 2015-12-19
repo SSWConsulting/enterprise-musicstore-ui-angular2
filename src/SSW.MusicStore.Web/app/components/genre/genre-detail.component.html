@@ -6,7 +6,7 @@
 			</div>
 		</div>
 		<album-summary (click)="goToAlbumDetail(album)"
-					   *ng-for="#album of albums"
+					   *ngFor="#album of albums"
 					   [album]="album">
 		</album-summary>
 	</div>

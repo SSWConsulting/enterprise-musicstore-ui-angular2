@@ -10,7 +10,7 @@
 						<td>Cost</td>
 					</tr>
 					<tbody>
-						<tr *ng-for="#order of orders">
+						<tr *ngFor="#order of orders">
 							<td>{{order.orderId}}</td>
 							<td>{{order.orderDate | date}}</td>
 							<td><span>$</span>{{order.total}}</td>

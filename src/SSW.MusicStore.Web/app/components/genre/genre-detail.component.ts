@@ -1,4 +1,5 @@
-import {Component, CORE_DIRECTIVES, OnInit} from 'angular2/angular2';
+import {Component, OnInit} from 'angular2/core';
+import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteParams, Router} from 'angular2/router';
 import {Album} from '../../models';
 import {GenreService} from '../../services/genre/genre.service';
@@ -20,7 +21,7 @@ export class GenreDetailComponent implements OnInit {
     private _routeParams: RouteParams, private _router: Router) {
   }
 
-  onInit() {
+  ngOnInit() {
     if (!this.albums) {
       this.name = this._routeParams.get('name');
       this.getGenreAlbums(this.name);

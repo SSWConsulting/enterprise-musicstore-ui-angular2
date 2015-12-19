@@ -4,23 +4,23 @@
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
 
 
-/// <reference path="../jquery/jquery.d.ts" />
 
 interface ToastrOptions {
+
 	/**
-	* Optionally override the animation easing to show or hide the toasts. Default is swing. swing and linear are built into jQuery.
+	* Optionally override the animation easing to show or hide the toasts. Default is swing. swing and linear are built into any.
 	*/
 	showEasing?: string;
 	/**
-	* Optionally override the animation easing to show or hide the toasts. Default is swing. swing and linear are built into jQuery.
+	* Optionally override the animation easing to show or hide the toasts. Default is swing. swing and linear are built into any.
 	*/
 	hideEasing?: string;
 	/**
-	* Use the jQuery show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into jQuery.
+	* Use the any show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into any.
 	*/
 	showMethod?: string;
 	/**
-	* Use the jQuery show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into jQuery.
+	* Use the any show/hide method of your choice. These default to fadeIn/fadeOut. The methods fadeIn/fadeOut, slideDown/slideUp, and show/hide are built into any.
 	*/
 	hideMethod?: string;
 	/**
@@ -141,14 +141,14 @@ interface ToastrDisplayMethod {
 	*
 	* @param message Message to display in toast
 	*/
-	(message: string): JQuery;
+	(message: string): any;
 	/**
 	* Create a toast
 	*
 	* @param message Message to display in toast
 	* @param title Title to display on toast
 	*/
-	(message: string, title: string): JQuery;
+	(message: string, title: string): any;
 	/**
 	* Create a toast
 	*
@@ -156,7 +156,7 @@ interface ToastrDisplayMethod {
 	* @param title Title to display on toast
 	* @param overrides Option values for toast
 	*/
-	(message: string, title: string, overrides: ToastrOptions): JQuery;
+	(message: string, title: string, overrides: ToastrOptions): any;
 }
 
 interface Toastr {
@@ -173,7 +173,7 @@ interface Toastr {
 		* 
 		* @param toast Toast to clear
 		*/
-		(toast: JQuery): void;
+		(toast: any): void;
 	};
 	/**
 	* Create an error toast
