@@ -32,6 +32,6 @@
   ],
   "scripts": {
     "postrestore": [ "npm install " ],
-    "prepare": [ "npm run build.dev" ]
+    "prepare": []
   }
 }
