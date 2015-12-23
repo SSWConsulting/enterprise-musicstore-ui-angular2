@@ -9,61 +9,33 @@ let runSequence = require('run-sequence');
 
 let tsProject = typescript.createProject('tsconfig.json');
 
-gulp.task('scripts', () => {
+gulp.task('typescript-traspile', () => {
     let tsResult = tsProject.src()
         .pipe(typescript(tsProject));
-    return tsResult.js.pipe(gulp.dest('./wwwroot'));
+    return tsResult.js.pipe(gulp.dest('./dist'));
 });
 
-gulp.task('html', () => {
+gulp.task('app-move-files', () => {
     return gulp.src(['app/**/*.*',
-        '!app/index.html',
         '!app/**/*.ts',
         '!app/**/*.spec',
     ])
-        .pipe(gulp.dest('./wwwroot/app'));
+        .pipe(gulp.dest('./dist/app'));
 });
 
-gulp.task('index', () => {
-    return gulp.src(['app/index.html'])
-        .pipe(gulp.dest('./wwwroot/app'));
-});
-
-gulp.task('lint', function () {
+gulp.task('lint-typescript', function() {
     gulp.src(['app/*.ts', 'app/**/**/*.ts', 'app/**/*.ts'])
         .pipe(tslint())
         .pipe(tslint.report('verbose'))
 });
 
-gulp.task('node_modules', () => {
-    return gulp.src([
-        'node_modules/**/*.js'
-    ])
-        .pipe(gulp.dest('./wwwroot/node_modules/'));
-});
-
-gulp.task('app-folder-move', () => {
-    gulp.src('wwwroot/app/**/*.*')
-    .pipe(gulp.dest('wwwroot'));
-    
-       //TODO remove this task when fixed typescript compile errors when not using tsconfig settings with gulp-typescript
- 
-});
-
 gulp.task('clean', () => {
     del([
-        'wwwroot/app/',
-        'wwwroot/components',
-        'wwwroot/services',
-        'wwwroot/**/*.*',
-        'wwwroot/assets',
-        '!wwwroot/web.config',
-        '!wwwroot/app/node_modules'
-    ]);
+        'dist']);
 });
 
 gulp.task('default', () => {
-    runSequence('clean', 'lint', 'scripts', 'html', 'index', 'app-folder-move');
+    runSequence('clean', 'lint-typescript', 'typescript-traspile', 'app-move-files');
 });
 
 

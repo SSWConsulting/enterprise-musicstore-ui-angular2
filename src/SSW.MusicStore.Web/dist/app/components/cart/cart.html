@@ -1,0 +1,46 @@
+<div class="album-section">
+	<div class="container">
+		<div class="row">
+
+			<div class="card" [hidden]="cart?.cartItems?.length > 0">
+				<div class="card-block">
+					<p>No items in the cart</p>
+				</div>
+			</div>
+			<div class="card" [hidden]="cart?.cartItems?.length === 0">
+				<div class="card-block">
+					<table class="table table-bordered">
+						<tr>
+							<td>Item</td>
+							<td>Amount</td>
+							<td>Price</td>
+							<td></td>
+						</tr>
+						<tbody>
+							<tr class="ms-item" *ngFor="#item of cart?.cartItems">
+								<td>
+									<img [src]="item.album.albumArtUrl" class="img-responsive" height="45" width="45">
+									<span>{{item.album.title}}</span>
+								</td>
+								<td>{{item.count}}</td>
+								<td>{{item.album.price}}</td>
+								<td style="width: 47px;">
+									<button class="btn btn-danger" (click)="removeCartItem(item)"><i class="fa fa-times"></i></button>
+								</td>
+							</tr>
+							<tr>
+								<td>Total</td>
+								<td></td>
+								<td>{{cart?.cartTotal}}</td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-block">
+						<button class="btn btn-success" (click)="gotToCheckout()">Checkout</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

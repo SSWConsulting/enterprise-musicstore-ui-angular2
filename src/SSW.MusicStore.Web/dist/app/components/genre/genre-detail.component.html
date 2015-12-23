@@ -1,0 +1,13 @@
+<div class="album-section">
+	<div class="container">
+		<div class="card">
+			<div class="card-block">
+				<h2 class="title">{{name}} Albums</h2>
+			</div>
+		</div>
+		<album-summary (click)="goToAlbumDetail(album)"
+					   *ngFor="#album of albums"
+					   [album]="album">
+		</album-summary>
+	</div>
+</div>
