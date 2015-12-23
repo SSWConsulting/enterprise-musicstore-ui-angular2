@@ -227,7 +227,7 @@ if ($prompt -eq "Y" -or $prompt -eq "y")
     Write-Host
     Write-Host
     Write-Host "Setup Completed..." -foregroundColor green
-    Write-Host "Run 'dnu restore' to install application packages"
+    Write-Host "Run 'build.ps1' to install application packages and build the project"
     Write-Host
 }
 
