@@ -1,15 +1,16 @@
 import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from 'angular2/common';
 import {Order} from '../../models';
 import {CheckoutService} from '../../services/checkout/checkout.service';
 import {RouteParams, Router} from 'angular2/router';
 import {Routes} from '../../route.config';
 
+
 @Component({
     selector: 'checkout',
     templateUrl: './components/checkout/checkout.html',
     styleUrls: ['./components/checkout/checkout.css'],
-    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES]
+    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl]
 })
 export class CheckoutComponent {
     states = ['NSW', 'VIC', 'TAS', 'WA', 'SA', 'NT', 'QLD'];

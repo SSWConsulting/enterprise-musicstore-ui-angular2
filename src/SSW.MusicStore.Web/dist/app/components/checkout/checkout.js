@@ -55,7 +55,7 @@ System.register(['angular2/core', 'angular2/common', '../../models', '../../serv
                         selector: 'checkout',
                         templateUrl: './components/checkout/checkout.html',
                         styleUrls: ['./components/checkout/checkout.css'],
-                        directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES]
+                        directives: [common_1.CORE_DIRECTIVES, common_1.FORM_DIRECTIVES, common_1.NgForm, common_1.NgFormControl]
                     }), 
                     __metadata('design:paramtypes', [checkout_service_1.CheckoutService, router_1.RouteParams, router_1.Router])
                 ], CheckoutComponent);

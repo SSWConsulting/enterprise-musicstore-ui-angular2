@@ -4,12 +4,12 @@
 			<div class="card-block">
 				<div [hidden]="submitted">
 					<h1>Shopping Cart Form</h1>
-					<form (ng-submit)="onSubmit()" #cart="form" novalidate>
+					<form (ng-submit)="onSubmit()" #cart="ngForm" novalidate>
 						<div class="form-group">
 							<label for="firstname">First Name</label>
 							<input type="text" class="form-control" required
-								   [(ng-model)]="model.firstName"
-								   ng-control="firstname" #firstname="form">
+								   [(ngModel)]="model.firstName"
+								   ngControl="firstname" #firstname="ngForm">
 							<div [hidden]="(firstname.touched && firstname.valid) || firstname.untouched" class="alert alert-danger">
 								First Name is required
 							</div>
@@ -17,8 +17,8 @@
 						<div class="form-group">
 							<label for="lastname">Last Name</label>
 							<input type="text" class="form-control" required
-								   [(ng-model)]="model.lastName"
-								   ng-control="lastName" #lastname="form">
+								   [(ngModel)]="model.lastName"
+								   ngControl="lastName" #lastname="ngForm">
 							<div [hidden]="(lastname.touched && lastname.valid) || lastname.untouched" class="alert alert-danger">
 								Last Name is required
 							</div>
@@ -26,8 +26,8 @@
 						<div class="form-group">
 							<label for="email">Email</label>
 							<input type="email" class="form-control" required
-								   [(ng-model)]="model.email"
-								   ng-control="email" #email="form">
+								   [(ngModel)]="model.email"
+								   ngControl="email" #email="ngForm">
 							<div [hidden]="(email.touched && email.valid) || email.untouched" class="alert alert-danger">
 								Email is required
 							</div>
@@ -35,8 +35,8 @@
 						<div class="form-group">
 							<label for="phone">Phone</label>
 							<input type="text" class="form-control" required
-								   [(ng-model)]="model.phone"
-								   ng-control="phone" #phone="form">
+								   [(ngModel)]="model.phone"
+								   ngControl="phone" #phone="ngForm">
 							<div [hidden]="(phone.touched && phone.valid) || phone.untouched" class="alert alert-danger">
 								Phone is required
 							</div>
@@ -44,8 +44,8 @@
 						<div class="form-group">
 							<label for="address">Address</label>
 							<input type="text" class="form-control" required
-								   [(ng-model)]="model.address"
-								   ng-control="address" #address="form">
+								   [(ngModel)]="model.address"
+								   ngControl="address" #address="ngForm">
 							<div [hidden]="(address.touched && address.valid) || address.untouched" class="alert alert-danger">
 								Address is required
 							</div>
@@ -55,8 +55,8 @@
 								<div class="form-group">
 									<label for="city">City</label>
 									<input type="text" class="form-control" required
-										   [(ng-model)]="model.city"
-										   ng-control="city" #city="form">
+										   [(ngModel)]="model.city"
+										   ngControl="city" #city="ngForm">
 									<div [hidden]="(city.touched && city.valid) || city.untouched" class="alert alert-danger">
 										City is required
 									</div>
@@ -66,8 +66,8 @@
 								<div class="form-group">
 									<label for="postalcode">Post Code</label>
 									<input type="text" class="form-control" required
-										   [(ng-model)]="model.postalCode"
-										   ng-control="postalcode" #postalcode="form">
+										   [(ngModel)]="model.postalCode"
+										   ngControl="postalcode" #postalcode="ngForm">
 									<div [hidden]="(postalcode.touched && postalcode.valid) || postalcode.untouched" class="alert alert-danger">
 										Post code is required
 									</div>
@@ -79,8 +79,8 @@
 								<div class="form-group">
 									<label for="state">State</label>
 									<select class="form-control" required
-											[(ng-model)]="model.state"
-											ng-control="states" #state="form">
+											[(ngModel)]="model.state"
+											ngControl="states" #state="ngForm">
 										<option *ngFor="#s of states" [value]="s">{{s}}</option>
 									</select>
 									<div [hidden]="(state.touched && state.valid) || state.untouched" class="alert alert-danger">
@@ -92,8 +92,8 @@
 								<div class="form-group">
 									<label for="country">Country</label>
 									<input type="text" class="form-control" required
-										   [(ng-model)]="model.country"
-										   ng-control="country" #country="form">
+										   [(ngModel)]="model.country"
+										   ngControl="country" #country="ngForm">
 									<div [hidden]="(country.touched && country.valid) || country.untouched" class="alert alert-danger">
 										Country is required
 									</div>
