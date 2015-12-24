@@ -9,11 +9,11 @@ We have updated it to implement the functionality originally provided by the ico
 
 # Quickstart
 
-Open PowerShell and navigate to a suitable directory (e.g. `~\src`) and execute the following.
+Open `PowerShell` or `CMD` and navigate to a suitable directory (e.g. `~\src`) and execute the following.
 
     git clone https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet.git
     cd musicstore-ui-angular2-dotnet
-    .\setup.ps1
+    .\setup-environment.bat
 
 # Detailed Building and deploying AngularMusicStore
 Instructions for the developer
