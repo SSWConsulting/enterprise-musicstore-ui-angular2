@@ -7,9 +7,9 @@
 .NOTES  
     File Name       : setup.ps1  
     Author          : Jeremy Cade <me@jeremycade.com>
-    Version         : 0.0.3
+    Version         : 0.0.4
     Created         : 2015-12-14
-    Last Modified   : 2015-12-15
+    Last Modified   : 2015-12-24
     Return Codes    : As per the Standard Windows Error Codes. see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382%28v=vs.85%29.aspx 
 #>
 
@@ -42,6 +42,10 @@ function Get-Version($command) {
     }
 
     return [version]"0.0.0.0"
+}
+
+function Check-ExecutionPolicy() {
+
 }
 
 # Check and Install NPM Dependencies. 
@@ -100,8 +104,14 @@ function Setup-FrontEndBuild() {
 
     if ((Get-Command node -ErrorAction SilentlyContinue) -eq $null -or (Get-Command node).Version -lt $node_version)
     {
-        Write-Host "- Unable to find Node in your PATH or your Node version is out of date." -foregroundColor "red"
-        Write-Host "- Please install Node from: https://nodejs.org/en/" --foregroundColor "red"
+                Write-Host
+        Write-Host "########################################################################" -foregroundColor red
+        Write-Host "#####                                                              #####" -foregroundColor red
+        Write-Host "#####  Unable to find Node in your PATH or your Node version is    #####" -foregroundColor red
+        Write-Host "#####  version is out of date.                                     #####" -foregroundColor red
+        Write-Host "#####  Please install Node from: https://nodejs.org/en/            #####" -foregroundColor red
+        Write-Host "#####                                                              #####" -foregroundColor red
+        Write-Host "########################################################################" -foregroundColor red
         Write-Host
         exit 2
     } 
@@ -120,8 +130,15 @@ function Setup-FrontEndBuild() {
 
     if ((Get-Command npm -ErrorAction SilentlyContinue) -eq $null) 
     { 
-        Write-Host "- Unable to find NPM in your PATH." -foregroundColor "red"
-        Write-Host "- Please see: https://github.com/npm/npm/wiki/Troubleshooting for details on how to setup NPM on Windows."  -foregroundColor "red"
+        Write-Host
+        Write-Host "########################################################################" -foregroundColor red
+        Write-Host "#####                                                              #####" -foregroundColor red
+        Write-Host "#####               Unable to find NPM in your PATH.               #####" -foregroundColor red
+        Write-Host "#####  Please see: https://github.com/npm/npm/wiki/Troubleshooting #####" -foregroundColor red
+        Write-Host "#####  for details on how to setup NPM on Windows.                 #####" -foregroundColor red
+        Write-Host "#####                                                              #####" -foregroundColor red
+        Write-Host "########################################################################" -foregroundColor red
+        Write-Host
         exit 2
     }
     elseif ((Get-Version("npm")) -le $npm_version) 
@@ -193,6 +210,7 @@ function Setup-ASPNET() {
 
 
 ##### SCRIPT MAIN #####
+
 Write-Host
 Write-Host "#################################################################" -foregroundColor green
 Write-Host "#####                                                       #####" -foregroundColor green
