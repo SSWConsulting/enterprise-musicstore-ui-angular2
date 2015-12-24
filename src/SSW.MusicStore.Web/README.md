@@ -23,3 +23,9 @@
 3. Run `npm install` from the command line for the SSW.MusicStore.Web project
 4. Run `gulp` will create a dist folder
 4. Run dnx web from the command line for the SSW.MusicStore.Web project and navigate to localhost:5000/dist/app to view the site in the browser=form
+
+
+### Contributing 
+We would love you to contribute to the solution. 
+
+Please feel free to improve the project and issue a pull request.
