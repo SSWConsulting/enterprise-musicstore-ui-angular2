@@ -1,1 +1,1 @@
-PowerShell.exe -ExecutionPolicy Bypass -File run.ps1
+PowerShell.exe -ExecutionPolicy Bypass -File PowerShell\run.ps1

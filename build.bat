@@ -1,1 +1,1 @@
-PowerShell.exe -ExecutionPolicy Bypass -File build.ps1
+PowerShell.exe -ExecutionPolicy Bypass -File PowerShell\build.ps1

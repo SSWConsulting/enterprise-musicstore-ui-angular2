@@ -1,1 +1,1 @@
-PowerShell.exe -ExecutionPolicy Bypass -File setup-environment.ps1
+PowerShell.exe -ExecutionPolicy Bypass -File PowerShell\setup-environment.ps1

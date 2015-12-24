@@ -7,7 +7,7 @@
 .NOTES  
     File Name       : setup.ps1  
     Author          : Jeremy Cade <me@jeremycade.com>
-    Version         : 0.0.4
+    Version         : 0.0.5
     Created         : 2015-12-14
     Last Modified   : 2015-12-24
     Return Codes    : As per the Standard Windows Error Codes. see: https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382%28v=vs.85%29.aspx 
@@ -245,7 +245,7 @@ if ($prompt -eq "Y" -or $prompt -eq "y")
     Write-Host
     Write-Host
     Write-Host "Setup Completed..." -foregroundColor green
-    Write-Host "Run 'build.ps1' to install application packages and build the project"
+    Write-Host "Run '.\build.bat' or '.\PowerShell\build.ps1' to install application packages and build the project"
     Write-Host
 }
 
