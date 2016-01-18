@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
+using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.StaticFiles;
+using Microsoft.Extensions.Logging;
+
+using SSW.MusicStore.Web.helpers;
 
 namespace SSW.MusicStore.Web
 {
@@ -15,16 +19,12 @@ namespace SSW.MusicStore.Web
         {
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             app.UseIISPlatformHandler();
 
-			app.UseStaticFiles();
-			app.UseFileServer(new FileServerOptions()
-			{
-				EnableDefaultFiles = true,
-				EnableDirectoryBrowsing = true
-			});
-		}
+            app.UseStaticFiles();
+            app.UseAngularServer("dist/app", "/index.html", env, loggerFactory);
+        }
     }
 }
