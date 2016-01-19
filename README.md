@@ -12,11 +12,19 @@ We have updated it to implement the functionality originally provided by the ico
 Open `PowerShell` or `CMD` and navigate to a suitable directory (e.g. `~\src`) and execute the following.
 
     git clone https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2.git
+    
     cd enterprise-musicstore-ui-angular2
+    
     .\setup-environment.bat
+    
+    .\build.bat
+    
+    .\run.bat
 
-# Detailed Building and deploying AngularMusicStore
-Instructions for the developer
+# Detailed Building and Deploying
+The setup environment script ensures you have all of the neccessary programs installed and ready, 
+however if the script doesn't work, or you'd just like to know what's going on, the following 
+section describes everything you'll need. 
 
 ## Setting up the tools
 Check that you have the required tools:
@@ -25,31 +33,42 @@ Check that you have the required tools:
 2.  ASP.Net 5
 3.  Node
 4.  NPM
-5.  Gulp
-6.  TypeScript
-7.  WebEssentials - Visual Studio Extension
+5.  Bower
+6.  Gulp
+7.  TypeScript
+8.  WebEssentials - Visual Studio Extension
 
-### Visual Studio 2015 Update 1
-Download from here: [Download](http://go.microsoft.com/fwlink/?LinkId=691129) 
+
+### Visual Studio 2015 Update 1  
+Download from here: [Visual Studio 2015 Update 1](http://go.microsoft.com/fwlink/?LinkId=691129) 
 
 Ensure you install it with Python tools. 
 
-### ASP.Net 5
 
+### ASP.Net 5  
 Install [ASP.NET 5](https://go.microsoft.com/fwlink/?LinkId=627627)
 
-Enable command line tools
+We're currently running on **1.0.0-rc1-final**. To ensure you have that version installed and active 
+use:
 
-    dnvm upgrade
+    dnvm list
+    
+If it's not there, you can use the following to install and use it: 
+
+    dnvm install 1.0.0-rc1-final
+    
+    dnvm use 1.0.0-rc1-final
 
 See [more information](http://docs.asp.net/en/latest/getting-started/installing-on-windows.html) 
 
-### Node
-You need to upgrade nodejs to the latest version.
-Download and install from [here](https://nodejs.org/en/download/)
 
-### NPM
-The npm preinstalled with VS 2015 is outdated, so it needs to be updated.
+### Node  
+You need to upgrade nodejs to the latest version.  
+Download and install from [NodeJS](https://nodejs.org/en/download/)
+
+
+### NPM    
+The npm preinstalled with VS 2015 is outdated, so it needs to be updated.  
 You can check the current version doing:
 
     npm -v
@@ -61,67 +80,60 @@ You should at least have version 3.5.0, if not, in the command prompt, run the f
 The result should be something like this, but version should be at least 3.5.0:
 ![README](README_images/README.png)
 
+
+### Bower  
 If Bower is not present, install globally using npm:
 
     npm install -g bower
-   
+
+
 ### Gulp
 Then check for gulp the same way, just do:
 
      gulp
     
- and if no such program, again use npm to install it globally 
- 
+and if no such program, again use npm to install it globally  
     
     npm install -g gulp
-    
 
-### Typescript
- Typescript comes with VS2015 too, but we install it globally together with the typescript definition manager.
+    
+### Typescript  
+Typescript comes with VS2015 too, but we install it globally together with the typescript definition manager.
  
      npm install -g  typescript 
      npm install tsd -g
+
      
-### WebEssentials
-
-Install this from the gallery, or from Visual Studio Extension dialog, link to it is [here](https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2)
-
-### Other tools
-
-To edit markdown files, you can use the built-in WebEssentials tool, but it doesnt really handle images (copy/pasting etc) nicely.  A much better tool is [MarkPad](http://code52.org/DownmarkerWPF/).
+### WebEssentials  
+Install this from the gallery, or from Visual Studio Extension dialog.   
+[Get Web Essentials](https://visualstudiogallery.msdn.microsoft.com/ee6e6d8c-c837-41fb-886a-6b50ae2d06a2)
 
 
+### Other tools  
+To edit markdown files, you can use the built-in WebEssentials tool, but it doesnt really handle images (copy/pasting etc) nicely. 
+A much better tool is [MarkPad](http://code52.org/DownmarkerWPF/).
 
 
-## Setting up the project
+## Building and Running the Project  
+Navigate to the `src/SSW.MusicStore.Web` folder and run the following.
 
-* git clone https://github.com/SSWConsulting/angularmusicstore  angularmusicstore
-* cd angularmusicstore
-*# SSW Angular Music Store
-### Set up your visual studio 2015
-1. Install Visual Studio 2015
-2. Install nodejs 
-      source: https://nodejs.org/en/. use version 4 or higher
-	  reason: adds node globally so you can work with npm or tools like bower and gulp outside of Visual Studio
+Restore .net packages 
+    
+    dnu restore
 
-3. Install npm globally
-        Run the following commands 
-		- npm install npm -g (This is included with a generic install of node so can normally be skipped)
+Restore npm packages
+   
+    npm install
 
-3. Install typescript and gulp globally so we can use them anywhere
-		Run the following commands 
-		- npm install typescript gulp -g
+Run gulp build tasks to create `dist` folder
 
-4. Install ASP.Net 5 
-	follow the instructions on http://docs.asp.net/en/latest/getting-started/installing-on-windows.html
-	(includes installing ASP.Net beta, dnvm setup & dnvm upgrade)
+    gulp
 
-### Getting and running the code
-1. Clone the project
-2. Run the command `dnu restore`
-3. Run `npm install` from the command line for the SSW.MusicStore.Web project
-4. Run `gulp` will create a dist folder
-4. Run dnx web from the command line for the SSW.MusicStore.Web project and navigate to localhost:5000/dist/app to view the site in the browser
+Run the project
+
+    dnx web
+    
+Navigate to http://localhost:5000/dist/app to view the site in the browser.
 
 
 
