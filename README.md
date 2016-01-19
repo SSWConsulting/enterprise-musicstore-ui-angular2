@@ -1,4 +1,4 @@
-# angularmusicstore
+# Angular 2 - Enterprise Music Store
 
 The MVC Music Store - but built on angular 2
 
@@ -11,8 +11,8 @@ We have updated it to implement the functionality originally provided by the ico
 
 Open `PowerShell` or `CMD` and navigate to a suitable directory (e.g. `~\src`) and execute the following.
 
-    git clone https://github.com/SSWConsulting/musicstore-ui-angular2-dotnet.git
-    cd musicstore-ui-angular2-dotnet
+    git clone https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2.git
+    cd enterprise-musicstore-ui-angular2
     .\setup-environment.bat
 
 # Detailed Building and deploying AngularMusicStore
