@@ -12,7 +12,7 @@
 privatesettings.json
 
 # Build results - vNext
-**/wwwroot/
+**/wwwroot/app
 **/test/
 **/dist/
 
