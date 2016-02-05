@@ -1,4 +1,8 @@
 # SSW Angular Music Store
+### Introduction Video
+
+https://www.youtube.com/watch?v=OzqnTM4xXPs&feature=youtu.be 
+
 ### Set up your visual studio 2015
 1. Install Visual Studio 2015
 2. Install nodejs 
