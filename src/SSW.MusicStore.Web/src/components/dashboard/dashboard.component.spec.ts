@@ -9,15 +9,30 @@ import {ROUTER_PRIMARY_COMPONENT, RouteRegistry, Router, Location } from 'angula
 import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 import { Album  } from './../../models';
+import { Search } from './../search/search';
+
 
 
 describe('DashBoard Component', () => {
-    var dashboardComponent, albumService, mockbackend;
+    var dashboardComponent, albumService, mockbackend, search;
     
     class AppMockComponent {}
+    
+    var album = [
+            {
+                albumId: 1,
+                title: 'The Best Of The Men At Work',
+                price: 8.99,
+                albumArtUrl: '/assets/img/placeholder.png',
+                artist: [],
+                orderDetails: [ ],
+                created: '2015-11-29T11:11:19.3459998'
+            }
+        ];
 
     beforeEachProviders(() => [
         MockBackend,
+        Search,
         BaseRequestOptions,
         DashboardComponent,
         AlbumService,
@@ -30,10 +45,11 @@ describe('DashBoard Component', () => {
         provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppMockComponent})
     ]);
 
-    beforeEach(inject([DashboardComponent, AlbumService, MockBackend], (d, a, m) => {
+    beforeEach(inject([DashboardComponent, AlbumService, MockBackend, Search], (d, a, m, s) => {
         dashboardComponent = d;
         albumService = a;
         mockbackend = m;
+        search = s;
 
     }));
 
@@ -42,25 +58,24 @@ describe('DashBoard Component', () => {
     });
     
      it('should return mocked response', done => {
-    let response = [
-        {
-            albumId: 1,
-            title: 'The Best Of The Men At Work',
-            price: 8.99,
-            albumArtUrl: '/assets/img/placeholder.png',
-            artist: [],
-            orderDetails: [ ],
-            created: '2015-11-29T11:11:19.3459998'
-        }
-    ];
-    mockbackend.connections.subscribe(connection => {
-      connection.mockRespond(new Response(<any>{body: JSON.stringify(response)}));
+        let response = album;
+        mockbackend.connections.subscribe(connection => {
+            connection.mockRespond(new Response(<any>{body: JSON.stringify(response)}));
+        });
+            albumService.getPopularAlbums().subscribe((albums: Album) => {
+            expect(albums[0].albumId).toBe(1);
+            done();
+        });
     });
-     albumService.getPopularAlbums().subscribe((albums: Album) => {
-        expect(albums[0].albumId).toBe(1);
-      done();
-    });
-  });
+  
+     it('should emit selected album event', (done) => {
+            search.selected.subscribe(g => {
+                expect(g).toEqual(album)
+                done();
+            })
+        search.onSelect(album);
+        
+        })
     
     
 });
