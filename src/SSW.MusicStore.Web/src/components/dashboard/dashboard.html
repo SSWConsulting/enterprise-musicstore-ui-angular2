@@ -10,8 +10,7 @@
 
 <div class="album-section">
 	<div class="container">
-		<album-summary (click)="goToAlbumDetail(album)"
-					   *ngFor="#album of albums"
+		<album-summary *ngFor="#album of albums"
 					   [album]="album">
 		</album-summary>
 	</div>
