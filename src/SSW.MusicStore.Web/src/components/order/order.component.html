@@ -1,0 +1,24 @@
+<div class="album-section">
+	<div class="container ">
+		<div class="card">
+			<div class="card-block">
+				<h2 class="title">Orders</h2>
+				<table class="table table-bordered">
+					<tr>
+						<td>Id</td>
+						<td>Date</td>
+						<td>Cost</td>
+					</tr>
+					<tbody>
+						<tr *ngFor="#order of orders">
+							<td>{{order.orderId}}</td>
+							<td>{{order.orderDate | date}}</td>
+							<td><span>$</span>{{order.total}}</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+	</div>
+</div>

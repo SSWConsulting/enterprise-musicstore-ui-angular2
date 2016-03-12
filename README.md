@@ -2,47 +2,8 @@
 
 The MVC Music Store - but built on angular 2
 
-**Note:** Angular 2.0 is not production ready yet! This seed project is perfect for playing around with the latest versions but do not start new projects with it since a lot of new changes are going to be introduced until the framework is officially released.
-
-This project is based upon the awesome [Angular 2 seed project by Minko Gechev](https://github.com/mgechev/angular2-seed).
-We have updated it to implement the functionality originally provided by the iconic [MVC Music Store] (http://www.asp.net/mvc/overview/older-versions/mvc-music-store/mvc-music-store-part-1).
 
 # Quickstart
-
-Open `PowerShell` or `CMD` and navigate to a suitable directory (e.g. `~\src`) and execute the following.
-
-    git clone https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2.git
-    
-    cd enterprise-musicstore-ui-angular2
-    
-    .\setup-environment.bat
-    
-    .\build.bat
-    
-    .\run.bat
-
-# Detailed Building and Deploying
-The setup environment script ensures you have all of the neccessary programs installed and ready, 
-however if the script doesn't work, or you'd just like to know what's going on, the following 
-section describes everything you'll need. 
-
-## Setting up the tools
-Check that you have the required tools:
-
-1.  Visual Studio 2015 Update 1
-2.  ASP.Net 5
-3.  Node
-4.  NPM
-5.  Bower
-6.  Gulp
-7.  TypeScript
-8.  WebEssentials - Visual Studio Extension
-
-
-### Visual Studio 2015 Update 1  
-Download from here: [Visual Studio 2015 Update 1](http://go.microsoft.com/fwlink/?LinkId=691129) 
-
-Ensure you install it with Python tools. 
 
 
 ### ASP.Net 5  

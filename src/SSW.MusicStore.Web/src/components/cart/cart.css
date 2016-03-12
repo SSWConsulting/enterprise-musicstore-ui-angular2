@@ -1,0 +1,20 @@
+table {
+	background-color: #fff;
+}
+
+.card {
+	background-color: #fff;
+	border-radius: 0;
+}
+
+.ms-item .btn {
+	display: none;
+}
+
+.ms-item:hover .btn {
+	display: inline;
+}
+
+.ms-item:hover {
+	background-color: #ededed
+}

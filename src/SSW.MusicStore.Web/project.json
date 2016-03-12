@@ -19,6 +19,9 @@
         "Serilog.Sinks.Seq": "1.5.17",
         "SerilogWeb.Classic": "2.0.6"
       }
+    },
+    "dotnet5.4": {
+        
     }
   },
 

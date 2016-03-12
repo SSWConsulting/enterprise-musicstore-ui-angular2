@@ -1,0 +1,10 @@
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDependencies": {
+    "auth0": "github:DefinitelyTyped/DefinitelyTyped/auth0/auth0.d.ts#1f40d82294b6c5ed32cf37056389ee05e584d7c8",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#661fc869669af796c6048483e999dce5732eed72",
+    "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#81506d0602d4f15b153c6a8a7657a45e42c8346f",
+    "toastr": "github:DefinitelyTyped/DefinitelyTyped/toastr/toastr.d.ts#a36e6ad2f472741b1c22c2af955bf13b7c62e146"
+  }
+}
