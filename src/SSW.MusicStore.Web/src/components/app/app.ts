@@ -1,11 +1,11 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import {Routes, APP_ROUTES} from '../../route.config';
 import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
-// import {LoggedInRouterOutlet} from './LoggedInOutlet';
+import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 declare var Auth0Lock:any;
 
@@ -17,7 +17,7 @@ declare var Auth0Lock:any;
 })
 
 @RouteConfig(APP_ROUTES)
-export class AppComponent {
+export class AppComponent implements OnInit {
     public title = 'SSW Angular 2 Music Store';
     public routes = Routes;
     public genres: Genre[] = [];
@@ -25,6 +25,9 @@ export class AppComponent {
     private lock: any;
 
     constructor(private genreService: GenreService, public router: Router) {
+    }
+    
+    ngOnInit() {
         this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
         this.getGenres();
         this.setUser();
