@@ -1,7 +1,9 @@
 import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES} from 'angular2/common';
+import {Router} from 'angular2/router';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album/album.service';
+import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary';
 import {Search} from '../search/search';
 
@@ -13,9 +15,9 @@ import {Search} from '../search/search';
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[] = [];
-    searching: boolean;
+    public searching: boolean = false;
 
-    constructor(private _albumService: AlbumService) {
+    constructor(private _albumService: AlbumService, private _router: Router) {
     }
 
     ngOnInit() {
@@ -25,6 +27,10 @@ export class DashboardComponent implements OnInit {
     hide() {
         this.searching = true;
         alert(this.searching);
+    }
+
+    goToAlbumDetail(album: Album) {
+        this._router.navigate([`/${Routes.album.as}`, { id: album.albumId }]);
     }
 
     getPopularAlbums() {
