@@ -17,7 +17,6 @@
   "devDependencies": {
     "css-loader": "0.23.1",
     "html-webpack-plugin": "^2.10.0",
-    "istanbul-instrumenter-loader": "^0.2.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.11",
     "karma-chrome-launcher": "^0.2.1",

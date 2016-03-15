@@ -1,4 +1,20 @@
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
+
+@Component({
+    selector: 'selector',
+    templateUrl: 'app/name.component.html'
+})
+
+export class nameComponent implements OnInit {
+
+    constructor() { }
+
+    ngOnInit() { }
+}
+
+
+
+//import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from 'angular2/common';
 import {Order} from '../../models';
 import {CheckoutService} from '../../services/checkout/checkout.service';

@@ -20,28 +20,16 @@ export class Search {
 
     clear = new EventEmitter();
 
-    // forms are observable in Angular2
     searchText = new Control();
 
     albums: Observable<Album[]>;
 
     constructor(http: Http, albumService: AlbumService) {
-       // get a stream of changes from the searchText input
 
        this.albums = Observable.from(this.searchText.valueChanges,null)
-           // wait for a pause in typing of 500ms then emit the last value
            .debounceTime(500)
-           // only accept values that don't repeat themselves
            .distinctUntilChanged()
-           // map that to an observable HTTP request,
-           // using the albumService and switch to that observable.
-           // That means unsubscribing from any previous HTTP request
-           // (cancelling it), and subscribing to the newly returned on here.
            .switchMap((val: string) => albumService.search(val))
-           // use async pipe instead of .subscribe(albums => this.albums = albums);
-           // send an empty array to albums whenever clear emits by
-           // merging in a the stream of clear events mapped to an
-           // empty array.
            .merge(this.clear.mapTo([]));
     }
 
