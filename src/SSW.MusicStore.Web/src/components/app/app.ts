@@ -1,5 +1,5 @@
 import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {CORE_DIRECTIVES, FormBuilder, Validators} from 'angular2/common';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
 import {Routes, APP_ROUTES} from '../../route.config';
 import {GenreService} from '../../services/genre/genre.service';
@@ -8,6 +8,16 @@ import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
 
 declare var Auth0Lock:any;
+
+import {Pipe, PipeTransform} from 'angular2/core';
+
+@Pipe({name: 'exponentialStrength'})
+export class ExponentialStrengthPipe implements PipeTransform {
+  transform(value:number, args:string[]) : any {
+    return Math.pow(value, parseInt(args[0] || '1', 10));
+  }
+}
+
 
 @Component({
     selector: 'app',
@@ -23,9 +33,22 @@ export class AppComponent implements OnInit {
     public genres: Genre[] = [];
     public user: User;
     private lock: any;
+    form;
 
-    constructor(private genreService: GenreService, public router: Router) {
+    constructor(private genreService: GenreService, public router: Router, private fb: FormBuilder) {
+      
+        this.form = this.fb.group({
+            name: ['', Validators.required],
+            street: ['', Validators.minLength(3)],
+            city: ['', Validators.maxLength(10)],
+            zip: ['', Validators.pattern('[A-Za-z]{5}')]
+        });
+        
+        
     }
+    
+    
+    
     
     ngOnInit() {
         this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
