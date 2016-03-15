@@ -1,7 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import {CORE_DIRECTIVES, FormBuilder, Validators} from 'angular2/common';
 import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
-import {Routes, APP_ROUTES} from '../../route.config';
+import {Routes, APP_ROUTES} from './../../route.config';
 import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
