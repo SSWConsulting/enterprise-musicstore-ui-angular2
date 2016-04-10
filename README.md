@@ -12,6 +12,7 @@ In order to run the Musc Store:
 ```bash
 git clone  https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2
 cd enterprise-musicstore-ui-angular2
+git checkout -b lite-server origin/lite-server
 ```
 #### 2. install the project's dependencies
 ```bash
