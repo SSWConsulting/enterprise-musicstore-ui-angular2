@@ -1,0 +1,18 @@
+<div class="input-group ms-search">
+	<input 
+           type="text"
+		   class="form-control"
+		   placeholder="Search for genre..."
+		   #genre [ngFormControl]="searchText">
+</div>
+<table class="table table-bordered">
+	<tbody>
+		<tr class="ms-search-result" *ngFor="#album of albums | async">
+			<td>
+				<img src="app/assets/img/placeholder.png" class="img-responsive" height="45" width="45">
+				<span>{{album.title}}</span>
+				<button type="button" class="btn btn-danger pull-right" (click)="onSelect(album)">Go to album</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,14 @@
+<div class="card ms-album-detail">
+	<img class="card-img-top" src="app/assets/img/placeholder.png" alt="Card image cap">
+	<div class="card-block">
+		<h4 class="card-title">{{album?.title}}</h4>
+		<div>
+			<label>Price: </label>{{album?.price | currency}}
+		</div>
+		<div>
+			<label>Date: </label> {{album?.created | date}}
+		</div>
+		<button [hidden]="!user" class="btn btn-danger" (click)="onSelect(album)">Add to cart</button>
+		<login-button [loginMessage]="loginMessage" [hidden]="user">Login to add to cart</login-button>
+	</div>
+</div>
