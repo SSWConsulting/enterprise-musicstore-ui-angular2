@@ -6,7 +6,7 @@ import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
 import {LoggedInRouterOutlet} from './LoggedInOutlet';
-import { LoginButtonComponent } from './../login/login-button.component';
+import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 
 declare var Auth0Lock: any;
 
@@ -14,16 +14,17 @@ declare var Auth0Lock: any;
     selector: 'app',
     templateUrl: 'app/components/app/app.component.html',
     styleUrls: ['app/components/app/app.component.css'],
-    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, LoggedInRouterOutlet, LoginButtonComponent]
+    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, LoggedInRouterOutlet]
 })
 
 @RouteConfig(APP_ROUTES)
 export class AppComponent {
-    public title = 'SSW Angular 2 Music Store';
-    public routes = Routes;
-    public genres: Genre[] = [];
-    public user: User;
-    private lock: any;
+    title = 'SSW Angular 2 Music Store';
+    routes = Routes;
+    genres: Genre[] = [];
+    user: User;
+    lock: any;
+    jwtHelper: JwtHelper = new JwtHelper();
 
     constructor(private genreService: GenreService, public router: Router) {
         this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
@@ -32,12 +33,37 @@ export class AppComponent {
         toastr.options.positionClass = 'toast-bottom-right';
     }
 
+    login() {
+        this.lock.show((err: string, profile: string, id_token: string) => {
+
+            if (err) {
+                throw new Error(err);
+            }
+
+            localStorage.setItem('profile', JSON.stringify(profile));
+            localStorage.setItem('id_token', id_token);
+            this.setUser();
+            location.reload();
+        });
+    }
+
+    logout() {
+        localStorage.removeItem('profile');
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('user');
+        this.router.navigate([`/${Routes.dashboard.as}`]);
+    }
+
 
     setUser() {
-        let savedUser = JSON.parse(localStorage.getItem('user'));
+        let savedUser = JSON.parse(localStorage.getItem('profile'));
         if (savedUser) {
             this.user = savedUser;
         };
+    }
+
+    loggedIn() {
+        return tokenNotExpired();
     }
 
     getGenres() {
@@ -51,34 +77,6 @@ export class AppComponent {
         this.router.navigate([`/Genres/Genre`, { name: genre.name }]);
     }
 
-    // login() {
-    //     this.lock.show({
-    //         focusInput: false,
-    //         popup: true
-    //     }, (err, profile, token) => {
-    //         if (err) console.log('login error:', err);
-    //         if (token) localStorage.setItem('jwt', token);
-    //         if (profile) {
-    //             localStorage.setItem('user', JSON.stringify(profile));
-    //             this.user = profile;
-    //             this.router.navigate([`/${Routes.dashboard.as}`]);
-    //             location.reload();
-    //         }
-    //     });
-    // }
 
-    register() {
-        this.lock.showSignup(null, function (err) {
-            console.log(err);
-        });
-    }
-
-    logout() {
-        this.user = null;
-        localStorage.removeItem('user');
-        localStorage.removeItem('jwt');
-        this.router.navigate([`/${Routes.dashboard.as}`]);
-        location.reload();
-    }
 
 }

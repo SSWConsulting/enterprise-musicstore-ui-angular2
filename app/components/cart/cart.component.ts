@@ -2,7 +2,9 @@ import {Component, OnInit} from 'angular2/core';
 import {CartService} from '../../services/cart/cart.service';
 import {CartItems} from '../../models';
 import {Routes} from '../../route.config';
-import {RouteParams, Router} from 'angular2/router';
+import {RouteParams, Router, CanActivate} from 'angular2/router';
+import {tokenNotExpired} from 'angular2-jwt';
+
 
 @Component({
     selector: 'cart',
@@ -10,6 +12,8 @@ import {RouteParams, Router} from 'angular2/router';
     styleUrls: ['app/components/cart/cart.component.css'],
     directives: []
 })
+@CanActivate(
+    () => tokenNotExpired())
 export class CartComponent implements OnInit {
     cart: CartItems;
 

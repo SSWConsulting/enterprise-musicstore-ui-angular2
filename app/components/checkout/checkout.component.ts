@@ -2,8 +2,9 @@ import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from 'angular2/common';
 import {Order} from '../../models';
 import {CheckoutService} from '../../services/checkout/checkout.service';
-import {RouteParams, Router} from 'angular2/router';
+import {RouteParams, Router, CanActivate} from 'angular2/router';
 import {Routes} from '../../route.config';
+import {tokenNotExpired} from 'angular2-jwt';
 
 
 @Component({
@@ -12,6 +13,7 @@ import {Routes} from '../../route.config';
     styleUrls: ['app/components/checkout/checkout.component.css'],
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl]
 })
+@CanActivate(() => tokenNotExpired())
 export class CheckoutComponent {
     states = ['NSW', 'VIC', 'TAS', 'WA', 'SA', 'NT', 'QLD'];
     public submitted = false;

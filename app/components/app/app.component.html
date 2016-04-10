@@ -43,19 +43,21 @@
 				</div>
 			</li>
 			<li class="nav-item">
-			<a class="nav-link" [hidden]="!user" [routerLink]="['/' + routes.cart.as]">Cart</a>
+			<a class="nav-link" *ngIf="loggedIn()" [routerLink]="['/' + routes.cart.as]">Cart</a>
 			</li>
-			<li class="nav-item pull-right" [hidden]="user">
+			<li class="nav-item pull-right" *ngIf="!loggedIn()">
 				<a class="nav-link" (click)="register()">Register</a>
 			</li>
-            <login-button class="pull-right" [hidden]="user"></login-button>
-			<li class="nav-item pull-right" [hidden]="!user">
-				<a class="nav-link"  (click)="logout()">Logout</a>
+            <li class="nav-item pull-right" *ngIf="!loggedIn()">
+				<a class="nav-link"  (click)="login()">Login</a>
 			</li>
-			<li class="nav-item pull-right hidden-md-down" [hidden]="!user">
+			<li class="nav-item pull-right" *ngIf="loggedIn()">
+				<a class="nav-link"   (click)="logout()">Logout</a>
+			</li>
+			<li class="nav-item pull-right hidden-md-down" *ngIf="loggedIn()">
 				<a class="nav-link" >{{user?.email}}</a>
 			</li>
-			<li class="nav-item pull-right"  [hidden]="!user">
+			<li class="nav-item pull-right"  *ngIf="loggedIn()">
 				<img [src]="user?.picture" class="img-responsive" height="35" width="35">
 			</li>
 		</ul>
