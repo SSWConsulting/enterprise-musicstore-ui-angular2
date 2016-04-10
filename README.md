@@ -2,9 +2,12 @@
 ### Introduction Video
 https://www.youtube.com/watch?v=OzqnTM4xXPs&feature=youtu.be 
 
-**Note:** that this seed project requires:
-- node v4.x.x and npm v2.14.7 or higher
-- dnvm  v1.0.0-rc2 
+**Note:** that this seed project requires your computer has the following depenencies installed globally at this version or higher:
+- node v4.x.x and npm v2.14.7
+- dnvm  v1.0.0-rc2
+- typescript 1.7x 
+- gulp v3x
+
 
 We recommend you use the latest version of Visual Studio 2015 update 2 or Visual Studio Code
 
