@@ -7,11 +7,6 @@
     "url": "https://github.com/SSWConsulting/musicstore-ui-angular2"
   },
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "lite": "lite-server",
-    "typings": "typings",
     "build": "gulp build",
     "postinstall": "typings install"
   },
@@ -28,9 +23,7 @@
     "open": "0.0.5",
     "systemjs-builder": "0.15.14",
     "typescript": "1.8.9",
-    "typings": "0.7.12",
-    "concurrently": "2.0.0",
-    "lite-server": "2.2.0"
+    "typings": "0.7.12"
   },
   "dependencies": {
     "angular2": "2.0.0-beta.14",
