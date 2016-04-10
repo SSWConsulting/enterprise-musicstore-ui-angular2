@@ -12,7 +12,7 @@ We recommend you use the latest version of Visual Studio 2015 update 2 or Visual
 #### 1. Clone the project
 ```bash
 git clone  https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2
-cd enterprise-musicstore-ui-angular2
+cd enterprise-musicstore-ui-angular2\src>cd SSW.MusicStore.Web
 ```
 #### 2. Install the project's dependencies
 This can also be done in Visual Studio VS2015 by building the project or pressing "ctrl + shft + B"
