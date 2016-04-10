@@ -23,7 +23,7 @@ a:hover {
 
 body {
     min-height: 75rem;
-    background-image: url('/app/assets/img/BG-Blur.jpg');
+    background-image: url('/assets/img/BG-Blur.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;

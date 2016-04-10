@@ -49,11 +49,11 @@ gulp.task('build', ['bundle-staging'], () => {
     var html = gulp.src(['./index-dist.html'])
         .pipe(rename('index.html'));
 
-    var css = gulp.src('app/assets/**/*.css')
+    var css = gulp.src('assets/**/*.css')
         .pipe(concat('styles.css'));
     
-    gulp.src(['app/assets/img/**/*'])
-        .pipe(gulp.dest('./dist/app/assets/img/'));
+    gulp.src(['assets/img/**/*'])
+        .pipe(gulp.dest('./dist/assets/img/'));
         
     return merge(js, css, html)
         .pipe(gulp.dest('./dist'));

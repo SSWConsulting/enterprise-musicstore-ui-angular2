@@ -8,9 +8,10 @@
   },
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "prod": "http-server ./dist -0 -p 5000",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "lite": "lite-server --port ",
+    "lite": "lite-server",
     "typings": "typings",
     "build": "gulp build",
     "postinstall": "typings install"

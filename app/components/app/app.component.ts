@@ -5,7 +5,6 @@ import {Routes, APP_ROUTES} from '../../route.config';
 import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
-import {LoggedInRouterOutlet} from './LoggedInOutlet';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 
 declare var Auth0Lock: any;
@@ -14,7 +13,7 @@ declare var Auth0Lock: any;
     selector: 'app',
     templateUrl: 'app/components/app/app.component.html',
     styleUrls: ['app/components/app/app.component.css'],
-    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, LoggedInRouterOutlet]
+    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
 })
 
 @RouteConfig(APP_ROUTES)

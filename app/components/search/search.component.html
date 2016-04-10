@@ -9,7 +9,7 @@
 	<tbody>
 		<tr class="ms-search-result" *ngFor="#album of albums | async">
 			<td>
-				<img src="app/assets/img/placeholder.png" class="img-responsive" height="45" width="45">
+				<img src="assets/img/placeholder.png" class="img-responsive" height="45" width="45">
 				<span>{{album.title}}</span>
 				<button type="button" class="btn btn-danger pull-right" (click)="onSelect(album)">Go to album</button>
 			</td>
