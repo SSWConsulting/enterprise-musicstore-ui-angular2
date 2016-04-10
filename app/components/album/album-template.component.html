@@ -8,7 +8,7 @@
 		<div>
 			<label>Date: </label> {{album?.created | date}}
 		</div>
-		<button [hidden]="!user" class="btn btn-danger" (click)="onSelect(album)">Add to cart</button>
-		<p [hidden]="!loggedIn()">Please log in to add this item to your cart</p>
+		<button *ngIf="loggedIn()" class="btn btn-danger" (click)="onSelect(album)">Add to cart</button>
+		<p *ngIf="!loggedIn()">Please log in to add this item to your cart</p>
 	</div>
 </div>
