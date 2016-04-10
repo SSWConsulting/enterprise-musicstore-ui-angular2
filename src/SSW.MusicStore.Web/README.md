@@ -1,6 +1,6 @@
 # SSW Angular Music Store
 ### Introduction Video
-https://www.youtube.com/watch?v=OzqnTM4xXPs&feature=youtu.be 
+https://youtu.be/HryBwVOJhDs
 
 **Note:** that this seed project requires:
 - node v4.x.x and npm v2.14.7 or higher
@@ -19,6 +19,7 @@ This can also be done in Visual Studio VS2015 by building the project or pressin
 ```bash
 npm install
 dnu restore
+tsc
 ```
 #### 3. Run the project
 This can also be done in Visual Studio VS2015 by running the application or pressing "ctrl + F5" to start with out debugging

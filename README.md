@@ -1,13 +1,12 @@
 # SSW Enterprise Angular Music Store
 ### Introduction Video
-https://www.youtube.com/watch?v=OzqnTM4xXPs&feature=youtu.be 
+https://youtu.be/HryBwVOJhDs
 
-**Note:** that this seed project requires your computer has the following depenencies installed globally at this version or higher:
+**Note:** that this seed project requires your computer has the following depenencies installed globally at this version or higher (read below for details on how to install these):
 - node v4.x.x and npm v2.14.7
 - dnvm  v1.0.0-rc2
 - typescript 1.7x 
 - gulp v3x
-
 
 We recommend you use the latest version of Visual Studio 2015 update 2 or Visual Studio Code
 
@@ -22,6 +21,7 @@ This can also be done in Visual Studio VS2015 by building the project or pressin
 ```bash
 npm install
 dnu restore
+tsc
 ```
 #### 3. Run the project
 This can also be done in Visual Studio VS2015 by running the application or pressing "ctrl + F5" to start with out debugging
@@ -35,6 +35,15 @@ Navigate to http://localhost:5000/dist/app to view the site in the browser.
 #### 1. Run gulp task to execute production build
 ```bash
 gulp build
+```
+
+### How to install global dependencies on your computer
+1. Install node v4 or higher from here https://nodejs.org/en/
+Node installs npm at the same time so no need to install it seperately
+2. With npm installed you can now install typescript and gulp globally with the following command
+
+```bash
+npm install typescipt gulp -g
 ```
 
 ### Contributing 
