@@ -1,9 +1,9 @@
 import {GenresComponent} from './components/genre/genres.component';
-import {AlbumDetailComponent} from './components/album/album';
-import {DashboardComponent} from './components/dashboard/dashboard';
-import {LoginComponent} from './components/login/login';
-import {CartComponent} from './components/cart/cart';
-import {CheckoutComponent} from './components/checkout/checkout';
+import {AlbumDetailComponent} from './components/album/album.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
+import {LoginComponent} from './components/login/login.component';
+import {CartComponent} from './components/cart/cart.component';
+import {CheckoutComponent} from './components/checkout/checkout.component';
 import {OrderComponent} from './components/order/order.component';
 
 export var Routes = {

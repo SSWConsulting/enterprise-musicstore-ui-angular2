@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.FileProviders;
-using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.StaticFiles;
 using Microsoft.Extensions.PlatformAbstractions;
 
 namespace SSW.MusicStore.Web
 {
-    public class Startup
+	public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
