@@ -11,9 +11,13 @@
 *.userprefs
 privatesettings.json
 
-# Build results - vNext
-**/wwwroot/
-**/test/
+# Build results
+wwwroot/
+node_modules/
+typings/
+staging/
+**app/**/*.js
+**app/**/*.js.map
 
 # Build results
 [Dd]ebug/

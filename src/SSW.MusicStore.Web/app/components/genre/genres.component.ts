@@ -7,8 +7,8 @@ import {Genre} from '../../models';
 
 @Component({
     selector: 'genres',
-    templateUrl: './components/genre/genres.component.html',
-    styleUrls: ['./components/genre/genres.component.css'],
+    templateUrl: 'app/components/genre/genres.component.html',
+    styleUrls: ['app/components/genre/genres.component.css'],
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, GenreDetailComponent, ROUTER_DIRECTIVES]
 })
 @RouteConfig([

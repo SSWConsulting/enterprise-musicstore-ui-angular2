@@ -1,31 +1,39 @@
 # SSW Angular Music Store
-### Set up your visual studio 2015
-1. Install Visual Studio 2015
-2. Install nodejs 
-      source: https://nodejs.org/en/. use version 4 or higher
-	  reason: adds node globally so you can work with npm or tools like bower and gulp outside of Visual Studio
+### Introduction Video
+https://youtu.be/HryBwVOJhDs
 
-3. Install npm globally
-        Run the following commands 
-		- npm install npm -g (This is included with a generic install of node so can normally be skipped)
+**Note:** that this seed project requires:
+- node v4.x.x and npm v2.14.7 or higher
+- dnvm  v1.0.0-rc2 
 
-3. Install typescript and gulp globally so we can use them anywhere
-		Run the following commands 
-		- npm install typescript gulp -g
+We recommend you use the latest version of Visual Studio 2015 update 2 or Visual Studio Code
 
-4. Install ASP.Net 5 
-	follow the instructions on http://docs.asp.net/en/latest/getting-started/installing-on-windows.html
-	(includes installing ASP.Net beta, dnvm setup & dnvm upgrade)
+### In order to run the Musc Store:
+#### 1. Clone the project
+```bash
+git clone  https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2
+cd enterprise-musicstore-ui-angular2\src>cd SSW.MusicStore.Web
+```
+#### 2. Install the project's dependencies
+This can also be done in Visual Studio VS2015 by building the project or pressing "ctrl + shft + B"
+```bash
+npm install
+dnu restore
+tsc
+```
+#### 3. Run the project
+This can also be done in Visual Studio VS2015 by running the application or pressing "ctrl + F5" to start with out debugging
+```bash
+dnx web
+```
 
-### Getting and running the code
-1. Clone the project
-2. Run the command `dnu restore`
-3. Run `npm install` from the command line for the SSW.MusicStore.Web project
-4. Run `gulp` will create a dist folder
-4. Run dnx web from the command line for the SSW.MusicStore.Web project and navigate to localhost:5000/dist/app to view the site in the browser=form
+# Building to wwwroot for production
 
+#### 1. Run gulp task to execute production build
+```bash
+gulp build
+```
 
 ### Contributing 
-We would love you to contribute to the solution. 
+We would love you to contribute to the solution. Please feel free to improve the project and issue a pull request.
 
-Please feel free to improve the project and issue a pull request.
