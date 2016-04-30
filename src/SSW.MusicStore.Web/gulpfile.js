@@ -10,22 +10,22 @@ var concat = require('gulp-concat');
 
 var project = ts.createProject('tsconfig.json');
 
-gulp.task('tsc', () => {
+gulp.task('tsc', function() {
     return project.src()
         .pipe(ts(project))
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('stage-inline', ['tsc'], () => {
+gulp.task('stage-inline', ['tsc'], function() {
     return gulp.src('./app/**/*.js')
         .pipe(inlineNg2Template({
             base: '.',
             target: 'es5'
         }))
         .pipe(gulp.dest('./staging'));
-})
+});
 
-gulp.task('bundle-staging', ['stage-inline'], cb => {
+gulp.task('bundle-staging', ['stage-inline'], function (cb) {
     var builder = new Builder('.', 'system.js');
 
     builder.config({
@@ -37,11 +37,15 @@ gulp.task('bundle-staging', ['stage-inline'], cb => {
     });
 
     builder.buildStatic('staging/main', './staging/bundled.js')
-        .then(output => cb())
-        .catch(err => console.log('Build error: ' + err));
+        .then(function(output) {
+            cb();
+        })
+        .catch(function(err) {
+            console.log('Build error: ' + err);
+        });
 });
 
-gulp.task('build', ['bundle-staging'], () => {
+gulp.task('build', ['bundle-staging'], function () {
     var js = gulp.src([
         'node_modules/angular2/bundles/angular2-polyfills.js',
         'staging/bundled.js'
