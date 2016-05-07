@@ -2,8 +2,8 @@
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var path = require('path');
-var Builder = require('systemjs-builder')
-var inlineNg2Template = require('gulp-inline-ng2-template')
+var Builder = require('systemjs-builder');
+var inlineNg2Template = require('gulp-inline-ng2-template');
 var merge = require('merge-stream');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
@@ -48,7 +48,8 @@ gulp.task('bundle-staging', ['stage-inline'], function (cb) {
 gulp.task('build', ['bundle-staging'], function () {
     var js = gulp.src([
         'node_modules/angular2/bundles/angular2-polyfills.js',
-        'staging/bundled.js'
+        'staging/bundled.js',
+        'staging/raygun.js'
     ]).pipe(concat('script.js'));
 
     var html = gulp.src(['./index-dist.html'])

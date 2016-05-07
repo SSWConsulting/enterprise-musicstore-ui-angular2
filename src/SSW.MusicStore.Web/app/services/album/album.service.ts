@@ -38,8 +38,9 @@ export class AlbumService {
                 });
             })
             .map((response: Response) => response.json())
-            .catch(err => {
+            .catch((err : Error) => {
                 console.log(err);
+                Raygun.send(err);
                 return Observable.fromArray(empty);
             });
     }
