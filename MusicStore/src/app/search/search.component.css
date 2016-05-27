@@ -1,16 +1,10 @@
-.search-box {
-    margin: 3rem auto 0;
-    max-width: 90%;
-}
-
 md-input {
     display: flex;
 }
 
-md-list {
-    max-height: 250px;
-    overflow-y: scroll;
-    background-color: #f0f0f0;
+.search-results {
+    max-height: 350px;
+    overflow-y: auto;
 }
 
 .pull-right {

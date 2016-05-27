@@ -1,20 +1,10 @@
-.card:hover {
-	cursor: pointer;
+md-card {
+  width: 400px;
+  box-sizing: border-box;
+  margin: 16px;
 }
 
-.card {
-  float: left;
-  width: 32%;
-  padding: .75rem;
-  margin: 0.25rem;
-  background-color: #fff;
+.card-container {
+  display: flex;
+  flex-flow: row wrap;
 }
-
-.card > img {
-  margin-bottom: .75rem;
-}
-
-.card-text {
-  font-size: 75%;
-}
-

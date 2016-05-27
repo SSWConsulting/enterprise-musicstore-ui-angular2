@@ -1,15 +1,15 @@
-<div class="search-box">
+<md-card>
   <md-input type="text" class="form-control" placeholder="Search for a genre..." #genre [ngFormControl]="searchText">
   </md-input>
   <md-progress-bar *ngIf="isLoading" mode="indeterminate"></md-progress-bar>
-  <md-list *ngIf="genre.value !== null &&  genre.value !== ''">
+  <md-list *ngIf="genre.value !== null &&  genre.value !== ''" class="search-results">
     <md-list-item *ngFor="let album of albums">
       <img src="assets/img/placeholder.png" class="img-responsive" height="45" width="45">
       <span>{{album.title}}</span>
       <button class="pull-right" md-raised-button color="primary" type="button" (click)="onSelect(album)">Go to album</button>
     </md-list-item>
     <md-list-item *ngIf="albums.length < 1 && !isLoading">
-        <p>No matching Genres</p>
+      <p>No matching genres</p>
     </md-list-item>
   </md-list>
-</div>
+</md-card>

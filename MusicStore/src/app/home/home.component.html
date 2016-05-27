@@ -1,12 +1,6 @@
-<img class="jumbotron" src="assets/img/banner-image-sale.png" >
+<img class="jumbotron" src="assets/img/banner-image-sale.png">
 
-<div class="container">
-    <ms-search (selected)="goToAlbumDetail($event)"></ms-search>
-</div>
+<ms-search (selected)="goToAlbumDetail($event)"></ms-search>
 
-<div class="album-section">
-    <div class="container">
-        <ms-album-summary *ngFor="let album of albums" (click)="goToAlbumDetail(album)" [album]="album">
-        </ms-album-summary>
-    </div>
-</div>
+<ms-album-summary *ngFor="let album of albums" (click)="goToAlbumDetail(album)" [album]="album">
+</ms-album-summary>
