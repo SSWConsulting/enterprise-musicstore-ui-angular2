@@ -3,12 +3,16 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-    '@angular2-material': 'vendor/@angular2-material'
+    '@angular2-material': 'vendor/@angular2-material',
+    'angular2-jwt': 'vendor/angular2-jwt'
   
 };
 
 /** User packages configuration. */
 const packages: any = {
+  
+    'angular2-jwt': {main: `angular2-jwt.js`}
+   
 };
 
 const materialPkgs:string[] = [
