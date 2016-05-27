@@ -1,4 +1,3 @@
-
 <md-sidenav-layout fullscreen>
   <md-sidenav mode="side" #sidenav>
     <md-nav-list>
@@ -13,10 +12,12 @@
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
-    {{title}}
+    <a [routerLink]="['/']">{{title}}</a>
+    <span class="fill-remaining-space"></span>
+    <a [routerLink]="['/album']">Albums</a>
   </md-toolbar>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
   <!--<div class="form" *ngIf="formShowing">
     <md-card>
       <md-card-title>Create your dog's profile</md-card-title>

@@ -3,6 +3,10 @@ import { HomeComponent } from './home';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
 import * as md from './angular-material/index';
 
+import { AlbumComponent } from './album';
+import { AlbumService } from './services/album/album.service';
+import { CartService } from './services/cart/cart.service';
+
 @Component({
   moduleId: module.id,
   selector: 'music-store-app',
@@ -11,21 +15,16 @@ import * as md from './angular-material/index';
   directives: [
     ROUTER_DIRECTIVES,
     md.MD_SIDENAV_DIRECTIVES,
-    md.MD_LIST_DIRECTIVES,
-    md.MD_CARD_DIRECTIVES,
     md.MdToolbar,
     md.MdButton,
-    md.MdInput,
-    md.MdCheckbox,
-    md.MdRadioGroup,
-    md.MdRadioButton,
     md.MdIcon
   ],
-  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher],
+  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService],
 
 })
 @Routes([
-  { path: '/', component: HomeComponent }
+  { path: '/', component: HomeComponent },
+  {path: '/album/:id', component: AlbumComponent}
 ])
 export class MusicStoreAppComponent {
   public title: string = 'SSW Music Store'

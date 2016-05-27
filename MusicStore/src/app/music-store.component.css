@@ -8,6 +8,15 @@
   color: rgba(0,0,0,0.54);
 }*/
 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
 md-toolbar.md-primary {
     background-color: red;
 }
