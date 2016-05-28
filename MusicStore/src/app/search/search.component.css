@@ -10,3 +10,7 @@ md-input {
 .pull-right {
     margin-left: auto;
 }
+
+md-card {
+    margin: 16px
+}

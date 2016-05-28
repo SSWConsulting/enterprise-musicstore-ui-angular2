@@ -20,7 +20,9 @@ import * as md from './../angular-material/index'
     md.MdList,
     md.MdListItem,
     md.MD_CARD_DIRECTIVES,
-    md.MdCard
+    md.MdCard,
+    md.MD_PROGRESS_BAR_DIRECTIVES,
+    md.MdProgressBar
   ]
 })
 @Routes([
@@ -28,6 +30,7 @@ import * as md from './../angular-material/index'
 ])
 export class GenresComponent implements OnInit {
   public genres: Genre[];
+  isLoading: boolean = false;
 
   constructor(private _genreService: GenreService, private _router: Router) {
   }
@@ -39,8 +42,12 @@ export class GenresComponent implements OnInit {
 
   getGenres() {
     this.genres = [];
+    this.isLoading = true;
     this._genreService.getGenres()
-      .subscribe(genres => this.genres = genres);
+      .subscribe(genres => {
+        this.genres = genres
+        this.isLoading = false;
+      });
   }
 
 

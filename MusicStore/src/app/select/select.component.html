@@ -1,0 +1,10 @@
+  <md-input (click)="toggle(showList)" disabled type="text" class="form-control" placeholder="Select"  [(ngModel)]="selectedItem" >
+    <span md-suffix><md-icon>arrow_drop_down</md-icon></span>
+  </md-input>
+  <md-card *ngIf="showList" (mouseleave)="toggle(showList)" >
+  <md-list>
+    <md-list-item *ngFor="let item of items" (click)="onSelect(item)">
+      {{item}}
+    </md-list-item>
+  </md-list>
+  </md-card>

@@ -17,6 +17,7 @@ import { AlbumComponent } from './album';
 import { AlbumService } from './services/album/album.service';
 import { CartService } from './services/cart/cart.service';
 import { OrderService } from './services/order/order.service';
+import { CheckoutService } from './services/checkout/checkout.service'
 
 declare var Auth0Lock: any;
 
@@ -35,7 +36,7 @@ declare var Auth0Lock: any;
     md.MdListItem,
     md.MdList
   ],
-  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService, OrderService],
+  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService, OrderService, CheckoutService],
 
 })
 @Routes([
