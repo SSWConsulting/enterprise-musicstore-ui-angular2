@@ -62,6 +62,13 @@ const barrels: string[] = [
   'app/album/+album',
   'app/album',
   'app/search',
+  'app/genres',
+  'app/genres/genre-details',
+  'app/genres/genre-detail',
+  'app/login',
+  'app/cart',
+  'app/checkout',
+  'app/orders',
   /** @cli-barrel */
 ];
 

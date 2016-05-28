@@ -1,0 +1,21 @@
+<!--<div class="album-section">
+  <div class="container ">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="list-group">
+          <button *ngFor="#genre of genres" (click)="goToGenre(genre)" type="button" class="list-group-item">
+						{{genre.name}}
+					</button>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>-->
+<md-nav-list>
+  <a md-list-item *ngFor="let genre of genres" (click)="goToGenre(genre)"> {{ genre.name }} </a>
+</md-nav-list>
+
+<router-outlet></router-outlet>

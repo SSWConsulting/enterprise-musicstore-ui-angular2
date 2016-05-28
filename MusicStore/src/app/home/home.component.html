@@ -2,5 +2,7 @@
 
 <ms-search (selected)="goToAlbumDetail($event)"></ms-search>
 
-<ms-album-summary *ngFor="let album of albums" (click)="goToAlbumDetail(album)" [album]="album">
-</ms-album-summary>
+<div class="card-container">
+    <ms-album-summary *ngFor="let album of albums" (click)="goToAlbumDetail(album)" [album]="album">
+    </ms-album-summary>
+</div>
