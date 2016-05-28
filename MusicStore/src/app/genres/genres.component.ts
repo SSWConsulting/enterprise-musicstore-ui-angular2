@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {Router, ROUTER_DIRECTIVES } from '@angular/router';
+import {Router, OnActivate, ROUTER_DIRECTIVES, Routes} from '@angular/router';
 import {GenreService} from '../services/genre/genre.service';
 import {GenreDetailComponent} from './genre-detail/genre-detail.component';
 import {Genre} from '../models';
@@ -18,9 +18,14 @@ import * as md from './../angular-material/index'
     ROUTER_DIRECTIVES,
     md.MD_LIST_DIRECTIVES,
     md.MdList,
-    md.MdListItem
- ]
+    md.MdListItem,
+    md.MD_CARD_DIRECTIVES,
+    md.MdCard
+  ]
 })
+@Routes([
+  { path: '/:name', component: GenreDetailComponent }
+])
 export class GenresComponent implements OnInit {
   public genres: Genre[];
 
@@ -29,6 +34,7 @@ export class GenresComponent implements OnInit {
 
   ngOnInit() {
     this.getGenres();
+    this._router.navigate([`/genres/Pop`]);
   }
 
   getGenres() {
@@ -36,6 +42,7 @@ export class GenresComponent implements OnInit {
     this._genreService.getGenres()
       .subscribe(genres => this.genres = genres);
   }
+
 
   goToGenre(genre: Genre) {
     this._router.navigate([`/genres/${genre.name}`]);

@@ -37,7 +37,7 @@ export class CartItem {
 }
 
 export class CartItems {
-    cartItem: CartItem[];
+    cartItems: CartItem[];
     cartTotal: number;
 }
 

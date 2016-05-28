@@ -16,6 +16,7 @@ import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
 import { AlbumComponent } from './album';
 import { AlbumService } from './services/album/album.service';
 import { CartService } from './services/cart/cart.service';
+import { OrderService } from './services/order/order.service';
 
 declare var Auth0Lock: any;
 
@@ -34,13 +35,13 @@ declare var Auth0Lock: any;
     md.MdListItem,
     md.MdList
   ],
-  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService],
+  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService, OrderService],
 
 })
 @Routes([
   { path: '/', component: HomeComponent },
   { path: '/album/:id', component: AlbumComponent },
-  {path: '/genres', component: GenresComponent},
+  {path: '/genres/...', component: GenresComponent},
   {path: '/login', component: LoginComponent},
   {path: '/cart', component: CartComponent},
   {path: '/checkout', component: CheckoutComponent},

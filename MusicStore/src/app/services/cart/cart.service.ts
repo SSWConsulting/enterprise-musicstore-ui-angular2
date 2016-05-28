@@ -16,17 +16,17 @@ export class CartService {
     }
 
     getCartItems(): Observable<CartItems> {
-        return this.authHttp.get(API_BASE + `/cart`)
+        return this.authHttp.get(API_BASE + `/cart/current`)
             .map((response: any) => response.json());
     }
 
     removeItem(item) {
-        return this.authHttp.delete(API_BASE + `/cart/${item.cartItemId}`, item.cartItemId)
+        return this.authHttp.delete(API_BASE + `/cart/remove/${item.cartItemId}`)
             .map((response: any) => response.json());
     }
 
     addCartItem(album: Album): Observable<CartItems> {
-        return this.authHttp.post(API_BASE + `/cart/${album.albumId}`, JSON.stringify(album.albumId))
+        return this.authHttp.post(API_BASE + `/cart/add/${album.albumId}`, '')
             .map((response: any) => response.json());
     }
 }

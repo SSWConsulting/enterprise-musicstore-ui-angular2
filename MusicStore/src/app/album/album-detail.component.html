@@ -1,4 +1,4 @@
-<div class="card ms-album-detail">
+<!--<div class="card ms-album-detail">
 	<img class="card-img-top" src="assets/img/placeholder.png" alt="Card image cap">
 	<div class="card-block">
 		<h4 class="card-title">{{album?.title}}</h4>
@@ -11,4 +11,22 @@
 		<button *ngIf="loggedIn()" class="btn btn-danger" (click)="onSelect(album)">Add to cart</button>
 		<p *ngIf="!loggedIn()">Please log in to add this item to your cart</p>
 	</div>
-</div>
+</div>-->
+
+<md-card>
+	<img class="card-img-top" src="assets/img/placeholder.png" alt="Card image cap" width="200" height="200">
+	<md-card-title>{{album?.title}}</md-card-title>
+	<md-card-content class="secondary">
+		<h4 class="card-title">{{album?.title}}</h4>
+		<div>
+			<label>Price: </label>{{album?.price | currency}}
+		</div>
+		<div>
+			<label>Date: </label> {{album?.created | date}}
+		</div>
+	</md-card-content>
+	<md-card-actions align="end">
+		<button *ngIf="loggedIn()" md-raised-button color="primary" (click)="onSelect(album)">Add to cart</button>
+		<p *ngIf="!loggedIn()">Please log in to add this item to your cart</p>
+	</md-card-actions>
+</md-card>

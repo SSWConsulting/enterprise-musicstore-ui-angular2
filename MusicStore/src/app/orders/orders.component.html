@@ -1,3 +1,19 @@
-<p>
-  orders works!
-</p>
+<md-card *ngIf="orders.length === 0">
+  <p>You have no orders</p>
+</md-card>
+<md-card *ngIf="orders.length > 0">
+				<table>
+					<tr>
+						<td>Id</td>
+						<td>Date</td>
+						<td>Cost</td>
+					</tr>
+					<tbody>
+						<tr *ngFor="let order of orders">
+							<td>{{order.orderId}}</td>
+							<td>{{order.orderDate | date}}</td>
+							<td><span>$</span>{{order.total}}</td>
+						</tr>
+					</tbody>
+				</table>
+</md-card>
