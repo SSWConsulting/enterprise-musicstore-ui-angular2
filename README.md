@@ -1,6 +1,4 @@
 # SSW Angular Music Store
-#### Introduction Video
-
 
 # How to start
 
@@ -9,7 +7,7 @@
 - angular-cli beta 1.5 (install instructions https://cli.angular.io/)
 
 In order to run the Musc Store:
-#### 1. clone the project
+#### 1. clone the project anf checkout the angular-cli branch
 ```bash
 git clone  https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2
 cd enterprise-musicstore-ui-angular2
@@ -20,7 +18,7 @@ cd enterprise-musicstore-ui-angular2\MusicStore
 ```bash
 npm install
 ```
-#### 3. start the lite-server and typescript watch
+#### 3. start the server
 ```bash
 ng serve
 ```

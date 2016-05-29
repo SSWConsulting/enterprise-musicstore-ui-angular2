@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from '@angular/common';
-import {Router} from '@angular/router';
+import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 import * as md from '../angular-material/index'
 
@@ -28,16 +28,25 @@ import {CheckoutService} from '../services/checkout/checkout.service';
 })
 export class CheckoutComponent {
   states = ['NSW', 'VIC', 'TAS', 'WA', 'SA', 'NT', 'QLD'];
-  public submitted = false;
+  model = new Order();
+  submitted = false;
 
   constructor(private _checkoutService: CheckoutService,
     private _router: Router) {
       this.model.state = '';
   }
 
-  model = new Order();
+  routerOnActivate(
+    current: RouteSegment,
+    prev?: RouteSegment,
+    currTree?: RouteTree,
+    prevTree?: RouteTree
+  ) {
+    if (!tokenNotExpired()) {
+      this._router.navigate([`/login`]);
+    }
+  }
   
-
   onSubmit() {
     console.log(JSON.stringify(this.model));
     this._checkoutService.postOrder(this.model).
