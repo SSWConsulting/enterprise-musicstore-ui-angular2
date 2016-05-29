@@ -14,7 +14,7 @@ import {CartService} from '../services/cart/cart.service';
   directives: [
     md.MD_CARD_DIRECTIVES,
     md.MdCard,
-    md.MdIcon,
+    md.MdIcon
   ]
 })
 export class CartComponent implements OnInit {

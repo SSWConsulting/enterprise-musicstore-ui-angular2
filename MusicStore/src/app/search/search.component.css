@@ -14,3 +14,7 @@ md-input {
 md-card {
     margin: 16px
 }
+
+.title {
+    padding: 0 5px;
+}
