@@ -10,7 +10,7 @@ https://youtu.be/HryBwVOJhDs
 
 We recommend you use the latest version of Visual Studio 2015 update 2 or Visual Studio Code
 
-### In order to run the Musc Store:
+### In order to run the Music Store:
 #### 1. Clone the project
 ```bash
 git clone  https://github.com/SSWConsulting/enterprise-musicstore-ui-angular2
