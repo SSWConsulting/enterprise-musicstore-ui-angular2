@@ -1,74 +1,51 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+﻿<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Angular2 Music Store</title>
-    <base href="/app/">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Angular2 Music Store</title>
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/node_modules/toastr/build/toastr.min.css">
-    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
-    <link href="/assets/styles/site.css" rel="stylesheet" />
 
+	<!--CSS Style Sheets-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	<link href="assets/styles/styles.css" rel="stylesheet" />
+
+	<!--Angular2 Scripts-->
+	<script src="/node_modules/es6-shim/es6-shim.min.js"></script>
+	<script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
+	<script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	<script src="/node_modules/systemjs/dist/system.src.js"></script>
+	<script src="/node_modules/rxjs/bundles/Rx.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script src="/node_modules/angular2/bundles/router.dev.js"></script>
+	<script src="/node_modules/angular2/bundles/http.dev.js"></script>
+
+	<!--Third party scrcipts-->
+	<script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
+
+	<!--SystemJS Config Scripts-->
+	<script src="system.js"></script>
+	<script>
+		System.import('app/main')
+            .then(null, console.error.bind(console));
+	</script>
 </head>
 
 <body>
-    <app>
-        <div class="col-sm-12">
-            <progress class="progress progress-striped progress-animated" value="100" max="100"></progress>
-        </div>
-    </app>
-
-    <!--Angular2 Scripts-->
-    <script src="/node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="/node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="/node_modules/systemjs/dist/system.src.js"></script>
-    <script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-
-    <script>
-        System.config({
-			map: {
-				rxjs: '/node_modules/rxjs' //or wherever you have it installed
-			},
-			packages: {
-				rxjs: {
-					defaultExtension: 'js'
-				}
-			},
-			"defaultJSExtensions": true,
-			"paths": {
-				"bootstrap": "bootstrap", "*": "/node_modules/*"
-			}
-		});
-    </script>
-
-    <!--Angular2 Scripts-->
-    <script src="/node_modules/rxjs/bundles/Rx.min.js"></script>
-    <script src="/node_modules/angular2/bundles/angular2.min.js"></script>
-    <script src="/node_modules/angular2/bundles/router.js"></script>
-    <script src="/node_modules/angular2/bundles/http.min.js"></script>
-
-    <!--Third party scrcipts-->
-    <script src="http://cdn.auth0.com/js/lock-7.min.js">
-
-    </script>
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="/node_modules/moment/min/moment.min.js"></script>
-    <script src="/node_modules/tether/dist/js/tether.min.js"></script>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/node_modules/toastr/toastr.js"></script>
-
-    <script>
-        System.import('bootstrap')
-		  .catch(function (e) {
-		  	console.error(e);
-		  });
-    </script>
+	<app>
+		<div class="row">
+			<div class="col-sm-12">
+				<progress class="progress progress-striped progress-animated" value="100" max="100"></progress>
+			</div>
+		</div>
+	</app>
 
 </body>
 

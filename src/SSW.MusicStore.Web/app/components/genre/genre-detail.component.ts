@@ -4,13 +4,13 @@ import {RouteParams, Router} from 'angular2/router';
 import {Album} from '../../models';
 import {GenreService} from '../../services/genre/genre.service';
 import {Routes} from '../../route.config';
-import {AlbumSummary} from '../album/album-summary';
+import {AlbumSummary} from '../album/album-summary.component';
 
 @Component({
   selector: 'genre-detail',
-  templateUrl: './components/genre/genre-detail.component.html',
+  templateUrl: 'app/components/genre/genre-detail.component.html',
   directives: [CORE_DIRECTIVES, AlbumSummary],
-  styleUrls: ['./components/genre/genre-detail.component.css'],
+  styleUrls: ['app/components/genre/genre-detail.component.css'],
   inputs: ['genre']
 })
 export class GenreDetailComponent implements OnInit {

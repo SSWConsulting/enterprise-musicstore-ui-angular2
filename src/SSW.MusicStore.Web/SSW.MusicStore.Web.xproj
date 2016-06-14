@@ -17,5 +17,9 @@
     <DevelopmentServerPort>33961</DevelopmentServerPort>
     <TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
   </PropertyGroup>
+  <ItemGroup>
+    <DnxInvisibleFolder Include="staging\" />
+    <DnxInvisibleFolder Include="typings\" />
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.targets" Condition="'$(VSToolsPath)' != ''" />
 </Project>

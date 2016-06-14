@@ -1,37 +1,27 @@
 {
-  "webroot": ".app",
-  "version": "1.0.0-*",
-
+	"webroot": ".app",
+	"version": "1.0.0-*",
 	"dependencies": {
 		"Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
 		"Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
 		"Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final"
 	},
 
-  "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
-  },
+	"commands": {
+		"web": "Microsoft.AspNet.Server.Kestrel"
+	},
 
-  "frameworks": {
-    "dnx451": {
-      "dependencies": {
-        "Serilog": "1.5.12",
-        "Serilog.Sinks.Seq": "1.5.17",
-        "SerilogWeb.Classic": "2.0.6"
-      }
-    }
-  },
+	"frameworks": {
+		"dnx451": { },
+		"dnxcore50": { }
+	},
 
-  "exclude": [
-    "wwwroot",
-    "node_modules"
-  ],
-  "publishExclude": [
-    "**.user",
-    "**.vspscc"
-  ],
-  "scripts": {
-    "postrestore": [ "npm install " ],
-    "prepare": []
-  }
+	"exclude": [
+		"wwwroot",
+		"node_modules"
+	],
+	"publishExclude": [
+		"**.user",
+		"**.vspscc"
+	]
 }

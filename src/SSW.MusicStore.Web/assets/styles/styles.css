@@ -1,0 +1,141 @@
+.ssw-loading-spinner {
+    margin-top: 48px;
+}
+
+a {
+    color: rgba(207, 70, 67, 0.701961);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #818a91;
+    text-decoration: none;
+}
+
+.btn-link {
+    color: rgba(91, 82, 82, 0.5);
+}
+
+.btn-link:hover {
+    color: #818a91;
+    text-decoration: none;
+}
+
+body {
+    min-height: 75rem;
+    background-image: url('/assets/img/BG-Blur.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.title {
+    padding-top: 5px;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+.navbar-toggler:focus,
+.navbar-toggler:hover {
+    border-color: rgba(207, 70, 67, 0.7 );
+    box-shadow: 0 1px 1px rgba(207, 70, 67, 0.7 ) inset, 0 0 8px rgba(207, 70, 67, 0.7 );
+    outline: 0 none;
+}
+
+.album-section {
+    min-height: 50rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: transparent;
+}
+
+.navbar-toggler {
+    margin: 0 5px;
+}
+
+.navbar-collapse .container-fluid {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid #55595c;
+}
+
+.navbar-collapse h4 {
+    color: #818a91;
+}
+
+.navbar-collapse .text-muted {
+    color: #818a91;
+}
+
+.navbar .text-muted {
+    color: #818a91;
+}
+
+.about {
+    float: left;
+    max-width: 30rem;
+    margin-right: 3rem;
+}
+
+.social a {
+    font-weight: 500;
+    color: #eceeef;
+}
+
+.social a:hover {
+    color: #fff;
+}
+
+* {
+    margin: 0;
+}
+
+body > .container {
+    padding: 60px 15px 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.ms-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #3c3c3c;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.ms-foooter p {
+    margin-bottom: .15rem;
+}
+
+.ms-bg-white {
+    background-color: #fff;
+}

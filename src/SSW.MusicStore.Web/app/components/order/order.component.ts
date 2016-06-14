@@ -5,8 +5,8 @@ import {Order} from '../../models';
 
 @Component({
     selector: 'orders',
-    templateUrl: './components/order/order.component.html',
-    styleUrls: ['./components/order/order.component.css'],
+    templateUrl: 'app/components/order/order.component.html',
+    styleUrls: ['app/components/order/order.component.css'],
     directives: [CORE_DIRECTIVES],
     pipes: [DatePipe]
 })

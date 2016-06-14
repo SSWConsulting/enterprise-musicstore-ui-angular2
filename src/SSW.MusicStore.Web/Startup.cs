@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.FileProviders;
-using Microsoft.AspNet.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNet.StaticFiles;
 using Microsoft.Extensions.PlatformAbstractions;
 
 namespace SSW.MusicStore.Web
 {
-    public class Startup
+	public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
@@ -39,16 +34,29 @@ namespace SSW.MusicStore.Web
             // Serve wwwroot as root
             app.UseFileServer();
 
+            var nodeModulesPath =
+                Path.Combine(environment.ApplicationBasePath, "node_modules");
+
+            createFolderIfItDoesNotExist(nodeModulesPath);
+
             // Serve /node_modules as a separate root (for packages that use other npm modules client side)
             app.UseFileServer(new FileServerOptions()
             {
                 // Set root of file server
-                FileProvider = new PhysicalFileProvider(Path.Combine(environment.ApplicationBasePath, "node_modules")),
+                FileProvider = new PhysicalFileProvider(nodeModulesPath),
                 // Only react to requests that match this path
                 RequestPath = "/node_modules", 
                 // Don't expose file system
                 EnableDirectoryBrowsing = false
             });
+        }
+
+        private static void createFolderIfItDoesNotExist(string nodeModulesPath)
+        {
+            bool exists = System.IO.Directory.Exists(nodeModulesPath);
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(nodeModulesPath);
         }
     }
 }

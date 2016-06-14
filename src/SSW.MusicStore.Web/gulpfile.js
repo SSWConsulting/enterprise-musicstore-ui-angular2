@@ -1,44 +1,61 @@
-/// <binding AfterBuild='default' />
-/// <reference path="tools/typings/tsd/tsd.d.ts" />
-
+/// <binding BeforeBuild='tsc' />
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins');
-var typescript = require('gulp-typescript');
-var tslint = require("gulp-tslint");
-var del = require("del");
-var runSequence = require('run-sequence');
+var ts = require('gulp-typescript');
+var path = require('path');
+var Builder = require('systemjs-builder')
+var inlineNg2Template = require('gulp-inline-ng2-template')
+var merge = require('merge-stream');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
 
-var tsProject = typescript.createProject('tsconfig.json');
+var project = ts.createProject('tsconfig.json');
 
-var paths = {
-    wwwroot: "./wwwroot",
-    wwwrootApp: "./wwwroot/app" 
-};
-
-gulp.task('typescript-traspile', () => {
-    var tsResult = tsProject.src()
-        .pipe(typescript(tsProject));
-    return tsResult.js.pipe(gulp.dest(paths.wwwroot));
+gulp.task('tsc', () => {
+    return project.src()
+        .pipe(ts(project))
+        .pipe(gulp.dest('.'));
 });
 
-gulp.task('app-move-files', () => {
-    return gulp.src(['app/**/*.*',
-        '!app/**/*.ts',
-        '!app/**/*.spec',
-    ])
-        .pipe(gulp.dest(paths.wwwrootApp));
+gulp.task('stage-inline', ['tsc'], () => {
+    return gulp.src('./app/**/*.js')
+        .pipe(inlineNg2Template({
+            base: '.',
+            target: 'es5'
+        }))
+        .pipe(gulp.dest('./staging'));
+})
+
+gulp.task('bundle-staging', ['stage-inline'], cb => {
+    var builder = new Builder('.', 'system.js');
+
+    builder.config({
+        defaultJSExtensions: 'js',
+        map: {
+            'angular2': 'node_modules/angular2',
+            'rxjs': 'node_modules/rxjs'
+        },
+    });
+
+    builder.buildStatic('staging/main', './staging/bundled.js')
+        .then(output => cb())
+        .catch(err => console.log('Build error: ' + err));
 });
 
-gulp.task('lint-typescript', function() {
-    gulp.src(['app/*.ts', 'app/**/**/*.ts', 'app/**/*.ts'])
-        .pipe(tslint())
-        .pipe(tslint.report('verbose'));
-});
+gulp.task('build', ['bundle-staging'], () => {
+    var js = gulp.src([
+        'node_modules/angular2/bundles/angular2-polyfills.js',
+        'staging/bundled.js'
+    ]).pipe(concat('script.js'));
 
-gulp.task('clean', () => {
-    del([paths.wwwrootApp]);
-});
+    var html = gulp.src(['./index-dist.html'])
+        .pipe(rename('index.html'));
 
-gulp.task('default', () => {
-    runSequence('clean', 'lint-typescript', 'typescript-traspile', 'app-move-files');
+    var css = gulp.src('assets/**/*.css')
+        .pipe(concat('styles.css'));
+    
+    gulp.src(['assets/img/**/*'])
+        .pipe(gulp.dest('./wwwroot/assets/img/'));
+        
+    return merge(js, css, html)
+        .pipe(gulp.dest('./wwwroot'));
 });
