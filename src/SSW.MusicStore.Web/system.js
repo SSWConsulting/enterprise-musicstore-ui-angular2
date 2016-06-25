@@ -1,16 +1,3 @@
-
-//System.config({
-//    packages: {
-//        app: {
-//            format: 'register',
-//            defaultExtension: 'js'
-//        }
-//    },
-//    map: {
-//        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
-//    }
-//});
-
 /**
  * System configuration for Angular 2 samples
  * Adjust as necessary for your application needs.
