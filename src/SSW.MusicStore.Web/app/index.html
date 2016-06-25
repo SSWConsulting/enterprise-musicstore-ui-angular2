@@ -12,15 +12,20 @@
 	<link href="assets/styles/styles.css" rel="stylesheet" />
 
 	<!--Angular2 Scripts-->
-	<script src="/node_modules/es6-shim/es6-shim.min.js"></script>
-	<script src="/node_modules/systemjs/dist/system-polyfills.js"></script>
-	<script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
-	<script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>
-	<script src="/node_modules/systemjs/dist/system.src.js"></script>
-	<script src="/node_modules/rxjs/bundles/Rx.js"></script>
-	<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
+	<!--<script src="/node_modules/es6-shim/es6-shim.min.js"></script>-->
+	<!--<script src="/node_modules/systemjs/dist/system-polyfills.js"></script>-->
+	<!--<script src="/node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+	<script src="/node_modules/angular2/bundles/angular2-polyfills.js"></script>-->
+	<!--<script src="/node_modules/systemjs/dist/system.src.js"></script>-->
+	<!--<script src="/node_modules/rxjs/bundles/Rx.js"></script>-->
+	<!--<script src="/node_modules/angular2/bundles/angular2.dev.js"></script>
 	<script src="/node_modules/angular2/bundles/router.dev.js"></script>
-	<script src="/node_modules/angular2/bundles/http.dev.js"></script>
+	<script src="/node_modules/angular2/bundles/http.dev.js"></script>-->
+
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
 
 	<!--Third party scrcipts-->
 	<script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
@@ -32,10 +37,13 @@
 
 	<!--SystemJS Config Scripts-->
 	<script src="system.js"></script>
-	<script>
+	<!--<script>
 		System.import('app/main')
             .then(null, console.error.bind(console));
-	</script>
+	</script>-->
+    <script>
+      System.import('app/main').catch(function(err){ console.error(err); });
+    </script>
 </head>
 
 <body>

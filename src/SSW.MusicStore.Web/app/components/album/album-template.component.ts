@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {Album, User} from '../../models';
 import {tokenNotExpired} from 'angular2-jwt';
 

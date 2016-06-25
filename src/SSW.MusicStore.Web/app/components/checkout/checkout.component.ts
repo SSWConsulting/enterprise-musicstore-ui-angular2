@@ -1,8 +1,9 @@
-import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from 'angular2/common';
+import {Component} from '@angular/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from '@angular/common';
 import {Order} from '../../models';
 import {CheckoutService} from '../../services/checkout/checkout.service';
-import {RouteParams, Router, CanActivate} from 'angular2/router';
+import { Observable } from 'rxjs/Observable';
+import {ActivatedRoute, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {Routes} from '../../route.config';
 import {tokenNotExpired} from 'angular2-jwt';
 
@@ -13,13 +14,16 @@ import {tokenNotExpired} from 'angular2-jwt';
     styleUrls: ['app/components/checkout/checkout.component.css'],
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl]
 })
-@CanActivate(() => tokenNotExpired())
 export class CheckoutComponent {
     states = ['NSW', 'VIC', 'TAS', 'WA', 'SA', 'NT', 'QLD'];
     public submitted = false;
 
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+        return tokenNotExpired();
+    }
+
     constructor(private _checkoutService: CheckoutService,
-        private _routeParams: RouteParams, private _router: Router) {
+        private _router: Router) {
     }
 
     model = new Order();

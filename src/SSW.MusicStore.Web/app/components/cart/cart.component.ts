@@ -1,8 +1,9 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart/cart.service';
 import {CartItems} from '../../models';
 import {Routes} from '../../route.config';
-import {RouteParams, Router, CanActivate} from 'angular2/router';
+import { Observable } from 'rxjs/Observable';
+import {ActivatedRoute, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 
 
@@ -12,13 +13,16 @@ import {tokenNotExpired} from 'angular2-jwt';
     styleUrls: ['app/components/cart/cart.component.css'],
     directives: []
 })
-@CanActivate(
-    () => tokenNotExpired())
-export class CartComponent implements OnInit {
+
+export class CartComponent implements OnInit, CanActivate {
     cart: CartItems;
 
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
+        return tokenNotExpired();
+    }
+
     constructor(private _cartService: CartService,
-        private _routeParams: RouteParams, private _router: Router) {
+        private _router: Router) {
     }
 
     ngOnInit() {

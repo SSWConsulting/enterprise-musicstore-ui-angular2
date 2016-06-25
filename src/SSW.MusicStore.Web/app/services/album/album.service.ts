@@ -1,6 +1,6 @@
 import {Album} from '../../models';
-import {Http, Response} from 'angular2/http';
-import {Injectable} from 'angular2/core';
+import {Http, Response} from '@angular/http';
+import {Injectable} from '@angular/core';
 import {API_BASE} from '../../config';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';

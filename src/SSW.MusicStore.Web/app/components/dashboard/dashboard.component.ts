@@ -1,17 +1,17 @@
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {Router} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album/album.service';
 import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary.component';
 import {Search} from '../search/search.component';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 
 @Component({
     selector: 'dashboard',
     templateUrl: 'app/components/dashboard/dashboard.component.html',
     styleUrls: ['app/components/dashboard/dashboard.component.css'],
-    directives: [CORE_DIRECTIVES, AlbumSummary, Search ]
+    directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, AlbumSummary, Search ]
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[] = [];
@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
     }
 
     goToAlbumDetail(album: Album) {
-        this._router.navigate([`/${Routes.album.as}`, { id: album.albumId }]);
+        this._router.navigate([`/${Routes.album.as}`, album.albumId]);
     }
 
     getPopularAlbums() {
