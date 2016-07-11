@@ -50,11 +50,8 @@ export class GenresComponent implements OnInit {
       });
   }
 
-
   goToGenre(genre: Genre) {
     this._router.navigate([`/genres/${genre.name}`]);
   }
-
-
 }
 

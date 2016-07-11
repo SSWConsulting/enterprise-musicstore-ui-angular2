@@ -19,18 +19,12 @@ import { SearchComponent } from '../search/search.component';
 export class HomeComponent implements OnInit {
 
   public albums: Album[] = [];
-  searching: boolean;
-
+  
   constructor(private _albumService: AlbumService, private _router: Router) {
   }
 
   ngOnInit() {
     this.getPopularAlbums();
-  }
-
-  hide() {
-    this.searching = true;
-    alert(this.searching);
   }
 
   goToAlbumDetail(album: Album) {

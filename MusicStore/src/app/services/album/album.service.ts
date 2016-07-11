@@ -15,7 +15,7 @@ export class AlbumService {
     constructor(public _http: Http) {
     }
 
-    getPopularAlbums(): any {
+    getPopularAlbums(): Observable<Album[]> {
         return this._http.get(API_BASE + `/popular`)
             .map((response: Response) => response.json());
     }

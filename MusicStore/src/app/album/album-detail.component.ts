@@ -1,6 +1,6 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
-import * as md from '../angular-material/index'
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {tokenNotExpired} from 'angular2-jwt';
 
 import {Album, User} from '../models';
@@ -12,8 +12,7 @@ import {Album, User} from '../models';
     templateUrl: 'album-detail.component.html',
     directives: [
         CORE_DIRECTIVES,
-        md.MD_CARD_DIRECTIVES,
-        md.MdCard
+        MD_CARD_DIRECTIVES
     ]
 })
 export class AlbumDetailComponent {
@@ -25,7 +24,7 @@ export class AlbumDetailComponent {
         this.selected.next(album);
     }
     
-   loggedIn() {
-    return tokenNotExpired();
-  }
+    loggedIn() {
+        return tokenNotExpired();
+    }
 }
