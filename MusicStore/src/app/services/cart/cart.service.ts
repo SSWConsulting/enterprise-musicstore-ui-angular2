@@ -1,4 +1,4 @@
-import {CartItem, CartItems, Album} from '../../models';
+import {CartItem, Cart, Album} from '../../models';
 import {Http, Response} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {API_BASE} from '../../config';
@@ -9,13 +9,10 @@ import {AuthHttp} from 'angular2-jwt';
 
 @Injectable()
 export class CartService {
-    cartItem: CartItem[];
-    cartItems: CartItems;
-
     constructor(public _http: Http, public authHttp: AuthHttp) {
     }
 
-    getCartItems(): Observable<CartItems> {
+    getCartItems(): Observable<Cart> {
         return this.authHttp.get(API_BASE + `/cart/current`)
             .map((response: any) => response.json());
     }
@@ -25,7 +22,7 @@ export class CartService {
             .map((response: any) => response.json());
     }
 
-    addCartItem(album: Album): Observable<CartItems> {
+    addCartItem(album: Album): Observable<Cart> {
         return this.authHttp.post(API_BASE + `/cart/add/${album.albumId}`, '')
             .map((response: any) => response.json());
     }

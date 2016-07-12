@@ -1,29 +1,32 @@
-<md-card *ngIf="cartItems.length === 0">
+<md-card *ngIf="cart.cartItems?.length === 0">
   <p>No items in the cart</p>
 </md-card>
-<md-card *ngIf="cartItems.length > 0">
-  <table>
+<md-card *ngIf="cart.cartItems?.length > 0">
+  <table class="table">
+    <thead>
     <tr>
-      <td>Item</td>
-      <td>Amount</td>
-      <td>Price</td>
-      <td></td>
+      <th colspan="2">Item</th>
+      <th>Amount</th>
+      <th class="text-right">Price</th>
+      <th></th>
     </tr>
+    </thead>
     <tbody>
-      <tr *ngFor="let item of cartItems">
+      <tr *ngFor="#item of cart.cartItems">
         <td>
           <img [src]="item.album.albumArtUrl" class="img-responsive" height="45" width="45">
+        </td>
+        <td>
           <span>{{item.album.title}}</span>
         </td>
         <td>{{item.count}}</td>
-        <td>{{item.album.price}}</td>
+        <td class="text-right">{{item.album.price}}</td>
         <td style="width: 47px;">
           <button  md-raised-button color="primary" (click)="removeCartItem(item)"><md-icon>delete</md-icon></button>
         </td>
       </tr>
       <tr>
-        <td>Total</td>
-        <td></td>
+        <td colspan="3">Total</td>
         <td>{{cart?.cartTotal}}</td>
         <td></td>
       </tr>

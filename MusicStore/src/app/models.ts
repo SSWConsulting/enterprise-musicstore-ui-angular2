@@ -36,7 +36,7 @@ export class CartItem {
     albumId: number;
 }
 
-export class CartItems {
+export class Cart {
     cartItems: CartItem[];
     cartTotal: number;
 }

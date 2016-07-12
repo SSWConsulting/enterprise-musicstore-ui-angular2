@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
-import * as md from '../angular-material/index'
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import {MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 
-import {CartItems, CartItem} from '../models';
+import {Cart, CartItem} from '../models';
 import {CartService} from '../services/cart/cart.service';
 
 @Component({
@@ -12,14 +13,13 @@ import {CartService} from '../services/cart/cart.service';
   templateUrl: 'cart.component.html',
   styleUrls: ['cart.component.css'],
   directives: [
-    md.MD_CARD_DIRECTIVES,
-    md.MdCard,
-    md.MdIcon
+    MD_CARD_DIRECTIVES,
+    MD_ICON_DIRECTIVES
   ]
 })
 export class CartComponent implements OnInit {
-  cart: CartItems;
-  cartItems: CartItem[] = [];
+  cart: Cart = <Cart>{};
+
   constructor(private _cartService: CartService,
     private _router: Router) {
   }
@@ -53,7 +53,6 @@ export class CartComponent implements OnInit {
       .subscribe(cart => {
         toastr.error(`${item.album.title} successfully removed from the cart`);
         this.cart = cart;
-        this.cartItems = this.cart.cartItems;
       });
   }
 
