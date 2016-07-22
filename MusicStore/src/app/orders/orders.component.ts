@@ -51,7 +51,8 @@ export class OrdersComponent implements OnInit {
           return {
             orderId: order.orderId,
             orderDate: new Date(order.orderDate.toString()),
-            total: order.total
+            total: order.total,
+            transactionId: order.transactionId
           };
         }).forEach((order) => {
           this.orders.push(order);

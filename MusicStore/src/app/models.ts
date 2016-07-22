@@ -55,6 +55,8 @@ export class Order {
     phone: string;
     email: string;
     total: number;
+    stripeToken: string;
+    transactionId: string;
     OrderDetals: OrderDetails[];
 }
 

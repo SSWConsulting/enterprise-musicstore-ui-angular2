@@ -12,7 +12,7 @@
     </tr>
     </thead>
     <tbody>
-      <tr *ngFor="#item of cart.cartItems">
+      <tr *ngFor="let item of cart.cartItems">
         <td>
           <img [src]="item.album.albumArtUrl" class="img-responsive" height="45" width="45">
         </td>
