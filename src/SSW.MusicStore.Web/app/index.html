@@ -1,15 +1,15 @@
 ﻿<html>
 <head>
-	<title>Angular2 Music Store</title>
-	<base href="/">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angular2 Music Store</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-	<!--CSS Style Sheets-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link href="assets/styles/styles.css" rel="stylesheet" />
+    <!--CSS Style Sheets-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="assets/styles/styles.css" rel="stylesheet" />
 
 	<!--Angular2 Scripts-->
     <script src="node_modules/core-js/client/shim.min.js"></script>
@@ -17,34 +17,44 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
-	<!--Third party scrcipts-->
-	<script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
+    <!--Third party scrcipts-->
+    <script src="http://cdn.auth0.com/js/lock-7.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js"></script>
 
 	<!--SystemJS Config Scripts-->
 	<script src="system.js"></script>
-	<!--<script>
-		System.import('app/main')
-            .then(null, console.error.bind(console));
-	</script>-->
-    <script>
-      System.import('app/main').catch(function(err){ console.error(err); });
+	<script>
+		System.import('app/main').catch(function(err){ console.error(err); });
+    </script>
+
+    <!-- Raygun error handling-->
+    <script type="text/javascript">
+        !function (a, b, c, d, e, f, g, h) {
+            a.RaygunObject = e, a[e] = a[e] || function () {
+                (a[e].o = a[e].o || []).push(arguments)
+            }, f = b.createElement(c), g = b.getElementsByTagName(c)[0],
+            f.async = 1, f.src = d, g.parentNode.insertBefore(f, g), h = a.onerror, a.onerror = function (b, c, d, f, g) {
+                h && h(b, c, d, f, g), g || (g = new Error(b)), a[e].q = a[e].q || [], a[e].q.push({
+                    e: g
+                })
+            }
+        }(window, document, "script", "//cdn.raygun.io/raygun4js/raygun.min.js", "rg4js");
     </script>
 </head>
 
 <body>
-	<app>
-		<div class="row">
-			<div class="col-sm-12">
-				<progress class="progress progress-striped progress-animated" value="100" max="100"></progress>
-			</div>
-		</div>
-	</app>
-
+    <app>
+        <div class="row">
+            <div class="col-sm-12">
+                <progress class="progress progress-striped progress-animated" value="100" max="100"></progress>
+            </div>
+        </div>
+    </app>
+    
 </body>
-
+<script src="../staging/raygun.js"></script>
 </html>

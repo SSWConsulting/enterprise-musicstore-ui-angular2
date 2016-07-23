@@ -2,8 +2,11 @@ import {Album} from '../../models';
 import {Http, Response} from '@angular/http';
 import {Injectable} from '@angular/core';
 import {API_BASE} from '../../config';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/catch';
 
 
 @Injectable()
@@ -25,9 +28,20 @@ export class AlbumService {
     }
 
     search(val: string): any {
+        var empty: Album[] = [];
         return this._http
             .get(API_BASE + `/albums/${val}`)
-            .retry(2)
-            .map((response: Response) => response.json());
+            .retryWhen((attempts) => {
+                return Observable.range(1, 2).zip(attempts, (i) => i).flatMap((i) => {
+                    console.log(`delay retry by ${i} second(s)`);
+                    return Observable.timer(i * 1000);
+                });
+            })
+            .map((response: Response) => response.json())
+            .catch((err : Error) => {
+                console.log(err);
+                Raygun.send(err);
+                return Observable.fromArray(empty);
+            });
     }
 }

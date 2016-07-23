@@ -9,12 +9,13 @@
 </div>
 
 <div class="album-section">
-	<div class="container">
-		<album-summary (click)="goToAlbumDetail(album)"
-					   *ngFor="#album of albums"
-					   [album]="album">
-		</album-summary>
-	</div>
+    <div class="container">
+        <loading-indicator></loading-indicator>
+        <album-summary (click)="goToAlbumDetail(album)"
+                        *ngFor="#album of albums"
+                        [album]="album">
+        </album-summary>
+    </div>
 </div>
 
 
