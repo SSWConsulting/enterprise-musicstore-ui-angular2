@@ -1,9 +1,8 @@
 ﻿using System.IO;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.FileProviders;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNet.StaticFiles;
-using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.Extensions.FileProviders;
 
 namespace SSW.MusicStore.Web
 {
@@ -13,10 +12,8 @@ namespace SSW.MusicStore.Web
         {
         }
 
-        public void Configure(IApplicationBuilder app, IApplicationEnvironment environment)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment environment)
         {
-            app.UseIISPlatformHandler(); // Used for Active Directory (Windows Authentication) and can be removed.
-
             // Route all unknown requests to app root
             app.Use(async (context, next) =>
             {
@@ -35,7 +32,7 @@ namespace SSW.MusicStore.Web
             app.UseFileServer();
 
             var nodeModulesPath =
-                Path.Combine(environment.ApplicationBasePath, "node_modules");
+                Path.Combine(environment.ContentRootPath, "node_modules");
 
             createFolderIfItDoesNotExist(nodeModulesPath);
 

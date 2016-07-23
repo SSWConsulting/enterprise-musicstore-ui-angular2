@@ -10,7 +10,7 @@
 
 <table class="table table-bordered">
 	<tbody>
-		<tr class="ms-search-result" *ngFor="#album of albums | async">
+		<tr class="ms-search-result" *ngFor="let album of albums | async">
 			<td>
 				<img src="assets/img/placeholder.png" class="img-responsive" height="45" width="45">
 				<span>{{album.title}}</span>
