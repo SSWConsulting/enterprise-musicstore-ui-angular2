@@ -1,27 +1,56 @@
 {
-	"webroot": ".app",
-	"version": "1.0.0-*",
-	"dependencies": {
-		"Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-		"Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
-		"Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final"
-	},
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+  "version": "1.0.0-*",
+  "dependencies": {
+    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
+    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0",
+    "Microsoft.Extensions.FileProviders.Physical": "1.0.0",
+    "Microsoft.Extensions.FileProviders.Abstractions": "1.0.0",
+    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.0.0",
+    "Microsoft.Extensions.Logging.Console": "1.0.0",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0"
+  },
+  "tools": {
+    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
+  },
+  "runtimeOptions": {
+    "configProperties": {
+      "System.GC.Server": true
+    }
+  },
+  "frameworks": {
+    "net451": {},
+    "net452": {},
+    "net461": {},
+    "netcoreapp1.0": {
+      "dependencies": {
+        "Microsoft.NETCore.App": {
+          "version": "1.0.0",
+          "type": "platform"
+        }
+      }
+    }
+  },
 
-	"commands": {
-		"web": "Microsoft.AspNet.Server.Kestrel"
-	},
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "preserveCompilationContext": true
+  },
 
-	"frameworks": {
-		"dnx451": { },
-		"dnxcore50": { }
-	},
+  "exclude": [
+    "wwwroot",
+    "node_modules"
+  ],
 
-	"exclude": [
-		"wwwroot",
-		"node_modules"
-	],
-	"publishExclude": [
-		"**.user",
-		"**.vspscc"
-	]
+  "publishOptions": {
+    "exclude": [
+      "**.user",
+      "**.vspscc"
+    ]
+  }
 }

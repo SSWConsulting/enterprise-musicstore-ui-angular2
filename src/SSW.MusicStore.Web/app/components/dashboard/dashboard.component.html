@@ -12,7 +12,7 @@
     <div class="container">
         <loading-indicator></loading-indicator>
         <album-summary (click)="goToAlbumDetail(album)"
-                        *ngFor="#album of albums"
+                        *ngFor="let album of albums"
                         [album]="album">
         </album-summary>
     </div>

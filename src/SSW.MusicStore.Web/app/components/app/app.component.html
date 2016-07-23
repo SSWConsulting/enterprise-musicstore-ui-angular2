@@ -34,7 +34,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item"
 						   (click)="goToGenre(genre)"
-						   *ngFor="#genre of genres">
+						   *ngFor="let genre of genres">
 							{{genre.name}}
 						</a>
 						<div class="dropdown-divider"></div>

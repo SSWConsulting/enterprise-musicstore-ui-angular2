@@ -3,8 +3,8 @@ import {Observer} from 'rxjs/Observer';
 import 'rxjs/add/operator/share';
 
 export class LoadingService {
-    loading$: Observable<string>;
-    private _observer: Observer<string>;
+    loading$: Observable<{}>;
+    private _observer: Observer<{}>;
 
     constructor() {
         this.loading$ = new Observable(observer => this._observer = observer).share();

@@ -41,7 +41,7 @@ export class AlbumService {
             .catch((err : Error) => {
                 console.log(err);
                 Raygun.send(err);
-                return Observable.fromArray(empty);
+                return Observable.of(empty);
             });
     }
 }
