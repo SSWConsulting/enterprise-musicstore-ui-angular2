@@ -20,7 +20,6 @@ export const routes: RouterConfig = [
     { path: 'checkout', component: CheckoutComponent, canActivate: [Authorize] },
     { path: 'orders', component: OrdersComponent, canActivate: [Authorize] },
     { path: 'genres', component: GenresComponent },
-    { path: '', component: HomeComponent },
     { path: 'genres/:name', component: GenreDetailComponent }
     //{ path: '**', component: NoContent }
 ];
