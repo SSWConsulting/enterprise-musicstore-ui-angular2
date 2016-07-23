@@ -36,7 +36,7 @@ export class CartItem {
     albumId: number;
 }
 
-export class CartItems {
+export class Cart {
     cartItems: CartItem[];
     cartTotal: number;
 }
@@ -55,6 +55,8 @@ export class Order {
     phone: string;
     email: string;
     total: number;
+    stripeToken: string;
+    transactionId: string;
     OrderDetals: OrderDetails[];
 }
 

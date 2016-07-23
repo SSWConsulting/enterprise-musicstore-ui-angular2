@@ -14,7 +14,7 @@ export class OrderService {
     }
 
     getOrders() : Observable<Order[]> {
-        return this.authHttp.get(API_BASE + `/order`)
+        return this.authHttp.get(API_BASE + `/order/all`)
             .map((response: Response) => response.json());
     }
 }
