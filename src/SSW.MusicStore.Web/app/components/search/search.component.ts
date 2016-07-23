@@ -1,6 +1,6 @@
-import {Control, FORM_DIRECTIVES, NgFor, NgIf, AsyncPipe} from 'angular2/common';
-import {Component, EventEmitter, ChangeDetectionStrategy, Output, } from 'angular2/core';
-import {Http} from 'angular2/http';
+import {Control, FORM_DIRECTIVES, NgFor, NgIf, AsyncPipe} from '@angular/common';
+import {Component,EventEmitter, ChangeDetectionStrategy, Output, } from '@angular/core';
+import {Http} from '@angular/http';
 import {AlbumService} from '../../services/album/album.service';
 import {LoadingService} from '../../services/loading/loading.service';
 import {LoadingIndicator} from '../loading/loading.indicator.component';
@@ -32,7 +32,7 @@ export class Search {
 
     searchText = new Control();
 
-    albums: Observable<Album[]>;
+    albums: Observable<any>;
 
     constructor(http: Http, albumService: AlbumService, loadingService: LoadingService) {
         this.albums = this.searchText.valueChanges

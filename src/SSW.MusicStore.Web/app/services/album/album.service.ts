@@ -1,6 +1,6 @@
 import {Album} from '../../models';
-import {Http, Response} from 'angular2/http';
-import {Injectable} from 'angular2/core';
+import {Http, Response} from '@angular/http';
+import {Injectable} from '@angular/core';
 import {API_BASE} from '../../config';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
@@ -41,7 +41,7 @@ export class AlbumService {
             .catch((err : Error) => {
                 console.log(err);
                 Raygun.send(err);
-                return Observable.fromArray(empty);
+                return Observable.of(empty);
             });
     }
 }

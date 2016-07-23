@@ -1,7 +1,7 @@
-import {Component} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
-import {Routes, APP_ROUTES} from '../../route.config';
+import {Component} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
+import {Router, ROUTER_DIRECTIVES } from '@angular/router';
+import {Routes} from '../../route.config';
 import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
@@ -15,8 +15,6 @@ declare var Auth0Lock: any;
     styleUrls: ['app/components/app/app.component.css'],
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
 })
-
-@RouteConfig(APP_ROUTES)
 export class AppComponent {
     title = 'SSW Angular 2 Music Store';
     routes = Routes;
@@ -50,7 +48,7 @@ export class AppComponent {
         localStorage.removeItem('profile');
         localStorage.removeItem('id_token');
         localStorage.removeItem('user');
-        this.router.navigate([`/${Routes.dashboard.as}`]);
+        this.router.navigate([`/`]);
     }
 
 
@@ -73,7 +71,7 @@ export class AppComponent {
     }
 
     goToGenre(genre: Genre) {
-        this.router.navigate([`/Genres/Genre`, { name: genre.name }]);
+        this.router.navigate([`/genres/genre`, genre.name]);
     }
 
 

@@ -1,6 +1,6 @@
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-import {RouteConfig, Router, ROUTER_DIRECTIVES } from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
+import {RouterConfig, Router, ROUTER_DIRECTIVES } from '@angular/router';
 import {GenreService} from '../../services/genre/genre.service';
 import {GenreDetailComponent} from './genre-detail.component';
 import {Genre} from '../../models';
@@ -11,9 +11,6 @@ import {Genre} from '../../models';
     styleUrls: ['app/components/genre/genres.component.css'],
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, GenreDetailComponent, ROUTER_DIRECTIVES]
 })
-@RouteConfig([
-        { path: '/:name', component: GenreDetailComponent, as: 'Genre' }
-    ])
 export class GenresComponent implements OnInit {
     public genres: Genre[];
 
@@ -31,7 +28,7 @@ export class GenresComponent implements OnInit {
     }
 
     goToGenre(genre: Genre) {
-       this._router.navigate([`/Genres/Genre` , { name: genre.name }]);
+       this._router.navigate([`/genres/genre` , genre.name]);
     }
 
 

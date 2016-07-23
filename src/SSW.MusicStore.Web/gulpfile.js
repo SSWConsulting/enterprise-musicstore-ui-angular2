@@ -13,7 +13,7 @@ var project = ts.createProject('tsconfig.json');
 gulp.task('tsc', function() {
     return project.src()
         .pipe(ts(project))
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('./app'));
 });
 
 gulp.task('stage-inline', ['tsc'], function() {
@@ -47,7 +47,7 @@ gulp.task('bundle-staging', ['stage-inline'], function (cb) {
 
 gulp.task('build', ['bundle-staging'], function () {
     var js = gulp.src([
-        'node_modules/angular2/bundles/angular2-polyfills.js',
+        'node_modules/@angular/bundles/angular2-polyfills.js',
         'staging/bundled.js',
         'staging/raygun.js'
     ]).pipe(concat('script.js'));

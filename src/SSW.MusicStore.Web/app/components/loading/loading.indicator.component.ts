@@ -1,5 +1,5 @@
-import {Component, ElementRef, OnInit, OnDestroy} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
+import {Component, ElementRef, OnInit, OnDestroy} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {LoadingService} from '../../services/loading/loading.service';
 
 @Component({

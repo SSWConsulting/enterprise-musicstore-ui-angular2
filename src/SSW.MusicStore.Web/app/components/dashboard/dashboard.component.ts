@@ -1,6 +1,5 @@
-import {Component, OnInit} from 'angular2/core';
-import {CORE_DIRECTIVES} from 'angular2/common';
-import {Router} from 'angular2/router';
+import {Component, OnInit} from '@angular/core';
+import {CORE_DIRECTIVES} from '@angular/common';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album/album.service';
 import {LoadingService} from '../../services/loading/loading.service';
@@ -8,6 +7,7 @@ import {LoadingIndicator} from '../loading/loading.indicator.component';
 import {Routes} from '../../route.config';
 import {AlbumSummary} from '../album/album-summary.component';
 import {Search} from '../search/search.component';
+import {ROUTER_DIRECTIVES, Router} from '@angular/router';
 
 @Component({
     selector: 'dashboard',
@@ -33,15 +33,14 @@ export class DashboardComponent implements OnInit {
     }
 
     goToAlbumDetail(album: Album) {
-        this._router.navigate([`/${Routes.album.as}`, { id: album.albumId }]);
+        this._router.navigate([`/${Routes.album.as}`, album.albumId]);
     }
 
     getPopularAlbums() {
         this._albumService.getPopularAlbums()
             .subscribe(albums => {
                 this.albums = albums;
-                    this._loadingService.toggleLoadingIndicator(false);
-                }
-            );
+                this._loadingService.toggleLoadingIndicator(false);
+            });
     }
 }
