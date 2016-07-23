@@ -1,10 +1,13 @@
+
+<loading-indicator></loading-indicator>
 <div class="input-group ms-search">
-	<input 
-           type="text"
-		   class="form-control"
-		   placeholder="Search for a genre..."
-		   #genre [ngFormControl]="searchText">
+    <input
+        type="text"
+        class="form-control"
+        placeholder="Search for a genre..."
+        #genre [ngFormControl]="searchText">
 </div>
+
 <table class="table table-bordered">
 	<tbody>
 		<tr class="ms-search-result" *ngFor="#album of albums | async">

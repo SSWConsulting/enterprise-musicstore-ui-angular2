@@ -8,6 +8,7 @@ import {AlbumService} from './services/album/album.service';
 import {GenreService} from './services/genre/genre.service';
 import {CartService} from './services/cart/cart.service';
 import {OrderService} from './services/order/order.service';
+import {LoadingService} from './services/loading/loading.service';
 import {CheckoutService} from './services/checkout/checkout.service';
 import {Headers, BaseRequestOptions, RequestOptions} from 'angular2/http';
 import {AuthHttp, AuthConfig, tokenNotExpired, JwtHelper} from 'angular2-jwt';
@@ -20,6 +21,7 @@ bootstrap(AppComponent,
         CartService,
         OrderService,
         CheckoutService,
+        LoadingService,
         ROUTER_BINDINGS,
         bind(ROUTER_PRIMARY_COMPONENT).toValue(AppComponent),
         provide(AuthHttp, {

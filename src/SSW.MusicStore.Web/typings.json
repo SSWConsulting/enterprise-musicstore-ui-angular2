@@ -8,6 +8,7 @@
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160317120654",
     "jasmine": "registry:dt/jasmine#2.2.0+20160317120654",
     "jquery": "registry:dt/jquery#1.10.0+20160316155526",
-    "toastr": "registry:dt/toastr#2.0.1+20160316155526"
+    "toastr": "registry:dt/toastr#2.0.1+20160316155526",
+    "raygun4js": "registry:dt/raygun4js#1.18.3+20150524161210"
   }
 }
