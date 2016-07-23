@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home';
-import { Routes, Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '@angular/router';
+import { provideRouter, Router, RouterConfig, NavigationEnd, Event, ROUTER_DIRECTIVES } from '@angular/router';
 import * as md from './angular-material/index';
 import { GenresComponent } from './genres';
 import { LoginComponent } from './login';
 import { CartComponent } from './cart';
 import { CheckoutComponent } from './checkout';
 import { OrdersComponent } from './orders';
+import {GenreDetailComponent} from './genres/genre-detail';
 
 import {GenreService} from './services/genre/genre.service';
+import {Authorize} from './services/security/authorize.service';
 import {Genre, User} from './models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from './config';
 import {tokenNotExpired, JwtHelper} from 'angular2-jwt';
@@ -17,9 +19,11 @@ import { AlbumComponent } from './album';
 import { AlbumService } from './services/album/album.service';
 import { CartService } from './services/cart/cart.service';
 import { OrderService } from './services/order/order.service';
-import { CheckoutService } from './services/checkout/checkout.service'
+import { CheckoutService } from './services/checkout/checkout.service';
+import { APP_ROUTER_PROVIDERS } from './routes';
 
 declare var Auth0Lock: any;
+
 
 @Component({
   moduleId: module.id,
@@ -36,23 +40,12 @@ declare var Auth0Lock: any;
     md.MdListItem,
     md.MdList
   ],
-  providers: [ROUTER_PROVIDERS, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService, OrderService, CheckoutService],
+  providers: [Authorize, md.MdIconRegistry, md.MdRadioDispatcher, AlbumService, CartService, GenreService, OrderService, CheckoutService],
 
 })
-@Routes([
-  { path: '/', component: HomeComponent },
-  { path: '/album/:id', component: AlbumComponent },
-  {path: '/genres/...', component: GenresComponent},
-  {path: '/login', component: LoginComponent},
-  {path: '/cart', component: CartComponent},
-  {path: '/checkout', component: CheckoutComponent},
-  {path: '/orders', component: OrdersComponent},
-  {path: '/genres', component: GenresComponent}
-])
 export class MusicStoreAppComponent {
 
   title = 'SSW Angular 2 Music Store';
-  routes = Routes;
   genres: Genre[] = [];
   user: User;
   lock: any;
@@ -62,6 +55,14 @@ export class MusicStoreAppComponent {
     this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
     this.setUser();
     toastr.options.positionClass = 'toast-bottom-right';
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        // any common route event handlers
+      }
+    });
   }
 
   login() {

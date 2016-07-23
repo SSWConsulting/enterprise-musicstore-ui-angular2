@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 import {Album} from '../models';
 import {AlbumService} from '../services/album/album.service';
@@ -19,26 +19,25 @@ export class AlbumComponent implements OnInit {
     album: Album;
     id: number;
     user: any;
+    subscription: any;
 
     constructor(private _albumService: AlbumService,
         private _cartService: CartService,
-        private _router: Router) {
+        private _router: Router,
+        private _route: ActivatedRoute) {
         this.setUser();
     }
 
     ngOnInit() {
-    }
-
-    routerOnActivate(
-        current: RouteSegment,
-        prev?: RouteSegment,
-        currTree?: RouteTree,
-        prevTree?: RouteTree
-    ) {
         if (!this.album) {
+            this.subscription = this._route
+                .params
+                .subscribe((params) => {
+                    let id = +params['id'];
 
-            let id = parseInt(current.getParam('id'));
-            this.getAlbum(id);
+                    this.id = parseInt(id.toString());
+                    this.getAlbum(this.id);
+                });
         }
     }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
-import {Router, OnActivate, ROUTER_DIRECTIVES, Routes} from '@angular/router';
+import {Router, ROUTER_DIRECTIVES} from '@angular/router';
 import {GenreService} from '../services/genre/genre.service';
 import {GenreDetailComponent} from './genre-detail/genre-detail.component';
 import {Genre} from '../models';
@@ -25,9 +25,6 @@ import * as md from './../angular-material/index'
     md.MdProgressBar
   ]
 })
-@Routes([
-  { path: '/:name', component: GenreDetailComponent }
-])
 export class GenresComponent implements OnInit {
   public genres: Genre[];
   isLoading: boolean = false;
