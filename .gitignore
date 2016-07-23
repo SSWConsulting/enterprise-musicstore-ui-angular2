@@ -16,8 +16,8 @@ wwwroot/
 node_modules/
 typings/
 staging/
-**app/**/*.js
-**app/**/*.js.map
+**/app/**/*.js
+**/app/**/*.js.map
 
 # Build results
 [Dd]ebug/
