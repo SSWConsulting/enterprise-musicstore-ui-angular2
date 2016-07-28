@@ -1,7 +1,7 @@
 <md-card>
   <div [hidden]="submitted">
     <h1>Shopping Cart Form</h1>
-    <form #cart="ngForm" novalidate>
+    <form #cartForm="ngForm" novalidate>
       <div>
         <md-input type="text" placeholder="First Name" required [(ngModel)]="model.firstName" ngControl="firstname" #firstname="ngForm">
         </md-input>
@@ -25,7 +25,6 @@
           Email is required
         </div>
       </div>
-
 
       <div>
         <md-input type="text" placeholder="Phone Number" required [(ngModel)]="model.phone" ngControl="phone" #phone="ngForm">
@@ -60,22 +59,15 @@
       </div>
 
       <div>
-        <ms-select  [items]="states" (selected)="model.state = $event"></ms-select>
-        <div [hidden]="!submitted || (submitted && !model.state === '')" class="alert alert-danger">
-          State is required
-        </div>
-      </div>
-
-      <div>
         <md-input type="text" placeholder="Country" required [(ngModel)]="model.country" ngControl="country" #country="ngForm">
         </md-input>
         <div [hidden]="(country.touched && country.valid) || country.untouched" class="alert alert-danger">
           Country is required
         </div>
       </div>
-      <button type="submit" md-raised-button color="primary" [disabled]="!cart.form.valid" (click)="purchase()">
-							Purchase
-						</button>
+      <button type="submit" md-raised-button color="primary" [disabled]="!cartForm.form.valid" (click)="purchase()">
+        Purchase
+      </button>
     </form>
   </div>
 </md-card>

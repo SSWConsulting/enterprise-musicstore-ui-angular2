@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES, DatePipe} from '@angular/common';
-import * as md from '../angular-material/index'
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 
@@ -14,8 +14,7 @@ import {Order} from '../models';
   styleUrls: ['orders.component.css'],
   directives: [
     CORE_DIRECTIVES,
-    md.MD_CARD_DIRECTIVES,
-    md.MdCard
+    MD_CARD_DIRECTIVES,
   ],
   pipes: [DatePipe]
 })

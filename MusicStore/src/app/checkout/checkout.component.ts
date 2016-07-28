@@ -2,11 +2,12 @@ import {Component, OnDestroy} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from '@angular/common';
 import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
-import * as md from '../angular-material/index'
+import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
+import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+import {MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 
 import {Order} from '../models';
 import {STRIPE_PUBLISHABLE_KEY} from '../config';
-import { SelectComponent } from './../select/select.component';
 import {CheckoutService} from '../services/checkout/checkout.service';
 import {CartService} from '../services/cart/cart.service';
 
@@ -18,20 +19,16 @@ declare var StripeCheckout: any;
   templateUrl: 'checkout.component.html',
   styleUrls: ['checkout.component.css'],
   directives: [
-    SelectComponent,
     CORE_DIRECTIVES,
     FORM_DIRECTIVES,
     NgForm,
     NgFormControl,
-    md.MD_CARD_DIRECTIVES,
-    md.MdCard,
-    md.MdIcon,
-    md.MD_INPUT_DIRECTIVES,
-    md.MdInput
-    ]
+    MD_CARD_DIRECTIVES,
+    MD_INPUT_DIRECTIVES,
+    MD_ICON_DIRECTIVES
+  ]
 })
 export class CheckoutComponent {
-  states = ['NSW', 'VIC', 'TAS', 'WA', 'SA', 'NT', 'QLD'];
   model = new Order();
   submitted = false;
   stripeHandler: any;
@@ -39,7 +36,6 @@ export class CheckoutComponent {
   constructor(private _checkoutService: CheckoutService,
     private _cartService: CartService,
     private _router: Router) {
-      this.model.state = '';
   }
 
   routerOnActivate(
@@ -80,7 +76,7 @@ export class CheckoutComponent {
       });
   }
   
-  onSubmit() {
+  onSubmit() {    
     console.log(JSON.stringify(this.model));
     this._checkoutService.postOrder(this.model).
       subscribe((order) => {
@@ -91,7 +87,7 @@ export class CheckoutComponent {
     this.submitted = true;
   }
 
-  onDestroy() {
+  ngOnDestroy() {
     this.stripeHandler.close();
   }
 }
