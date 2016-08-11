@@ -29,6 +29,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getOrders();
   }
 
   getOrders() {
