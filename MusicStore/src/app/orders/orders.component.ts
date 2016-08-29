@@ -28,19 +28,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
-    if (!tokenNotExpired()) {
-      this._router.navigate([`/login`]);
-    } else {
-      this.getOrders();
-    }
+    this.getOrders();
   }
 
   getOrders() {

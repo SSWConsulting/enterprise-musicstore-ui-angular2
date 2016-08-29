@@ -1,6 +1,6 @@
 import {Component, OnDestroy} from '@angular/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from '@angular/common';
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
+import {Router} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
@@ -36,17 +36,6 @@ export class CheckoutComponent {
   constructor(private _checkoutService: CheckoutService,
     private _cartService: CartService,
     private _router: Router) {
-  }
-
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
-    if (!tokenNotExpired()) {
-      this._router.navigate([`/login`]);
-    }
   }
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import { enableProdMode } from '@angular/core';
 import { MusicStoreAppComponent, environment } from './app/';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { AUTH_PROVIDERS } from 'angular2-jwt';
+import { APP_ROUTER_PROVIDERS } from './app/routes';
+import { Authorize } from './app/services/security/authorize.service';
 
 
 if (environment.production) {
@@ -10,7 +12,9 @@ if (environment.production) {
 }
 
 bootstrap(MusicStoreAppComponent, [
+  APP_ROUTER_PROVIDERS,
   HTTP_PROVIDERS,
-  AUTH_PROVIDERS
+  AUTH_PROVIDERS,
+  Authorize
 ]);
 
