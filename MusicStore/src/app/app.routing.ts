@@ -1,4 +1,5 @@
-import { provideRouter, Router, RouterConfig } from '@angular/router';
+import { ModuleWithProviders }  from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home';
 import { GenresComponent } from './genres';
@@ -11,7 +12,7 @@ import { AlbumComponent } from './album';
 
 import { Authorize } from './services/security/authorize.service';
 
-export const routes: RouterConfig = [
+const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'album/:id', component: AlbumComponent },
     { path: 'genres/...', component: GenresComponent },
@@ -21,9 +22,6 @@ export const routes: RouterConfig = [
     { path: 'orders', component: OrdersComponent, canActivate: [Authorize] },
     { path: 'genres', component: GenresComponent },
     { path: 'genres/:name', component: GenreDetailComponent }
-    //{ path: '**', component: NoContent }
 ];
 
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
-];
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

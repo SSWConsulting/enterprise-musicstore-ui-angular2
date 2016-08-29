@@ -1,22 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES, DatePipe} from '@angular/common';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
-import {tokenNotExpired} from 'angular2-jwt';
+import {Router} from '@angular/router';
 
 import {OrderService} from '../services/order/order.service';
 import {Order} from '../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'ms-orders',
   templateUrl: 'orders.component.html',
-  styleUrls: ['orders.component.css'],
-  directives: [
-    CORE_DIRECTIVES,
-    MD_CARD_DIRECTIVES,
-  ],
-  pipes: [DatePipe]
+  styleUrls: ['orders.component.css']
 })
 export class OrdersComponent implements OnInit {
   public orders: any[] = [];

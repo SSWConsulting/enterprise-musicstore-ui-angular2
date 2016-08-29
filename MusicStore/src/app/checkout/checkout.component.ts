@@ -1,10 +1,5 @@
-import {Component, OnDestroy} from '@angular/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES, NgForm, NgFormControl} from '@angular/common';
+import {Component, OnDestroy, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {tokenNotExpired} from 'angular2-jwt';
-import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
-import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
-import {MD_ICON_DIRECTIVES} from '@angular2-material/icon';
 
 import {Order} from '../models';
 import {STRIPE_PUBLISHABLE_KEY} from '../config';
@@ -12,23 +7,14 @@ import {CheckoutService} from '../services/checkout/checkout.service';
 import {CartService} from '../services/cart/cart.service';
 
 declare var StripeCheckout: any;
+declare var toastr: any;
 
 @Component({
-  moduleId: module.id,
   selector: 'ms-checkout',
   templateUrl: 'checkout.component.html',
   styleUrls: ['checkout.component.css'],
-  directives: [
-    CORE_DIRECTIVES,
-    FORM_DIRECTIVES,
-    NgForm,
-    NgFormControl,
-    MD_CARD_DIRECTIVES,
-    MD_INPUT_DIRECTIVES,
-    MD_ICON_DIRECTIVES
-  ]
 })
-export class CheckoutComponent {
+export class CheckoutComponent implements OnInit , OnDestroy {
   model = new Order();
   submitted = false;
   stripeHandler: any;

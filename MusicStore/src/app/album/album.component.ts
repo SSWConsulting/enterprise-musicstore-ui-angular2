@@ -1,18 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {Album} from '../models';
 import {AlbumService} from '../services/album/album.service';
 import {CartService} from '../services/cart/cart.service';
-import {AlbumDetailComponent} from './album-detail.component';
 
 @Component({
-    moduleId: module.id,
     selector: 'ms-album',
     templateUrl: 'album.component.html',
     styleUrls: ['album.component.css'],
-    directives: [AlbumDetailComponent]
 })
 export class AlbumComponent implements OnInit {
 
