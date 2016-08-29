@@ -38,7 +38,7 @@ export class SearchComponent {
     isLoading: boolean = false;
     clear = new EventEmitter();
     searchText = new Control();
-    albumsStream: Observable<Album[]>;
+    albumsStream: Observable<any>;
 
     constructor(http: Http, albumService: AlbumService) {
        this.albumsStream = this.searchText.valueChanges
@@ -49,7 +49,7 @@ export class SearchComponent {
             ?  albumService.search(searchText)
             : Observable.of([]))
            .do(() => this.isLoading = false)
-           .merge(this.clear.mapTo([]));
+            .merge(this.clear.mapTo([]));
            
        this.albumsStream
         .subscribe((albums) => {

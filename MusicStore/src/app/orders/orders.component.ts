@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES, DatePipe} from '@angular/common';
 import * as md from '../angular-material/index'
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
+import {Router} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 
 import {OrderService} from '../services/order/order.service';
@@ -29,19 +29,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
-    if (!tokenNotExpired()) {
-      this._router.navigate([`/login`]);
-    } else {
-      this.getOrders();
-    }
+    this.getOrders();
   }
 
   getOrders() {

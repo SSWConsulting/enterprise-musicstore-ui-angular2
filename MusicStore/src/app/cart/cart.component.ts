@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {tokenNotExpired} from 'angular2-jwt';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_ICON_DIRECTIVES} from '@angular2-material/icon';
+import {Observable} from 'rxjs/Observable';
 
 import {Cart, CartItem} from '../models';
 import {CartService} from '../services/cart/cart.service';
@@ -21,24 +22,20 @@ export class CartComponent implements OnInit {
   cart: Cart = <Cart>{};
 
   constructor(private _cartService: CartService,
-    private _router: Router) {
+    private _router: Router, private _route: ActivatedRoute) {
   }
 
   ngOnInit() {
+    // this._router.events.subscribe((event: Event) => {
+    //         if (event instanceof NavigationStart) {
+    //             if (!tokenNotExpired()) {
+    //               this._router.navigate([`/login`]);
+    //             } else {
+    //               this.getCart();
+    //             }
+    //         }
+    //     });
     this.getCart();
-  }
-
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
-    if (!tokenNotExpired()) {
-      this._router.navigate([`/login`]);
-    } else {
-      this.getCart();
-    }
   }
 
   getCart() {

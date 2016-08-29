@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
-import {Router, OnActivate, RouteSegment, RouteTree} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Album} from '../../models';
 import {GenreService} from '../../services/genre/genre.service';
 import {AlbumSummaryComponent} from '../../album/album-summary.component';
@@ -21,22 +21,20 @@ import * as md from './../../angular-material/index'
 export class GenreDetailComponent implements OnInit {
   albums: Album[];
   name: string;
+  subscription: any;
 
   constructor(private _genreService: GenreService,
-    private _router: Router) {
+    private _router: Router, private _route: ActivatedRoute) {
   }
   
-  ngOnInit() {}
-
-  routerOnActivate(
-    current: RouteSegment,
-    prev?: RouteSegment,
-    currTree?: RouteTree,
-    prevTree?: RouteTree
-  ) {
+  ngOnInit() {
     if (!this.albums) {
-      let name = current.getParam('name');
-      this.getGenreAlbums(name);
+          this.subscription = this._route
+              .params
+              .subscribe((params) => {
+                  let name = params['name'].toString();
+                  this.getGenreAlbums(name);
+              });
     }
   }
 
