@@ -1,20 +1,9 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
-import { MusicStoreAppComponent, environment } from './app/';
-import { HTTP_PROVIDERS } from '@angular/http';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
-import { APP_ROUTER_PROVIDERS } from './app/routes';
-import { Authorize } from './app/services/security/authorize.service';
-
+import { AppModule, environment } from './app/';
 
 if (environment.production) {
   enableProdMode();
 }
 
-bootstrap(MusicStoreAppComponent, [
-  APP_ROUTER_PROVIDERS,
-  HTTP_PROVIDERS,
-  AUTH_PROVIDERS,
-  Authorize
-]);
-
+platformBrowserDynamic().bootstrapModule(AppModule);
