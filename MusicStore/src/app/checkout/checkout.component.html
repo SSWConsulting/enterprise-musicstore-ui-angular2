@@ -3,7 +3,7 @@
     <h1>Shopping Cart Form</h1>
     <form #cartForm="ngForm" novalidate>
       <div>
-        <md-input type="text" placeholder="First Name" required [(ngModel)]="model.firstName" ngControl="firstname" #firstname="ngForm">
+        <md-input type="text" placeholder="First Name" required [(ngModel)]="model.firstName" ngControl="firstname" #firstname="ngModel" name="firstName">
         </md-input>
         <div [hidden]="(firstname.touched && firstname.valid) || firstname.untouched" class="alert alert-danger">
           First Name is required
@@ -11,7 +11,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Last Name" required [(ngModel)]="model.lastName" ngControl="lastName" #lastname="ngForm">
+        <md-input type="text" placeholder="Last Name" required [(ngModel)]="model.lastName" ngControl="lastName" #lastname="ngModel" name="lastName">
         </md-input>
         <div [hidden]="(lastname.touched && lastname.valid) || lastname.untouched" class="alert alert-danger">
           Last Name is required
@@ -19,7 +19,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Email" required [(ngModel)]="model.email" ngControl="email" #email="ngForm">
+        <md-input type="text" placeholder="Email" required [(ngModel)]="model.email" ngControl="email" #email="ngModel" name="email">
         </md-input>
         <div [hidden]="(email.touched && email.valid) || email.untouched" class="alert alert-danger">
           Email is required
@@ -27,7 +27,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Phone Number" required [(ngModel)]="model.phone" ngControl="phone" #phone="ngForm">
+        <md-input type="text" placeholder="Phone Number" required [(ngModel)]="model.phone" ngControl="phone" #phone="ngModel" name="phone">
         </md-input>
         <div [hidden]="(phone.touched && phone.valid) || phone.untouched" class="alert alert-danger">
           Phone is required
@@ -35,7 +35,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Street Address" required [(ngModel)]="model.address" ngControl="address" #address="ngForm">
+        <md-input type="text" placeholder="Street Address" required [(ngModel)]="model.address" ngControl="address" #address="ngModel" name="address">
         </md-input>
         <div [hidden]="(address.touched && address.valid) || address.untouched" class="alert alert-danger">
           Address is required
@@ -43,7 +43,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="City" required [(ngModel)]="model.city" ngControl="city" #city="ngForm">
+        <md-input type="text" placeholder="City" required [(ngModel)]="model.city" ngControl="city" #city="ngModel" name="city">
         </md-input>
         <div [hidden]="(city.touched && city.valid) || city.untouched" class="alert alert-danger">
           City is required
@@ -51,7 +51,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Post Code" required [(ngModel)]="model.postalCode" ngControl="postalcode" #postalcode="ngForm">
+        <md-input type="text" placeholder="Post Code" required [(ngModel)]="model.postalCode" ngControl="postalcode" #postalcode="ngModel" name="postalCode">
         </md-input>
         <div [hidden]="(postalcode.touched && postalcode.valid) || postalcode.untouched" class="alert alert-danger">
           Post code is required
@@ -59,7 +59,7 @@
       </div>
 
       <div>
-        <md-input type="text" placeholder="Country" required [(ngModel)]="model.country" ngControl="country" #country="ngForm">
+        <md-input type="text" placeholder="Country" required [(ngModel)]="model.country" ngControl="country" #country="ngModel" name="country">
         </md-input>
         <div [hidden]="(country.touched && country.valid) || country.untouched" class="alert alert-danger">
           Country is required

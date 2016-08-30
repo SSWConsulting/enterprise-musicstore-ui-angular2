@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GenreService } from './services/genre/genre.service';
-import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
-import { AUTH0_CLIENT_ID, AUTH0_DOMAIN } from './config';
 import { Genre, User } from './models';
+import { AuthService } from './services/auth/auth.service';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -14,56 +13,26 @@ declare var toastr: any;
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'SSW Angular 2 Music Store';
-  genres: Genre[] = [];
-  user: User;
-  lock: any;
-  jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private genreService: GenreService, public router: Router) {
-    this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
-    this.setUser();
+  constructor(private _auth: AuthService) {
     toastr.options.positionClass = 'toast-bottom-right';
   }
 
-  ngOnInit() {
-  }
-
   login() {
-    this.lock.show((err: string, profile: string, id_token: string) => {
-
-      if (err) {
-        throw new Error(err);
-      }
-
-      localStorage.setItem('profile', JSON.stringify(profile));
-      localStorage.setItem('id_token', id_token);
-      this.setUser();
-      location.reload();
-    });
+    this._auth.login();
   }
 
   logout() {
-    localStorage.removeItem('profile');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('user');
-    this.router.navigate([`/`]);
-  }
-
-
-  setUser() {
-    let savedUser = JSON.parse(localStorage.getItem('profile'));
-    if (savedUser) {
-      this.user = savedUser;
-    };
+    this._auth.logout();
   }
 
   loggedIn() {
-    return tokenNotExpired();
+    return this._auth.authenticated();
   }
 
-  goToGenre(genre: Genre) {
-    this.router.navigate([`/genres/${genre.name}`]);
+  getProfile() {
+    return this._auth.userProfile;
   }
 }

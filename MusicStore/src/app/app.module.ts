@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { HttpModule } from '@angular/http';
 
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 import { MdButtonModule } from '@angular2-material/button';
 import { MdButtonToggleModule } from '@angular2-material/button-toggle';
 import { MdCardModule } from '@angular2-material/card';
@@ -30,6 +32,9 @@ import { AlbumService } from './services/album/album.service';
 import { CartService } from './services/cart/cart.service';
 import { OrderService } from './services/order/order.service';
 import { CheckoutService } from './services/checkout/checkout.service';
+import { GenreService } from './services/genre/genre.service';
+import { AuthService } from './services/auth/auth.service';
+import { AuthGuard } from './services/auth/auth.guard';
 
 import {HomeComponent} from './home/home.component';
 import {AlbumComponent} from './album/album.component';
@@ -84,13 +89,17 @@ declare var Auth0Lock: any;
     MdToolbarModule,
     MdTooltipModule,
 
-    routing
+    routing,
   ],
   providers: [
     AlbumService,
     CartService,
     OrderService,
-    CheckoutService
+    CheckoutService,
+    GenreService,
+    AuthService,
+    AuthGuard,
+    AUTH_PROVIDERS
   ],
   entryComponents: [AppComponent],
   bootstrap: [AppComponent]
