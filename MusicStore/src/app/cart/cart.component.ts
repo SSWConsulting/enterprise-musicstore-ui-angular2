@@ -8,15 +8,12 @@ import {Observable} from 'rxjs/Observable';
 import {Cart, CartItem} from '../models';
 import {CartService} from '../services/cart/cart.service';
 
+declare var toastr: any;
+
 @Component({
-  moduleId: module.id,
   selector: 'ms-cart',
   templateUrl: 'cart.component.html',
   styleUrls: ['cart.component.css'],
-  directives: [
-    MD_CARD_DIRECTIVES,
-    MD_ICON_DIRECTIVES
-  ]
 })
 export class CartComponent implements OnInit {
   cart: Cart = <Cart>{};

@@ -1,6 +1,5 @@
-import {Control, FORM_DIRECTIVES, NgFor, NgIf, AsyncPipe} from '@angular/common';
+import {Control} from '@angular/common';
 import {Component, EventEmitter, ChangeDetectionStrategy, Output, } from '@angular/core';
-import * as md from './../angular-material/index';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,25 +14,14 @@ import {Album} from '../models';
 import {AlbumService} from '../services/album/album.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'ms-search',
   templateUrl: 'search.component.html',
-  styleUrls: ['search.component.css'],
-  directives: [
-    md.MD_INPUT_DIRECTIVES,
-    md.MdList,
-    md.MdListItem,
-    md.MD_LIST_DIRECTIVES,
-    md.MD_CARD_DIRECTIVES,
-    md.MdCard,
-    md.MD_PROGRESS_BAR_DIRECTIVES
-   ],
-  pipes: [AsyncPipe]
+  styleUrls: ['search.component.css']
 })
 
 export class SearchComponent {
     @Output('selected') selected = new EventEmitter();
-    
+
     albums: Album[] = [];
     isLoading: boolean = false;
     clear = new EventEmitter();
@@ -50,11 +38,11 @@ export class SearchComponent {
             : Observable.of([]))
            .do(() => this.isLoading = false)
             .merge(this.clear.mapTo([]));
-           
+
        this.albumsStream
-        .subscribe((albums) => {
-            this.albums = albums
-        })
+           .subscribe((albums) => {
+               this.albums = albums;
+           });
     }
 
     onSelect(album) {

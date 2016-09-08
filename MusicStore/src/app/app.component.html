@@ -22,7 +22,7 @@
     <a [routerLink]="['']">{{title}}</a>
     <span class="fill-remaining-space"></span>
     <a (click)="login()" *ngIf="!loggedIn()">Login</a>
-    <img *ngIf="loggedIn()" [src]="user?.picture" class="img-responsive" height="35" width="35">
+    <img *ngIf="loggedIn()" [src]="getProfile()?.picture" class="img-responsive" height="35" width="35">
     <a class="nav-link" *ngIf="loggedIn()">{{user?.email}}</a>
     <a (click)="logout()" *ngIf="loggedIn()">Logout</a>
 
