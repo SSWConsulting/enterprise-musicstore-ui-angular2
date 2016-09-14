@@ -24,6 +24,7 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
 import { MdTooltipModule } from '@angular2-material/tooltip';
 
 import { AlbumService } from './services/album/album.service';
+import { GenreService } from './services/genre/genre.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -31,6 +32,7 @@ import { AlbumSummaryComponent } from './album-summary/album-summary.component';
 import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { GenresComponent } from './genres/genres.component';
 
 import { routing } from './app.routing';
 
@@ -41,7 +43,8 @@ import { routing } from './app.routing';
     AlbumSummaryComponent,
     SearchComponent,
     AlbumComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,7 @@ import { routing } from './app.routing';
 
     routing
   ],
-  providers: [AlbumService],
+  providers: [AlbumService, GenreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

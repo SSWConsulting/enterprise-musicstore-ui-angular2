@@ -1,0 +1,13 @@
+.card-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+md-card {
+    width: 150px;
+    margin: 16px;
+}
+
+.album-row {
+    flex: 1;
+}
