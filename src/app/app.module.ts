@@ -28,12 +28,14 @@ import { AlbumService } from './services/album/album.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AlbumSummaryComponent } from './album-summary/album-summary.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    AlbumSummaryComponent
+    AlbumSummaryComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

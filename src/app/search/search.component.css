@@ -1,0 +1,20 @@
+md-input {
+    display: flex;
+}
+
+.search-results {
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.pull-right {
+    margin-left: auto;
+}
+
+md-card {
+    margin: 16px
+}
+
+.title {
+    padding: 0 5px;
+}

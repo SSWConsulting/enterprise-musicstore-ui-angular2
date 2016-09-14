@@ -26,4 +26,7 @@ export class HomeComponent implements OnInit {
       );
   }
 
+  goToAlbumDetail(album: Album) {
+  }
+
 }
