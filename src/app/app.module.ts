@@ -24,10 +24,12 @@ import { MdToolbarModule } from '@angular2-material/toolbar';
 import { MdTooltipModule } from '@angular2-material/tooltip';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
