@@ -29,13 +29,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AlbumSummaryComponent } from './album-summary/album-summary.component';
 import { SearchComponent } from './search/search.component';
+import { AlbumComponent } from './album/album.component';
+
+import { routing } from './app.routing';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AlbumSummaryComponent,
-    SearchComponent
+    SearchComponent,
+    AlbumComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +64,9 @@ import { SearchComponent } from './search/search.component';
     MdSlideToggleModule,
     MdTabsModule,
     MdToolbarModule,
-    MdTooltipModule
+    MdTooltipModule,
+
+    routing
   ],
   providers: [AlbumService],
   bootstrap: [AppComponent]
