@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout fullscreen>
+  <md-sidenav mode="side" #sidenav opened="true">
+    <md-nav-list>
+      <a md-list-item>
+        <span md-line>Home</span>
+      </a>
+      <a md-list-item>
+        <span md-line>Genres</span>
+      </a>
+    </md-nav-list>
+  </md-sidenav>
+  <md-toolbar color="primary">
+    <a>{{title}}</a>
+    <span class="fill-remaining-space"></span>
+  </md-toolbar>
+</md-sidenav-layout>

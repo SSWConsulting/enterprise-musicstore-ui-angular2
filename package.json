@@ -24,7 +24,7 @@
     "rxjs": "5.0.0-beta.11",
     "ts-helpers": "^1.1.1",
     "zone.js": "0.6.12",
-     "@angular2-material/button": "v2.0.0-alpha.7-4",
+    "@angular2-material/button": "v2.0.0-alpha.7-4",
     "@angular2-material/button-toggle": "v2.0.0-alpha.7-4",
     "@angular2-material/card": "v2.0.0-alpha.7-4",
     "@angular2-material/checkbox": "v2.0.0-alpha.7-4",
@@ -45,6 +45,7 @@
     "@angular2-material/tooltip": "v2.0.0-alpha.7-4"
   },
   "devDependencies": {
+    "@types/hammerjs": "^2.0.32",
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.11-webpack.8",
     "codelyzer": "~0.0.26",
