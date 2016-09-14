@@ -1,0 +1,5 @@
+<div class="card-container">
+  <md-progress-circle *ngIf="albums?.length < 1" mode="indeterminate"></md-progress-circle>
+  <app-album-summary (click)="goToAlbumDetail(album)" *ngFor="let album of albums" [album]="album">
+  </app-album-summary>
+</div>

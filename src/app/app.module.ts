@@ -33,6 +33,7 @@ import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { GenresComponent } from './genres/genres.component';
+import { GenreDetailComponent } from './genre-detail/genre-detail.component';
 
 import { routing } from './app.routing';
 
@@ -44,7 +45,8 @@ import { routing } from './app.routing';
     SearchComponent,
     AlbumComponent,
     AlbumDetailComponent,
-    GenresComponent
+    GenresComponent,
+    GenreDetailComponent
   ],
   imports: [
     BrowserModule,
