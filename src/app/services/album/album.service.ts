@@ -25,6 +25,11 @@ export class AlbumService {
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
+        
+    getAlbum(id: number): Observable<Album> {
+        return this._http.get(API_BASE + `/albums/details/${id}`)
+            .map((response: Response) => response.json());
+    }
 
     private handleError(error: any) {
         let errMsg = (error.message) ? error.message :

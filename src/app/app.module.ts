@@ -30,6 +30,7 @@ import { HomeComponent } from './home/home.component';
 import { AlbumSummaryComponent } from './album-summary/album-summary.component';
 import { SearchComponent } from './search/search.component';
 import { AlbumComponent } from './album/album.component';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
 
 import { routing } from './app.routing';
 
@@ -39,7 +40,8 @@ import { routing } from './app.routing';
     HomeComponent,
     AlbumSummaryComponent,
     SearchComponent,
-    AlbumComponent
+    AlbumComponent,
+    AlbumDetailComponent
   ],
   imports: [
     BrowserModule,
