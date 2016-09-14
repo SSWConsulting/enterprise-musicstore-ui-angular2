@@ -10,6 +10,9 @@
     </md-nav-list>
   </md-sidenav>
   <md-toolbar color="primary">
+    <button md-icon-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
     <a>{{title}}</a>
     <span class="fill-remaining-space"></span>
   </md-toolbar>
