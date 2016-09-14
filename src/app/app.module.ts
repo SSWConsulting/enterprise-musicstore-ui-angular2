@@ -23,13 +23,17 @@ import { MdTabsModule } from '@angular2-material/tabs';
 import { MdToolbarModule } from '@angular2-material/toolbar';
 import { MdTooltipModule } from '@angular2-material/tooltip';
 
+import { AlbumService } from './services/album/album.service';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { AlbumSummaryComponent } from './album-summary/album-summary.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AlbumSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +60,7 @@ import { HomeComponent } from './home/home.component';
     MdToolbarModule,
     MdTooltipModule
   ],
-  providers: [],
+  providers: [AlbumService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

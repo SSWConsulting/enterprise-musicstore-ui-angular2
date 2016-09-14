@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlbumService } from './services/album/album.service';
 
 @Component({
   selector: 'app-root',
