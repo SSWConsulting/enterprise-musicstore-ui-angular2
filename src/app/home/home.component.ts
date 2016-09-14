@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 import { Album } from '../models';
 import { AlbumService } from '../services/album/album.service';
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
 
   private albums: Album[] = [];
 
-  constructor(private _albumService: AlbumService) {
+
+  constructor(private _albumService: AlbumService, private _router: Router) {
   }
 
   ngOnInit() {
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToAlbumDetail(album: Album) {
+    this._router.navigate(['/album', album.albumId]);
   }
 
 }

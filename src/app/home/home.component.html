@@ -3,6 +3,6 @@
 <app-search (selected)="goToAlbumDetail($event)"></app-search>
 
 <div class="card-container">
-    <app-album-summary *ngFor="let album of albums" [album]="album">
+    <app-album-summary *ngFor="let album of albums" [album]="album" (click)="goToAlbumDetail(album)">
     </app-album-summary>
 </div>
