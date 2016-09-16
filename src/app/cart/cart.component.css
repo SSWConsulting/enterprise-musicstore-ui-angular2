@@ -1,0 +1,16 @@
+.table thead > tr > th {
+    font-weight:bold;
+    border-bottom: 1px solid #ccc;
+    text-align:left;
+    padding:5px 15px;
+} 
+.table thead > tr > th.text-right {
+    text-align:right;
+}
+.table tr > td {
+    padding:5px 15px;
+    vertical-align:middle;
+}
+.table tr > td.text-right {
+    text-align:right;
+}

@@ -1,0 +1,41 @@
+<md-card *ngIf="cart.cartItems?.length === 0">
+  <p>No items in the cart</p>
+</md-card>
+<md-card *ngIf="cart.cartItems?.length > 0">
+  <table class="table">
+    <thead>
+    <tr>
+      <th colspan="2">Item</th>
+      <th>Amount</th>
+      <th class="text-right">Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.cartItems">
+        <td>
+          <img [src]="item.album.albumArtUrl" class="img-responsive" height="45" width="45">
+        </td>
+        <td>
+          <span>{{item.album.title}}</span>
+        </td>
+        <td>{{item.count}}</td>
+        <td class="text-right">{{item.album.price}}</td>
+        <td style="width: 47px;">
+          <button  md-raised-button color="primary" (click)="removeCartItem(item)"><md-icon>delete</md-icon></button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>{{cart?.cartTotal}}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</md-card>
+<md-card>
+<h1>asdfasdfas</h1>
+<h1>asdfasdfas</h1>
+<h1>asdfasdfas</h1>
+<h1>asdfasdfas</h1>
+</md-card>

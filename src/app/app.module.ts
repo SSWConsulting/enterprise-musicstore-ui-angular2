@@ -42,6 +42,7 @@ import { GenresComponent } from './genres/genres.component';
 import { GenreDetailComponent } from './genre-detail/genre-detail.component';
 
 import { routing } from './app.routing';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { routing } from './app.routing';
     AlbumComponent,
     AlbumDetailComponent,
     GenresComponent,
-    GenreDetailComponent
+    GenreDetailComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
