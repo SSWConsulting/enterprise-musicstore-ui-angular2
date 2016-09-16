@@ -29,6 +29,8 @@ import {RtlModule} from '@angular2-material/core/rtl/dir';
 import { AlbumService } from './services/album/album.service';
 import { GenreService } from './services/genre/genre.service';
 import { AuthService } from './services/auth/auth.service';
+import {CartService} from './services/cart/cart.service';
+import {AUTH_PROVIDERS} from 'angular2-jwt';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -82,7 +84,13 @@ import { routing } from './app.routing';
 
     routing
   ],
-  providers: [AlbumService, GenreService, AuthService],
+  providers: [
+    AlbumService, 
+    GenreService, 
+    AuthService,
+    CartService,
+    AUTH_PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
