@@ -13,8 +13,14 @@
     <button md-icon-button (click)="sidenav.toggle()">
       <md-icon>menu</md-icon>
     </button>
-    <a>{{title}}</a>
+    <a [routerLink]="['']">{{title}}</a>
+
     <span class="fill-remaining-space"></span>
+    <a (click)="login()" *ngIf="!loggedIn()">Login</a>
+    <img *ngIf="loggedIn()" [src]="getProfile()?.picture" class="img-responsive" height="35" width="35">
+    <a class="nav-link" *ngIf="loggedIn()">{{getProfile()?.email}}</a>
+    <a (click)="logout()" *ngIf="loggedIn()">Logout</a>
+
   </md-toolbar>
   <md-card-content>
     <router-outlet></router-outlet>

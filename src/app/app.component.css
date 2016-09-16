@@ -1,0 +1,10 @@
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+md-toolbar a {
+  padding: 0 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
