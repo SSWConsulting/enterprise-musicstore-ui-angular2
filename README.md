@@ -2,7 +2,7 @@
 ### Introduction Video
 https://youtu.be/HryBwVOJhDs
 
-**Note:** that this seed project requires your computer has the following depenencies installed globally at this version or higher (read below for details on how to install these):
+**Note:** that this seed project requires your computer has the following dependencies installed globally at this version or higher (read below for details on how to install these):
 - node v4.x.x and npm v2.14.7
 - dnvm  v1.0.0-rc2
 - typescript 1.7x 
