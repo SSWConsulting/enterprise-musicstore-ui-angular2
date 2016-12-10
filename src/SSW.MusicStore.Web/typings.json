@@ -1,14 +1,14 @@
 {
   "name": "ssw-musicstore",
-  "version": false,
+  "version": "",
   "dependencies": {
-    "moment": "registry:dt/moment#2.8.0+20160316155526"
   },
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "raygun4js": "registry:dt/raygun4js#0.0.0+20160621084134",
-    "toastr": "registry:dt/toastr#2.1.1+20160510010435"
+    "toastr": "registry:dt/toastr#2.1.1+20160510010435",
+    "moment": "registry:dt/moment#2.8.0+20160316155526"
   }
 }

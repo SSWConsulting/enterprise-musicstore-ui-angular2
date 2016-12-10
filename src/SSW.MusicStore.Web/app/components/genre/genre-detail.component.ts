@@ -40,6 +40,6 @@ export class GenreDetailComponent implements OnInit {
   }
 
   goToAlbumDetail(album: Album) {
-    this._router.navigate([`/${Routes.album.as}`, { id: album.albumId }]);
+    this._router.navigate([`/${Routes.album.as}`, album.albumId]);
   }
 }
