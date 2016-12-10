@@ -7,21 +7,25 @@
     var map = {
         '@angular': 'node_modules/@angular',
         'rxjs': 'node_modules/rxjs',
-        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js",
+        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         'app': { main: 'main.js', defaultExtension: 'js', format: 'register' },
-        '@angular/router': { main: 'index.js', defaultExtension: 'js' },
-        'rxjs': { defaultExtension: 'js' },
-
-};
+        'rxjs': { defaultExtension: 'js' }
+    };
+    //var packages = {
+    //    'app': { main: 'main.js', defaultExtension: 'js', format: 'register' },
+    //    '@angular/router': { main: 'index.js', defaultExtension: 'js' },
+    //    'rxjs': { defaultExtension: 'js' }
+    //};
     var ngPackageNames = [
       'common',
       'compiler',
       'forms',
       'core',
       'http',
+      'router',
       'platform-browser',
       'platform-browser-dynamic'
     ];
@@ -31,7 +35,7 @@
     });
 
     // No umd for router yet
-    packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+    //packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
 
     var config = {
         map: map,

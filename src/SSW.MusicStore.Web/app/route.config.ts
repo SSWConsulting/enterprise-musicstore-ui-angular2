@@ -1,5 +1,5 @@
 import { GenresComponent } from './components/genre/genres.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { AlbumDetailComponent } from './components/album/album.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';

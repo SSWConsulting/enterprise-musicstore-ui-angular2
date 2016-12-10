@@ -18,16 +18,17 @@ import { LoginComponent } from './components/login/login.component';
 import { OrderComponent } from './components/order/order.component';
 import { Search } from './components/search/search.component';
 
+import { AUTH_PROVIDERS } from 'angular2-jwt';
+
 import { AlbumService } from './services/album/album.service';
 import { GenreService } from './services/genre/genre.service';
 import { CartService } from './services/cart/cart.service';
 import { OrderService } from './services/order/order.service';
 import { LoadingService } from './services/loading/loading.service';
 import { CheckoutService } from './services/checkout/checkout.service';
-import { AUTH_PROVIDERS } from 'angular2-jwt';
 
 import { ROUTES } from './route.config';
-debugger;
+
 @NgModule({
     declarations: [
         AppComponent,
