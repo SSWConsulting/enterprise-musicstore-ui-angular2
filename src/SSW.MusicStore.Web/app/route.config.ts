@@ -1,59 +1,53 @@
-import {GenresComponent} from './components/genre/genres.component';
-import { provideRouter, RouterConfig } from '@angular/router';
-import {AlbumDetailComponent} from './components/album/album.component';
-import {DashboardComponent} from './components/dashboard/dashboard.component';
-import {LoginComponent} from './components/login/login.component';
-import {CartComponent} from './components/cart/cart.component';
-import {CheckoutComponent} from './components/checkout/checkout.component';
-import {OrderComponent} from './components/order/order.component';
-import {GenreDetailComponent} from './components/genre/genre-detail.component';
+import { GenresComponent } from './components/genre/genres.component';
+import { Routes, RouterModule } from '@angular/router';
+import { AlbumDetailComponent } from './components/album/album.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { OrderComponent } from './components/order/order.component';
+import { GenreDetailComponent } from './components/genre/genre-detail.component';
 
-export var Routes = {
-    dashboard: {
+export const ROUTES: Routes = [
+    {
         path: '',
-        as: 'dashboard',
+        data: { title: 'dashboard' },
         component: DashboardComponent
     },
-    genres: {
+    {
         path: 'genres/...',
-        as: 'genres',
+        data: { title: 'genres' },
         component: GenresComponent,
     },
-    genre: {
+    {
         path: 'genres/genre/:name',
-        as: 'genres',
+        data: { title: 'genres' },
         component: GenreDetailComponent,
     },
-    album: {
+    {
         path: 'album/:id',
-        as: 'album',
+        data: { title: 'album' },
         component: AlbumDetailComponent
     },
-    login: {
+    {
         path: 'login',
-        as: 'login',
+        data: { title: 'login' },
         component: LoginComponent
     },
-    cart: {
+    {
         path: 'cart',
-        as: 'cart',
+        data: { title: 'cart' },
         component: CartComponent
     },
-    checkout: {
+    {
         path: 'checkout',
-        as: 'checkout',
+        data: { title: 'checkout' },
         component: CheckoutComponent
     },
-    orders: {
+    {
         path: 'orders',
-        as: 'orders',
+        data: { title: 'orders' },
         component: OrderComponent
     }
-};
-
-var routes = Object.keys(Routes).map(r => Routes[r]);
-
-export const APP_ROUTER_PROVIDERS = [
-    provideRouter(routes)
 ];
 

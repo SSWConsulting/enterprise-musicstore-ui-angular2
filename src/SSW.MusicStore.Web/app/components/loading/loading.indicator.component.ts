@@ -1,10 +1,8 @@
 import {Component, ElementRef, OnInit, OnDestroy} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
 import {LoadingService} from '../../services/loading/loading.service';
 
 @Component({
     selector: 'loading-indicator',
-    directives: [CORE_DIRECTIVES],
     templateUrl: 'app/components/loading/loading.indicator.component.html',
     styleUrls: ['app/components/loading/loading.indicator.component.css']
 })

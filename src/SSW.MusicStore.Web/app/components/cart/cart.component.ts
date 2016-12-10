@@ -1,17 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {CartService} from '../../services/cart/cart.service';
-import {CartItems} from '../../models';
-import {Routes} from '../../route.config';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../services/cart/cart.service';
+import { CartItems } from '../../models';
 import { Observable } from 'rxjs/Observable';
-import {ActivatedRoute, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-import {tokenNotExpired} from 'angular2-jwt';
+import { ActivatedRoute, Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { tokenNotExpired } from 'angular2-jwt';
 
 
 @Component({
     selector: 'cart',
     templateUrl: 'app/components/cart/cart.component.html',
     styleUrls: ['app/components/cart/cart.component.css'],
-    directives: []
 })
 
 export class CartComponent implements OnInit, CanActivate {
@@ -39,12 +37,12 @@ export class CartComponent implements OnInit, CanActivate {
     removeCartItem(item) {
         this._cartService.removeItem(item)
             .subscribe(cart => {
-                toastr.error(`${item.album.title} successfully removed from the cart`);
+                (<any>window).toastr.error(`${item.album.title} successfully removed from the cart`);
                 this.cart = cart;
             });
     }
 
     gotToCheckout() {
-        this._router.navigate([`/${Routes.checkout.as}`]);
+        this._router.navigate([`/checkout`]);
     }
 }

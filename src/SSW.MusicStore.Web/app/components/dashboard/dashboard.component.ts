@@ -1,19 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
-import {Album} from '../../models';
-import {AlbumService} from '../../services/album/album.service';
-import {LoadingService} from '../../services/loading/loading.service';
-import {LoadingIndicator} from '../loading/loading.indicator.component';
-import {Routes} from '../../route.config';
-import {AlbumSummary} from '../album/album-summary.component';
-import {Search} from '../search/search.component';
-import {ROUTER_DIRECTIVES, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Album } from '../../models';
+import { AlbumService } from '../../services/album/album.service';
+import { LoadingService } from '../../services/loading/loading.service';
+import { LoadingIndicator } from '../loading/loading.indicator.component';
+import { Search } from '../search/search.component';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'dashboard',
     templateUrl: 'app/components/dashboard/dashboard.component.html',
-    styleUrls: ['app/components/dashboard/dashboard.component.css'],
-    directives: [CORE_DIRECTIVES, AlbumSummary, Search, LoadingIndicator ]
+    styleUrls: ['app/components/dashboard/dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
     public albums: Album[] = [];
@@ -33,7 +29,7 @@ export class DashboardComponent implements OnInit {
     }
 
     goToAlbumDetail(album: Album) {
-        this._router.navigate([`/${Routes.album.as}`, album.albumId]);
+        this._router.navigate([`/album`, album.albumId]);
     }
 
     getPopularAlbums() {

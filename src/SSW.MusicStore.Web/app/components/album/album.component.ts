@@ -1,17 +1,12 @@
-
 import {Component, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES, FORM_DIRECTIVES} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Routes} from '../../route.config';
 import {Album} from '../../models';
 import {AlbumService} from '../../services/album/album.service';
 import {CartService} from '../../services/cart/cart.service';
-import {AlbumTemplate} from './album-template.component';
 
 @Component({
     selector: 'album-detail',
-    templateUrl: 'app/components/album/album.component.html',
-    directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, AlbumTemplate]
+    templateUrl: 'app/components/album/album.component.html'
 })
 export class AlbumDetailComponent implements OnInit {
     album: Album;
@@ -44,7 +39,7 @@ export class AlbumDetailComponent implements OnInit {
                 album.created = new Date(album.created.toString());
                 this.album = album;
             },
-            e => toastr.error(`${e}`)
+            e => (<any>window).toastr.error(`${e}`)
             );
     }
 
@@ -58,14 +53,14 @@ export class AlbumDetailComponent implements OnInit {
     addToCart(album: Album) {
         this._cartService.addCartItem(album)
             .subscribe((cart) => {
-                toastr.success(`${album.title} successfully added to cart`);
-                this._router.navigate([`/${Routes.cart.as}`]);
+                (<any>window).toastr.success(`${album.title} successfully added to cart`);
+                this._router.navigate([`/cart`]);
             }
             );
     }
 
     goToGenre(album: Album) {
-        this._router.navigate([`/${Routes.genres.as}`]);
+        this._router.navigate([`/genres`]);
     }
 
 }

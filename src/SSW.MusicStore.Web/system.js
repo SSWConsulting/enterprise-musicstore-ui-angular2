@@ -7,7 +7,7 @@
     var map = {
         '@angular': 'node_modules/@angular',
         'rxjs': 'node_modules/rxjs',
-        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js"
+        "angular2-jwt": "node_modules/angular2-jwt/angular2-jwt.js",
     };
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
@@ -15,15 +15,15 @@
         '@angular/router': { main: 'index.js', defaultExtension: 'js' },
         'rxjs': { defaultExtension: 'js' },
 
-    };
+};
     var ngPackageNames = [
       'common',
       'compiler',
+      'forms',
       'core',
       'http',
       'platform-browser',
-      'platform-browser-dynamic',
-      'upgrade',
+      'platform-browser-dynamic'
     ];
     // Add package entries for angular packages
     ngPackageNames.forEach(function (pkgName) {

@@ -10,10 +10,11 @@ var concat = require('gulp-concat');
 
 var project = ts.createProject('tsconfig.json');
 
-gulp.task('tsc', function() {
-    return project.src()
-        .pipe(ts(project))
-        .pipe(gulp.dest('./app'));
+gulp.task('tsc', function () {
+    var tsProject = ts.createProject('tsconfig.json');
+    var tsResult = gulp.src("./app/**/*.ts")
+        .pipe(tsProject());
+    return tsResult.js.pipe(gulp.dest('./app'));
 });
 
 gulp.task('stage-inline', ['tsc'], function() {

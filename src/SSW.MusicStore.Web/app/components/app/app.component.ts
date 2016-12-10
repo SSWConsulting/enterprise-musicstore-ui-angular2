@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
-import {Router, ROUTER_DIRECTIVES } from '@angular/router';
-import {Routes} from '../../route.config';
+import {Router } from '@angular/router';
 import {GenreService} from '../../services/genre/genre.service';
 import {Genre, User} from '../../models';
 import {AUTH0_DOMAIN, AUTH0_CLIENT_ID } from '../../config';
@@ -13,11 +11,9 @@ declare var Auth0Lock: any;
     selector: 'app',
     templateUrl: 'app/components/app/app.component.html',
     styleUrls: ['app/components/app/app.component.css'],
-    directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class AppComponent {
     title = 'SSW Angular 2 Music Store';
-    routes = Routes;
     genres: Genre[] = [];
     user: User;
     lock: any;
@@ -27,7 +23,7 @@ export class AppComponent {
         this.lock = new Auth0Lock(AUTH0_CLIENT_ID, AUTH0_DOMAIN);
         this.getGenres();
         this.setUser();
-        toastr.options.positionClass = 'toast-bottom-right';
+        (<any>window).toastr.options.positionClass = 'toast-bottom-right';
     }
 
     login() {
