@@ -4,12 +4,12 @@
 			<div class="card-block">
 				<div [hidden]="submitted">
 					<h1>Shopping Cart Form</h1>
-					<form (ng-submit)="onSubmit()" #cart="ngForm" novalidate>
+					<form (ng-submit)="onSubmit()" #cart novalidate>
 						<div class="form-group">
 							<label for="firstname">First Name</label>
 							<input type="text" class="form-control" required
 								   [(ngModel)]="model.firstName"
-								   ngControl="firstname" #firstname="ngForm">
+								   ngControl="firstname" #firstname>
 							<div [hidden]="(firstname.touched && firstname.valid) || firstname.untouched" class="alert alert-danger">
 								First Name is required
 							</div>
@@ -18,7 +18,7 @@
 							<label for="lastname">Last Name</label>
 							<input type="text" class="form-control" required
 								   [(ngModel)]="model.lastName"
-								   ngControl="lastName" #lastname="ngForm">
+								   ngControl="lastName" #lastname>
 							<div [hidden]="(lastname.touched && lastname.valid) || lastname.untouched" class="alert alert-danger">
 								Last Name is required
 							</div>
@@ -27,7 +27,7 @@
 							<label for="email">Email</label>
 							<input type="email" class="form-control" required
 								   [(ngModel)]="model.email"
-								   ngControl="email" #email="ngForm">
+								   ngControl="email" #email>
 							<div [hidden]="(email.touched && email.valid) || email.untouched" class="alert alert-danger">
 								Email is required
 							</div>
@@ -36,7 +36,7 @@
 							<label for="phone">Phone</label>
 							<input type="text" class="form-control" required
 								   [(ngModel)]="model.phone"
-								   ngControl="phone" #phone="ngForm">
+								   ngControl="phone" #phone>
 							<div [hidden]="(phone.touched && phone.valid) || phone.untouched" class="alert alert-danger">
 								Phone is required
 							</div>
@@ -45,7 +45,7 @@
 							<label for="address">Address</label>
 							<input type="text" class="form-control" required
 								   [(ngModel)]="model.address"
-								   ngControl="address" #address="ngForm">
+								   ngControl="address" #address>
 							<div [hidden]="(address.touched && address.valid) || address.untouched" class="alert alert-danger">
 								Address is required
 							</div>
@@ -56,7 +56,7 @@
 									<label for="city">City</label>
 									<input type="text" class="form-control" required
 										   [(ngModel)]="model.city"
-										   ngControl="city" #city="ngForm">
+										   ngControl="city" #city>
 									<div [hidden]="(city.touched && city.valid) || city.untouched" class="alert alert-danger">
 										City is required
 									</div>
@@ -67,7 +67,7 @@
 									<label for="postalcode">Post Code</label>
 									<input type="text" class="form-control" required
 										   [(ngModel)]="model.postalCode"
-										   ngControl="postalcode" #postalcode="ngForm">
+										   ngControl="postalcode" #postalcode>
 									<div [hidden]="(postalcode.touched && postalcode.valid) || postalcode.untouched" class="alert alert-danger">
 										Post code is required
 									</div>
@@ -80,8 +80,8 @@
 									<label for="state">State</label>
 									<select class="form-control" required
 											[(ngModel)]="model.state"
-											ngControl="states" #state="ngForm">
-										<option *ngFor="#s of states" [value]="s">{{s}}</option>
+											ngControl="states" #state>
+										<option *ngFor="let s of states" [value]="s">{{s}}</option>
 									</select>
 									<div [hidden]="(state.touched && state.valid) || state.untouched" class="alert alert-danger">
 										State is required
@@ -93,7 +93,7 @@
 									<label for="country">Country</label>
 									<input type="text" class="form-control" required
 										   [(ngModel)]="model.country"
-										   ngControl="country" #country="ngForm">
+										   ngControl="country" #country>
 									<div [hidden]="(country.touched && country.valid) || country.untouched" class="alert alert-danger">
 										Country is required
 									</div>

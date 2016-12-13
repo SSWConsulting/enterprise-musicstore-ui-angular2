@@ -17,7 +17,7 @@
 							<td></td>
 						</tr>
 						<tbody>
-							<tr class="ms-item" *ngFor="#item of cart?.cartItems">
+							<tr class="ms-item" *ngFor="let item of cart?.cartItems">
 								<td>
 									<img [src]="item.album.albumArtUrl" class="img-responsive" height="45" width="45">
 									<span>{{item.album.title}}</span>

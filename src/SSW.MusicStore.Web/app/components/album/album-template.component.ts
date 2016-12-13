@@ -1,5 +1,4 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {CORE_DIRECTIVES} from '@angular/common';
 import {Album, User} from '../../models';
 import {tokenNotExpired} from 'angular2-jwt';
 
@@ -8,8 +7,7 @@ import {tokenNotExpired} from 'angular2-jwt';
     styleUrls: [
         'app/components/album/album-template.component.css'
     ],
-    templateUrl: 'app/components/album/album-template.component.html',
-    directives: [CORE_DIRECTIVES]
+    templateUrl: 'app/components/album/album-template.component.html'
 })
 export class AlbumTemplate {
     @Input() album: Album;

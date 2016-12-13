@@ -1,14 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {CORE_DIRECTIVES, DatePipe} from '@angular/common';
-import {OrderService} from '../../services/order/order.service';
-import {Order} from '../../models';
+import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../services/order/order.service';
+import { Order } from '../../models';
 
 @Component({
     selector: 'orders',
     templateUrl: 'app/components/order/order.component.html',
-    styleUrls: ['app/components/order/order.component.css'],
-    directives: [CORE_DIRECTIVES],
-    pipes: [DatePipe]
+    styleUrls: ['app/components/order/order.component.css']
 })
 export class OrderComponent implements OnInit {
     public orders: any[] = [];
@@ -21,7 +18,7 @@ export class OrderComponent implements OnInit {
     }
 
     getOrders() {
-       this._orderService.getOrders()
+        this._orderService.getOrders()
             .subscribe(orders =>
                 orders.map((order: Order) => {
                     return {
@@ -32,7 +29,7 @@ export class OrderComponent implements OnInit {
                 }).forEach((order) => {
                     this.orders.push(order);
                 })
-        );
+            );
     }
 
 }

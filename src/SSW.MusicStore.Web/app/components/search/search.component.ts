@@ -1,11 +1,11 @@
-import {Control, FORM_DIRECTIVES, NgFor, NgIf, AsyncPipe} from '@angular/common';
-import {Component,EventEmitter, ChangeDetectionStrategy, Output, } from '@angular/core';
-import {Http} from '@angular/http';
-import {AlbumService} from '../../services/album/album.service';
-import {LoadingService} from '../../services/loading/loading.service';
-import {LoadingIndicator} from '../loading/loading.indicator.component';
-import {Album} from '../../models';
-import {Observable} from 'rxjs/Observable';
+import { Component, EventEmitter, ChangeDetectionStrategy, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Http } from '@angular/http';
+import { AlbumService } from '../../services/album/album.service';
+import { LoadingService } from '../../services/loading/loading.service';
+import { LoadingIndicator } from '../loading/loading.indicator.component';
+import { Album } from '../../models';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/debounceTime';
@@ -19,9 +19,7 @@ import 'rxjs/add/operator/mapTo';
     selector: 'search',
     templateUrl: 'app/components/search/search.component.html',
     styleUrls: ['app/components/search/search.component.css'],
-    directives: [FORM_DIRECTIVES, NgFor, NgIf, LoadingIndicator],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    pipes: [AsyncPipe],
     providers: [AlbumService, LoadingService]
 })
 
@@ -30,7 +28,7 @@ export class Search {
 
     clear = new EventEmitter();
 
-    searchText = new Control();
+    searchText = new FormControl();
 
     albums: Observable<any>;
 

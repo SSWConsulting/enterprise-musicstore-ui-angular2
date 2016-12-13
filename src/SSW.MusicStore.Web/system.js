@@ -12,18 +12,22 @@
     // packages tells the System loader how to load when no filename and/or no extension
     var packages = {
         'app': { main: 'main.js', defaultExtension: 'js', format: 'register' },
-        '@angular/router': { main: 'index.js', defaultExtension: 'js' },
-        'rxjs': { defaultExtension: 'js' },
-
+        'rxjs': { defaultExtension: 'js' }
     };
+    //var packages = {
+    //    'app': { main: 'main.js', defaultExtension: 'js', format: 'register' },
+    //    '@angular/router': { main: 'index.js', defaultExtension: 'js' },
+    //    'rxjs': { defaultExtension: 'js' }
+    //};
     var ngPackageNames = [
       'common',
       'compiler',
+      'forms',
       'core',
       'http',
+      'router',
       'platform-browser',
-      'platform-browser-dynamic',
-      'upgrade',
+      'platform-browser-dynamic'
     ];
     // Add package entries for angular packages
     ngPackageNames.forEach(function (pkgName) {
@@ -31,7 +35,7 @@
     });
 
     // No umd for router yet
-    packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
+    //packages['@angular/router'] = { main: 'index.js', defaultExtension: 'js' };
 
     var config = {
         map: map,

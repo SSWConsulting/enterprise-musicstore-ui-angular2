@@ -8,7 +8,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/catch';
 
-
 @Injectable()
 export class AlbumService {
     albums: Album[] = [];
@@ -40,7 +39,7 @@ export class AlbumService {
             .map((response: Response) => response.json())
             .catch((err : Error) => {
                 console.log(err);
-                Raygun.send(err);
+                (<any>window).Raygun.send(err);
                 return Observable.of(empty);
             });
     }

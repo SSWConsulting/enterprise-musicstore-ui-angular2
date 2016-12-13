@@ -28,7 +28,9 @@
 	<!--SystemJS Config Scripts-->
 	<script src="system.js"></script>
 	<script>
-		System.import('app/main').catch(function(err){ console.error(err); });
+		System.import('app/main').catch(function(err) {
+		    console.error(err);
+		});
     </script>
 
     <!-- Raygun error handling-->
@@ -51,5 +53,4 @@
     </app>
     
 </body>
-<script src="../staging/raygun.js"></script>
 </html>
