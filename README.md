@@ -1,6 +1,4 @@
 # SSW Enterprise Angular Music Store
-### Introduction Video
-https://youtu.be/HryBwVOJhDs
 
 **Note:** that this seed project requires your computer has the following dependencies installed globally at this version or higher (read below for details on how to install these):
 - node v4.x.x and npm v2.14.7
